@@ -1,5 +1,11 @@
+import PageWrapper from '../../components/ui/PageWrapper';
+
 const HomePage = () => {
-  return <div>Test</div>;
+  return (
+    <PageWrapper>
+      <div>Test</div>
+    </PageWrapper>
+  );
 };
 
 export default HomePage;

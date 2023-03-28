@@ -23,6 +23,7 @@ import {
   COLOR_BACKGROUND_SOLID
 } from '../../constants/styles';
 import { getTags, getToolCollection } from '../../lib/contentful';
+import PageWrapper from '../../components/ui/PageWrapper';
 
 const ToolsPage = () => {
   const [tags, setTags] = useState([]);
@@ -84,16 +85,10 @@ const ToolsPage = () => {
   };
 
   return (
-    <Box
-      paddingLeft={['18px', '30px', '50px', '70px', '100px']}
-      paddingRight={['18px', '30px', '50px', '70px', '100px']}
-      paddingTop="20px"
-      paddingBottom="20px">
+    <PageWrapper>
       <VStack spacing={4}>
         <Grid templateColumns="repeat(6, 1fr)" gap={1} w="100%">
-          <GridItem colSpan={1} alignSelf="center">
-            <Image src={hffLogo} maxHeight="25px" alignSelf="center" />
-          </GridItem>
+          <GridItem colSpan={1} alignSelf="center" />
           <GridItem colSpan={4}>
             <Title name="AI Tools" />
           </GridItem>
@@ -160,7 +155,7 @@ const ToolsPage = () => {
           )}
         </SimpleGrid>
       </VStack>
-    </Box>
+    </PageWrapper>
   );
 };
 
