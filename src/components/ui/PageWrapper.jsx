@@ -26,14 +26,20 @@ const PageWrapper = ({ children }) => {
         backgroundColor={COLOR_BACKGROUND_SOLID}
         paddingLeft={['18px', '30px', '50px', '70px', '100px']}
         paddingRight={['18px', '30px', '50px', '70px', '100px']}
-        paddingTop="5px"
-        paddingBottom="5px"
+        paddingTop="7px"
+        paddingBottom="7px"
         fontSize="xl">
         <HStack>
-          <Image src={hffLogo} maxHeight="25px" alignSelf="center" />
+          <Image
+            src={hffLogo}
+            maxHeight="25px"
+            alignSelf="center"
+            paddingTop="2px"
+            paddingBottom="2px"
+          />
         </HStack>
         <Spacer />
-        <HStack spacing={5}>
+        <HStack justifyContent="end" spacing={5}>
           <Link
             href={PATH_HOME}
             fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
