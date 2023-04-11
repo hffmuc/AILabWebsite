@@ -104,51 +104,58 @@ const ToolsPage = () => {
             </Tooltip>
           </GridItem>
         </Grid>
-
-        <HStack>
-          <Text>Filter results:</Text>
-          <HStack spacing={2} paddingRight={3}>
-            {tags.map((tag) => (
-              <ToolTag
-                tag={tag}
-                key={uuidv4()}
-                isActivated={activeTags.has(tag.name)}
-                onClick={() => toggleTag(tag.name)}
-              />
-            ))}
-          </HStack>
-          <Text paddingLeft={3}>Sort by:</Text>
-          <Select
-            bg={COLOR_BACKGROUND}
-            color="white"
-            variant="filled"
-            width="auto"
-            size="sm"
-            onChange={(event) => {
-              setSortBy(event.target.value);
-            }}
-            cursor="pointer"
-            _hover={{ bg: COLOR_BACKGROUND_HOVER }}>
-            <option
-              value="Default"
-              style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
-              Default
-            </option>
-            <option
-              value="Name"
-              style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
-              Name
-            </option>
-            <option
-              value="Tag"
-              style={{
-                backgroundColor: COLOR_BACKGROUND_SOLID,
-                color: 'white'
-              }}>
-              Tag
-            </option>
-          </Select>
-        </HStack>
+        <Grid templateColumns="repeat(6, 1fr)" alignItems="center">
+          <GridItem colSpan={[6, 4]}>
+            <HStack>
+              <Text>Filter results:</Text>
+              <HStack spacing={2} paddingRight={3}>
+                {tags.map((tag) => (
+                  <ToolTag
+                    tag={tag}
+                    key={uuidv4()}
+                    isActivated={activeTags.has(tag.name)}
+                    onClick={() => toggleTag(tag.name)}
+                  />
+                ))}
+              </HStack>
+            </HStack>
+          </GridItem>
+          <GridItem colSpan={[6, 2]}>
+            <HStack>
+              <Text>Sort by:</Text>
+              <Select
+                bg={COLOR_BACKGROUND}
+                color="white"
+                variant="filled"
+                width="auto"
+                size="sm"
+                onChange={(event) => {
+                  setSortBy(event.target.value);
+                }}
+                cursor="pointer"
+                _hover={{ bg: COLOR_BACKGROUND_HOVER }}>
+                <option
+                  value="Default"
+                  style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
+                  Default
+                </option>
+                <option
+                  value="Name"
+                  style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
+                  Name
+                </option>
+                <option
+                  value="Tag"
+                  style={{
+                    backgroundColor: COLOR_BACKGROUND_SOLID,
+                    color: 'white'
+                  }}>
+                  Tag
+                </option>
+              </Select>
+            </HStack>
+          </GridItem>
+        </Grid>{' '}
         <SimpleGrid marginTop="20px" spacing="20px" columns={[1, 2, 3, 4, 5, 6]}>
           {sortTools(tools).map((tool) =>
             IsToolActive(tool) ? <ToolCard {...tool} key={uuidv4()} /> : []
