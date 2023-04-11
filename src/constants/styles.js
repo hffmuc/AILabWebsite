@@ -7,5 +7,5 @@ export const COLOR_ALTERNATIVE_HOVER = '#9a5ac4';
 export const COLOR_TEXT = '#FFFFFF';
 export const COLOR_BACKGROUND = 'rgba(231, 198, 255, 0.2)';
 export const COLOR_BACKGROUND_HOVER = 'rgba(231, 198, 255, 0.4)';
-export const COLOR_BACKGROUND_SOLID = '#4b5669';
+export const COLOR_BACKGROUND_SOLID = '#4c4c5c';
 export const COLOR_BACKGROUND_SOLID_HOVER = '#4b5669';

@@ -77,18 +77,24 @@ const ToolCard = ({
   return (
     <Card size={['md', 'sm']} textColor={COLOR_TEXT} background={COLOR_BACKGROUND}>
       <CardBody>
-        <Image src={toolImage.url} alt={toolName} borderRadius="lg" w={['60%', '70%']} m="auto" />
+        <Image
+          src={`${toolImage.url}?w=300`}
+          alt={toolName}
+          borderRadius="lg"
+          w={['60%', '70%']}
+          m="auto"
+        />
         <Stack mt={3} spacing="1">
           <Heading size="sm">{toolName}</Heading>
           {developers ? (
-            <Text fontSize="sm" color={COLOR_SECONDARY}>
+            <Box fontSize="sm" color={COLOR_SECONDARY}>
               by {developers}
-            </Text>
+            </Box>
           ) : (
             []
           )}
           {tagsCollection.items ? (
-            <HStack>
+            <HStack pt={1} pb={1}>
               {tagsCollection.items.map((tag) => (
                 <ToolTag tag={tag} key={uuidv4()} />
               ))}
