@@ -3,7 +3,7 @@ import React from 'react';
 
 const Title = ({ name }) => {
   return (
-    <Heading fontFamily="Roboto Mono" size="lg" textAlign="center" alignSelf="center">
+    <Heading fontFamily="Roboto Mono" fontSize={26} textAlign="center" alignSelf="center">
       {name}
     </Heading>
   );

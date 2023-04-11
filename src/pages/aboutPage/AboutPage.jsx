@@ -1,38 +1,32 @@
-import React from 'react';
-import { Box, Flex, HStack, Image, Text } from '@chakra-ui/react';
+import React, { useEffect, useState } from 'react';
+import { Box, Flex, HStack, Center, Image, Text, SimpleGrid, GridItem } from '@chakra-ui/react';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
+import gruppenfoto from '../../images/Gruppenfoto.png';
+import { getAboutContent, getAboutPhoto } from '../../lib/contentful/pages/about';
 
 const AboutPage = () => {
+  const [content, setContent] = useState();
+  const [photo, setPhoto] = useState();
+
+  useEffect(() => {
+    getAboutContent().then((res) => setContent(res));
+    getAboutPhoto().then((res) => setPhoto(res));
+  }, []);
   return (
     <PageWrapper>
       <Title name="Who are we?" />
-      <HStack paddingTop={6} spacing={12}>
-        <Box>
-          <Image src="https://www.alambassociates.com/wp-content/uploads/2016/10/maxresdefault.jpg" />
-        </Box>
-        <Box>
-          <Text>
-            Since May 2022, the HFF has had the Chair for AI in Media Production. This was made
-            possible by a competition of the Hightech Agenda Bayern, in which the HFF won one of the
-            coveted AI professorships.
-          </Text>
-          <Text>
-            We would like to teach the topic of AI in a very practical way, demonstrating its use in
-            film production, among other things. Examples are the search of large amounts of film
-            data, the use in the VFX area and the generation of special film sequences by means of
-            AI technologies. The topic of AI is interdisciplinary and affects many areas of film
-            production, and AI topics will be integrated into their course offerings in the near
-            future. In doing so, we want to show the potential of this technology for film
-            production, but also include the legal and ethical aspects.
-          </Text>
-          <Text>
-            A major challenge here is the insanely fast development of this field. In addition to
-            imparting knowledge about the use of AI in film production, we also support artistic
-            projects that use AI in the production process or deal with the topic of AI.
-          </Text>
-        </Box>
-      </HStack>
+      <SimpleGrid columns={[3, 3, 3, 6]} spacing={10} mt={10}>
+        <GridItem colSpan={3}>
+          <Flex>
+            <Image src={photo} />
+          </Flex>
+        </GridItem>
+        <GridItem colSpan={3}>
+          <Box textAlign="justify">{documentToReactComponents(content)}</Box>
+        </GridItem>
+      </SimpleGrid>
     </PageWrapper>
   );
 };

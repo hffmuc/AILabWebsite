@@ -9,8 +9,11 @@ import {
   Tooltip,
   Select,
   HStack,
-  VStack
+  VStack,
+  Skeleton,
+  Spinner
 } from '@chakra-ui/react';
+
 import { v4 as uuidv4 } from 'uuid';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 import Title from '../../components/ui/Title';
@@ -22,7 +25,7 @@ import {
   COLOR_BACKGROUND_HOVER,
   COLOR_BACKGROUND_SOLID
 } from '../../constants/styles';
-import { getTags, getToolCollection } from '../../lib/contentful';
+import { getTags, getToolCollection } from '../../lib/contentful/pages/tools';
 import PageWrapper from '../../components/ui/PageWrapper';
 
 const ToolsPage = () => {
@@ -93,20 +96,22 @@ const ToolsPage = () => {
             <Title name="AI Tools" />
           </GridItem>
           <GridItem colSpan={1} textAlign="end">
-            <Tooltip
-              hasArrow
-              label='This is a collection of ready-to-use AI applications. Some of them are installed locally on this PC and you can start them by clicking on "Start", others are hosted online and are linked accordingly.
+            {process.env.REACT_APP_LOCAL === 'true' && (
+              <Tooltip
+                hasArrow
+                label='This is a collection of ready-to-use AI applications. Some of them are installed locally on this PC and you can start them by clicking on "Start", others are hosted online and are linked accordingly.
               Contact us if you have any questions.'
-              bg={COLOR_BACKGROUND_SOLID}
-              color="white"
-              placement="auto-end">
-              <InfoOutlineIcon maxHeight="25px" h="90%" w="auto" />
-            </Tooltip>
+                bg={COLOR_BACKGROUND_SOLID}
+                color="white"
+                placement="auto-end">
+                <InfoOutlineIcon maxHeight="25px" h="90%" w="auto" />
+              </Tooltip>
+            )}
           </GridItem>
         </Grid>
 
         <HStack>
-          <Text>Filter results:</Text>
+          <Box>Filter results:</Box>
           <HStack spacing={2} paddingRight={3}>
             {tags.map((tag) => (
               <ToolTag
@@ -117,7 +122,7 @@ const ToolsPage = () => {
               />
             ))}
           </HStack>
-          <Text paddingLeft={3}>Sort by:</Text>
+          <Box paddingLeft={3}>Sort by:</Box>
           <Select
             bg={COLOR_BACKGROUND}
             color="white"
@@ -149,11 +154,15 @@ const ToolsPage = () => {
             </option>
           </Select>
         </HStack>
-        <SimpleGrid marginTop="20px" spacing="20px" columns={[1, 2, 3, 4, 5, 6]}>
-          {sortTools(tools).map((tool) =>
-            IsToolActive(tool) ? <ToolCard {...tool} key={uuidv4()} /> : []
-          )}
-        </SimpleGrid>
+        {tools ? (
+          <SimpleGrid marginTop="20px" spacing="20px" columns={[1, 2, 3, 4, 5, 6]}>
+            {sortTools(tools).map((tool) =>
+              IsToolActive(tool) ? <ToolCard {...tool} key={uuidv4()} /> : []
+            )}
+          </SimpleGrid>
+        ) : (
+          <Spinner />
+        )}
       </VStack>
     </PageWrapper>
   );
