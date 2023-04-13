@@ -10,8 +10,14 @@ import {
   Select,
   HStack,
   VStack,
+  Flex,
   Skeleton,
-  Spinner
+  Spinner,
+  Spacer,
+  Center,
+  Stack,
+  Wrap,
+  WrapItem
 } from '@chakra-ui/react';
 
 import { v4 as uuidv4 } from 'uuid';
@@ -89,7 +95,7 @@ const ToolsPage = () => {
 
   return (
     <PageWrapper>
-      <VStack spacing={4}>
+      <VStack spacing={0}>
         <Grid templateColumns="repeat(6, 1fr)" gap={1} w="100%">
           <GridItem colSpan={1} alignSelf="center" />
           <GridItem colSpan={4}>
@@ -109,58 +115,60 @@ const ToolsPage = () => {
             )}
           </GridItem>
         </Grid>
-        <Grid templateColumns="repeat(6, 1fr)" alignItems="center">
-          <GridItem colSpan={[6, 4]}>
-            <HStack>
-              <Box>Filter results:</Box>
-              <HStack spacing={2} paddingRight={3}>
-                {tags.map((tag) => (
+        <Wrap pb={4} w="100%" spacing={4}>
+          <WrapItem alignItems="center">
+            <Wrap>
+              <Box marginRight={2}>Filter results:</Box>
+
+              {tags.map((tag) => (
+                <WrapItem alignItems="center">
                   <ToolTag
                     tag={tag}
                     key={uuidv4()}
                     isActivated={activeTags.has(tag.name)}
                     onClick={() => toggleTag(tag.name)}
                   />
-                ))}
-              </HStack>
-            </HStack>
-          </GridItem>
-          <GridItem colSpan={[6, 2]}>
-            <HStack>
-              <Text>Sort by:</Text>
-              <Select
-                bg={COLOR_BACKGROUND}
-                color="white"
-                variant="filled"
-                width="auto"
-                size="sm"
-                onChange={(event) => {
-                  setSortBy(event.target.value);
-                }}
-                cursor="pointer"
-                _hover={{ bg: COLOR_BACKGROUND_HOVER }}>
-                <option
-                  value="Default"
-                  style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
-                  Default
-                </option>
-                <option
-                  value="Name"
-                  style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
-                  Name
-                </option>
-                <option
-                  value="Tag"
-                  style={{
-                    backgroundColor: COLOR_BACKGROUND_SOLID,
-                    color: 'white'
-                  }}>
-                  Tag
-                </option>
-              </Select>
-            </HStack>
-          </GridItem>
-        </Grid>
+                </WrapItem>
+              ))}
+            </Wrap>
+          </WrapItem>
+          {/* <Spacer /> */}
+
+          <WrapItem alignItems="center">
+            <Box marginRight={2}>Sort by:</Box>
+            <Select
+              bg={COLOR_BACKGROUND}
+              color="white"
+              variant="filled"
+              width="auto"
+              size="sm"
+              onChange={(event) => {
+                setSortBy(event.target.value);
+              }}
+              cursor="pointer"
+              _hover={{ bg: COLOR_BACKGROUND_HOVER }}>
+              <option
+                value="Default"
+                style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
+                Default
+              </option>
+              <option
+                value="Name"
+                style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
+                Name
+              </option>
+              <option
+                value="Tag"
+                style={{
+                  backgroundColor: COLOR_BACKGROUND_SOLID,
+                  color: 'white'
+                }}>
+                Tag
+              </option>
+            </Select>
+          </WrapItem>
+        </Wrap>
+
         <SimpleGrid marginTop="20px" spacing="20px" columns={[1, 2, 3, 4, 5, 6]}>
           {sortTools(tools).map((tool) =>
             IsToolActive(tool) ? <ToolCard {...tool} key={uuidv4()} /> : []

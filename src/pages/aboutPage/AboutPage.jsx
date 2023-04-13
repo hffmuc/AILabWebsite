@@ -32,10 +32,10 @@ const AboutPage = () => {
   return (
     <PageWrapper>
       <Title name="Who are we?" />
-      <SimpleGrid columns={[3, 3, 3, 6]} spacing={10} mt={10}>
+      <SimpleGrid columns={[3, 3, 3, 6]} spacing={10}>
         <GridItem colSpan={3}>
           <Flex>
-            <Image src={photo} />
+            <Image src={photo} borderRadius={4} />
           </Flex>
         </GridItem>
         <GridItem colSpan={3}>
