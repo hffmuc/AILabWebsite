@@ -80,12 +80,14 @@ const ToolCard = ({
         <Image
           src={`${toolImage.url}?w=300`}
           alt={toolName}
-          borderRadius="lg"
+          borderRadius="md"
           w={['60%', '70%']}
           m="auto"
         />
         <Stack mt={3} spacing="1">
-          <Heading size="sm">{toolName}</Heading>
+          <Box fontWeight="bold" fontSize="md">
+            {toolName}
+          </Box>
           {developers ? (
             <Box fontSize="sm" color={COLOR_SECONDARY}>
               by {developers}
@@ -103,7 +105,7 @@ const ToolCard = ({
             []
           )}
 
-          <Box fontSize={['sm', '', '', '', 'xs']} noOfLines={8}>
+          <Box fontSize="sm" noOfLines={8}>
             {documentToReactComponents(description.json)}
           </Box>
         </Stack>

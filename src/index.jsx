@@ -7,9 +7,16 @@ import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
+const theme = extendTheme({
+  fonts: {
+    body: 'Roboto',
+    heading: 'Roboto Mono'
+  }
+});
+
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <App />
     </ChakraProvider>
   </React.StrictMode>

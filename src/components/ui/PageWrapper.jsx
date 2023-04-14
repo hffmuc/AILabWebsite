@@ -29,7 +29,13 @@ import {
   COLOR_PRIMARY_HOVER,
   COLOR_TEXT
 } from '../../constants/styles';
-import { PATH_ABOUT, PATH_HOME, PATH_TOOLS, PATH_TUTORIALS } from '../../constants/pathNames';
+import {
+  PATH_ABOUT,
+  PATH_EVENTS,
+  PATH_HOME,
+  PATH_TOOLS,
+  PATH_TUTORIALS
+} from '../../constants/pathNames';
 
 const PageWrapper = ({ children }) => {
   const location = useLocation();
@@ -52,6 +58,7 @@ const PageWrapper = ({ children }) => {
             <Image
               src={hffLogo}
               maxHeight="25px"
+              minWidth="70px"
               alignSelf="center"
               paddingTop="2px"
               paddingBottom="2px"
@@ -61,7 +68,7 @@ const PageWrapper = ({ children }) => {
 
         <Spacer />
         <BrowserView>
-          <HStack justifyContent="end" spacing={5}>
+          <HStack justifyContent="end" spacing={5} fontFamily="Roboto Mono">
             <Link
               href={PATH_HOME}
               fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
@@ -73,6 +80,12 @@ const PageWrapper = ({ children }) => {
               fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
               color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
               About
+            </Link>
+            <Link
+              href={PATH_EVENTS}
+              fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
+              color={location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+              Events
             </Link>
             <Link
               href={PATH_TOOLS}
@@ -115,6 +128,12 @@ const PageWrapper = ({ children }) => {
                     fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
                     color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                     About
+                  </Link>
+                  <Link
+                    href={PATH_EVENTS}
+                    fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
+                    color={location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                    Events
                   </Link>
                   <Link
                     href={PATH_TOOLS}
