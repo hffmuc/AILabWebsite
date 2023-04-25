@@ -22,6 +22,7 @@ import {
 
 import { v4 as uuidv4 } from 'uuid';
 import { InfoOutlineIcon } from '@chakra-ui/icons';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import Title from '../../components/ui/Title';
 import ToolCard from './ToolCard';
 import ToolTag from '../../components/ui/ToolTag';

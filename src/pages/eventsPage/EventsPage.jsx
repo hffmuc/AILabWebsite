@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Spinner,
@@ -8,26 +8,50 @@ import {
   WrapItem,
   Center,
   AspectRatio,
-  Heading
+  Heading,
+  List,
+  Text
 } from '@chakra-ui/react';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
+import { getEventsInformation } from '../../lib/contentful/pages/events';
+
 /* eslint-disable jsx-a11y/iframe-has-title */
 const EventsPage = () => {
   const [frameLoaded, setFrameLoaded] = useState(false);
+  const [eventsInformation, setEventsInformation] = useState();
+
+  const options = {
+    renderMark: {
+      // [MARKS.BOLD]: (text) => `<custom-bold>${text}<custom-bold>`
+    },
+    renderNode: {
+      // eslint-disable-next-line react/no-unstable-nested-components
+      [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+      // eslint-disable-next-line react/no-unstable-nested-components
+      [BLOCKS.UL_LIST]: (node, children) => <List>{children}</List>
+    }
+  };
 
   const onFrameLoad = () => {
     setFrameLoaded(true);
   };
 
+  useEffect(() => {
+    getEventsInformation().then((res) => setEventsInformation(res));
+  }, []);
+
   return (
     <PageWrapper>
       <Title name="Upcoming Events" />
 
-      <Wrap w="100%">
-        <Box>tbd</Box>
-        <Spacer />
+      <Wrap w="100%" spacing={0}>
+        <Box w="100%">{documentToReactComponents(eventsInformation, options)}</Box>
+        {/* <Spacer /> */}
         {/* <Box h="100%" w="100%"> */}
+
         <AspectRatio maxH={600} maxW={800} w="100%" h="100%">
           <>
             {!frameLoaded ? (
@@ -49,6 +73,7 @@ const EventsPage = () => {
             />
           </>
         </AspectRatio>
+
         {/* </Box> */}
       </Wrap>
     </PageWrapper>

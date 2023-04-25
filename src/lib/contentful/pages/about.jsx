@@ -33,20 +33,3 @@ export const getAboutPhoto = async () => {
 
   return res.data.aboutPage.aiTeamPhoto.url;
 };
-
-export const getTeamMembers = async () => {
-  const query = `
-      query aboutPageEntryQuery {
-          aboutPage(id: "h11BgXfbaRhU29sP2zHZk") {
-          sys {
-              id
-          }
-          teamMembers
-          }
-      }
-      `;
-
-  const res = await graphql(query);
-
-  return res.data.aboutPage.teamMembers;
-};
