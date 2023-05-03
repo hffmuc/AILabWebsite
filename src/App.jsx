@@ -8,17 +8,27 @@ import HomePage from './pages/homePage/HomePage';
 import AboutPage from './pages/aboutPage/AboutPage';
 import TutorialsPage from './pages/tutorialsPage/TutorialsPage';
 import EventsPage from './pages/eventsPage/EventsPage';
+import BlogOverviewPage from './pages/blog/BlogOverview';
+import {
+  PATH_ABOUT,
+  PATH_BLOG,
+  PATH_EVENTS,
+  PATH_HOME,
+  PATH_TOOLS,
+  PATH_TUTORIALS
+} from './constants/pathNames';
 
 const App = () => {
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/tools" element={<ToolsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/tutorials" element={<TutorialsPage />} />
-          <Route path="/events" element={<EventsPage />} />
+          <Route path={PATH_HOME} element={<HomePage />} />
+          <Route path={PATH_TOOLS} element={<ToolsPage />} />
+          <Route path={PATH_ABOUT} element={<AboutPage />} />
+          <Route path={PATH_TUTORIALS} element={<TutorialsPage />} />
+          <Route path={PATH_EVENTS} element={<EventsPage />} />
+          <Route path={PATH_BLOG} element={<BlogOverviewPage />} />
         </Routes>
       </Router>
       {/* Footer */}

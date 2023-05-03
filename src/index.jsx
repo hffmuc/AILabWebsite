@@ -9,8 +9,24 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const theme = extendTheme({
   fonts: {
-    body: 'Roboto',
-    heading: 'Roboto Mono'
+    body: 'Roboto'
+  },
+  components: {
+    Heading: {
+      heading: {
+        sizes: {
+          xl: {
+            fontFamily: 'Roboto Mono'
+          },
+          lg: {
+            fontFamily: 'Roboto Mono'
+          }
+        }
+      }
+    }
+  },
+  colors: {
+    text: '#FFFFFF'
   }
 });
 

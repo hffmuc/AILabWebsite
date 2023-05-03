@@ -31,6 +31,7 @@ import {
 } from '../../constants/styles';
 import {
   PATH_ABOUT,
+  PATH_BLOG,
   PATH_EVENTS,
   PATH_HOME,
   PATH_TOOLS,
@@ -82,6 +83,12 @@ const PageWrapper = ({ children }) => {
               About
             </Link>
             <Link
+              href={PATH_BLOG}
+              fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
+              color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+              Blog
+            </Link>
+            <Link
               href={PATH_EVENTS}
               fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
               color={location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
@@ -128,6 +135,12 @@ const PageWrapper = ({ children }) => {
                     fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
                     color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                     About
+                  </Link>
+                  <Link
+                    href={PATH_BLOG}
+                    fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
+                    color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                    Blog
                   </Link>
                   <Link
                     href={PATH_EVENTS}
