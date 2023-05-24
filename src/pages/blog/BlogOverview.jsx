@@ -9,15 +9,19 @@ import {
   Card,
   CardBody,
   CardFooter,
-  Box
+  Box,
+  Link
 } from '@chakra-ui/react';
+import { useLocation } from 'react-router-dom';
 import { getBlogArticles } from '../../lib/contentful/pages/blog';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import { COLOR_TEXT } from '../../constants/styles';
+import { PATH_BLOG, PATH_BLOG_ARTICLE } from '../../constants/pathNames';
 
 const BlogPreview = ({ title, date, author, shortDescription }) => {
   const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const location = useLocation();
 
   return (
     <Card direction={{ base: 'column', sm: 'row' }} overflow="hidden" boxShadow="none" my={8}>
@@ -30,7 +34,9 @@ const BlogPreview = ({ title, date, author, shortDescription }) => {
 
       <Stack>
         <CardBody color={COLOR_TEXT} px={[0, 10]}>
-          <Heading size="md">{title}</Heading>
+          <Link href={`${PATH_BLOG}/Test`}>
+            <Heading size="md">{title}</Heading>
+          </Link>
           <Text>{author}</Text>
           <Text> {new Date(date).toLocaleDateString('de-DE', dateOptions)}</Text>
           <Text py="2">{shortDescription}</Text>

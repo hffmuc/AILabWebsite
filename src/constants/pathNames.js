@@ -4,3 +4,4 @@ export const PATH_TOOLS = '/tools';
 export const PATH_TUTORIALS = '/tutorials';
 export const PATH_EVENTS = '/events';
 export const PATH_BLOG = '/blog';
+export const PATH_BLOG_ARTICLE = '/blog/:articleID';

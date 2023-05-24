@@ -12,11 +12,13 @@ import BlogOverviewPage from './pages/blog/BlogOverview';
 import {
   PATH_ABOUT,
   PATH_BLOG,
+  PATH_BLOG_ARTICLE,
   PATH_EVENTS,
   PATH_HOME,
   PATH_TOOLS,
   PATH_TUTORIALS
 } from './constants/pathNames';
+import BlogArticlePage from './pages/blog/BlogArticlePage';
 
 const App = () => {
   return (
@@ -29,6 +31,7 @@ const App = () => {
           <Route path={PATH_TUTORIALS} element={<TutorialsPage />} />
           <Route path={PATH_EVENTS} element={<EventsPage />} />
           <Route path={PATH_BLOG} element={<BlogOverviewPage />} />
+          <Route path={PATH_BLOG_ARTICLE} element={<BlogArticlePage />} />
         </Routes>
       </Router>
       {/* Footer */}

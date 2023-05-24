@@ -10,6 +10,14 @@ export const getTutorials = async () => {
 
   const res = await graphql(query);
 
+  // swap youtube.com links for www.youtube-nocookie.com links
+  res.data.tutorialPage.tutorialCategoriesCollection.items.forEach((category) => {
+    category.tutorialsCollection.items.forEach((tutorial) => {
+      // eslint-disable-next-line no-param-reassign
+      tutorial.tutorialLink = tutorial.tutorialLink.replace('youtube.com', 'youtube-nocookie.com');
+    });
+  });
+
   return res.data.tutorialPage.tutorialCategoriesCollection.items;
 };
 
