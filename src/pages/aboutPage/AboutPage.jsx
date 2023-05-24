@@ -19,26 +19,11 @@ import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import { getAboutContent, getAboutPhoto } from '../../lib/contentful/pages/about';
+import renderRichText from '../../helpers/renderRichText';
 
 const AboutPage = () => {
   const [content, setContent] = useState();
   const [photo, setPhoto] = useState();
-
-  const options = {
-    renderMark: {
-      // [MARKS.BOLD]: (text) => `<custom-bold>${text}<custom-bold>`
-    },
-    renderNode: {
-      // eslint-disable-next-line react/no-unstable-nested-components
-      [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
-      // eslint-disable-next-line react/no-unstable-nested-components
-      [BLOCKS.UL_LIST]: (node, children) => (
-        <UnorderedList textAlign="start">{children}</UnorderedList>
-      ),
-      // eslint-disable-next-line react/no-unstable-nested-components
-      [BLOCKS.LIST_ITEM]: (node, children) => <ListItem>{children}</ListItem>
-    }
-  };
 
   useEffect(() => {
     getAboutContent().then((res) => setContent(res));
@@ -55,7 +40,7 @@ const AboutPage = () => {
           </Flex>
         </GridItem>
         <GridItem colSpan={3}>
-          <Box textAlign="justify">{documentToReactComponents(content, options)}</Box>
+          <Box textAlign="justify">{renderRichText(content)}</Box>
         </GridItem>
       </SimpleGrid>
     </PageWrapper>

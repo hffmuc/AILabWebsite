@@ -18,9 +18,9 @@ import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import { COLOR_TEXT } from '../../constants/styles';
 import { PATH_BLOG, PATH_BLOG_ARTICLE } from '../../constants/pathNames';
+import formatDate from '../../helpers/formatDate';
 
-const BlogPreview = ({ title, date, author, shortDescription }) => {
-  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const BlogPreview = ({ title, date, authorsCollection, slug, image, shortDescription }) => {
   const location = useLocation();
 
   return (
@@ -28,17 +28,21 @@ const BlogPreview = ({ title, date, author, shortDescription }) => {
       <Image
         objectFit="cover"
         maxW={{ base: '100%', sm: '200px' }}
-        src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
+        src={image.url}
         alt="Caffe Latte"
       />
 
       <Stack>
         <CardBody color={COLOR_TEXT} px={[0, 10]}>
-          <Link href={`${PATH_BLOG}/Test`}>
+          <Link href={`${PATH_BLOG}/${slug}`}>
             <Heading size="md">{title}</Heading>
           </Link>
-          <Text>{author}</Text>
-          <Text> {new Date(date).toLocaleDateString('de-DE', dateOptions)}</Text>
+          <Text>
+            {authorsCollection.items.map((name, index) => {
+              return index >= 1 ? `, ${name.firstNameLastName} ` : `${name.firstNameLastName}`; // add comma after first author
+            })}
+          </Text>
+          <Text> {formatDate(date)}</Text>
           <Text py="2">{shortDescription}</Text>
         </CardBody>
       </Stack>

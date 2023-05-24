@@ -17,23 +17,12 @@ import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import { getEventsInformation } from '../../lib/contentful/pages/events';
+import renderRichText from '../../helpers/renderRichText';
 
 /* eslint-disable jsx-a11y/iframe-has-title */
 const EventsPage = () => {
   const [frameLoaded, setFrameLoaded] = useState(false);
   const [eventsInformation, setEventsInformation] = useState();
-
-  const options = {
-    renderMark: {
-      // [MARKS.BOLD]: (text) => `<custom-bold>${text}<custom-bold>`
-    },
-    renderNode: {
-      // eslint-disable-next-line react/no-unstable-nested-components
-      [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
-      // eslint-disable-next-line react/no-unstable-nested-components
-      [BLOCKS.UL_LIST]: (node, children) => <List>{children}</List>
-    }
-  };
 
   const onFrameLoad = () => {
     setFrameLoaded(true);
@@ -73,9 +62,7 @@ const EventsPage = () => {
         </Box>
         <Spacer />
         {/* <Box h="100%" w="100%"> */}
-        <Box w={['100%', '100%', '100%', '42%']}>
-          {documentToReactComponents(eventsInformation, options)}
-        </Box>
+        <Box w={['100%', '100%', '100%', '42%']}>{renderRichText(eventsInformation)}</Box>
 
         {/* </Box> */}
       </Wrap>

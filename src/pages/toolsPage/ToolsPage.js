@@ -122,7 +122,7 @@ const ToolsPage = () => {
               <Box marginRight={2}>Filter results:</Box>
 
               {tags.map((tag) => (
-                <WrapItem alignItems="center">
+                <WrapItem alignItems="center" key={uuidv4()}>
                   <ToolTag
                     tag={tag}
                     key={uuidv4()}
