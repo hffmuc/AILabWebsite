@@ -14,11 +14,37 @@ export const getCoverImage = async () => {
 export const getNews = async () => {
   const query = `
         
-{newsCarousel(id:"4zK3uw4Z46REPBj1j1kaT0"){newsCollection{items{image{url} heading shortDescription link}}}}
-
+  query {
+    newsCarousel(id: "4zK3uw4Z46REPBj1j1kaT0") {
+    newsCollection {
+     
+        items {
+          __typename
+          ... on News {
+            image {
+              url
+            }
+            heading
+            shortDescription
+            link
+          }
+          ... on BlogArticle {
+            image {
+              url
+            }
+            title
+            shortDescription
+            slug
+          }
+        }
+      
+    }
+  }
+  }
     `;
 
   const res = await graphql(query);
+  console.log(res);
 
   return res.data.newsCarousel.newsCollection.items;
 };

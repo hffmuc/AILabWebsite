@@ -22,7 +22,7 @@ const BlogArticlePage = () => {
   return (
     <PageWrapper>
       <Center>
-        <VStack w="50%">
+        <VStack w={['100%', '100%', '80%', '65%', '50%']}>
           <Title name={blogArticle?.title} />
           <HStack mt={0} color={COLOR_TEXT} fontWeight="light" pb={7}>
             <Box>

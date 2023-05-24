@@ -69,7 +69,7 @@ const PageWrapper = ({ children }) => {
 
         <Spacer />
         <BrowserView>
-          <HStack justifyContent="end" spacing={5} fontFamily="Roboto Mono">
+          <HStack justifyContent="end" spacing={8} fontFamily="Roboto Mono">
             <Link
               href={PATH_HOME}
               fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
@@ -80,7 +80,7 @@ const PageWrapper = ({ children }) => {
               href={PATH_ABOUT}
               fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
               color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-              About
+              Über uns
             </Link>
             <Link
               href={PATH_BLOG}
@@ -98,7 +98,7 @@ const PageWrapper = ({ children }) => {
               href={PATH_TOOLS}
               fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
               color={location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-              AI Tools
+              KI Tools
             </Link>
             <Link
               href={PATH_TUTORIALS}
@@ -134,7 +134,7 @@ const PageWrapper = ({ children }) => {
                     href={PATH_ABOUT}
                     fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
                     color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                    About
+                    Über uns
                   </Link>
                   <Link
                     href={PATH_BLOG}
@@ -152,7 +152,7 @@ const PageWrapper = ({ children }) => {
                     href={PATH_TOOLS}
                     fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
                     color={location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                    AI Tools
+                    KI Tools
                   </Link>
                   <Link
                     href={PATH_TUTORIALS}

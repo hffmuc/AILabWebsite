@@ -34,7 +34,7 @@ const EventsPage = () => {
 
   return (
     <PageWrapper>
-      <Title name="Upcoming Events" />
+      <Title name="Kommende Veranstaltungen" />
 
       <Wrap w="100%" spacing={0}>
         <Box pb={4} w={['100%', '100%', '100%', '55%']}>

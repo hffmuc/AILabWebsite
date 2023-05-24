@@ -30,12 +30,12 @@ import { isMobile } from 'react-device-detect';
 import { COLOR_BACKGROUND, COLOR_TEXT } from '../../constants/styles';
 
 const Carousel = ({ news }) => {
-  const [sliderRef, setSliderRef] = useState(null);
+  const [sliderRef, setSliderRef] = useState(0);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   console.log(news);
-  // }, [news]);
+  useEffect(() => {
+    console.log(news);
+  }, [news]);
   const sliderSettings = {
     slidesToShow: 4,
     slidesToScroll: 1,
@@ -66,24 +66,49 @@ const Carousel = ({ news }) => {
       mr={isMobile ? 6 : 0}>
       <Slider ref={setSliderRef} {...sliderSettings}>
         {news?.map((newsElement) => {
-          return (
-            <Box p={1} key={v4()}>
-              <Card color={COLOR_TEXT} boxShadow="none">
-                <CardBody>
-                  <Link href={newsElement.link}>
-                    <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
-                  </Link>
-
-                  <Stack mt="6" spacing="3">
-                    <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
-                      {newsElement.heading}
+          // eslint-disable-next-line no-underscore-dangle
+          if (newsElement.__typename === 'News') {
+            return (
+              <Box p={1} key={v4()}>
+                <Card color={COLOR_TEXT} boxShadow="none">
+                  <CardBody>
+                    <Link href={newsElement.link}>
+                      <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
                     </Link>
-                    <Box fontSize="sm">{newsElement.shortDescription}</Box>
-                  </Stack>
-                </CardBody>
-              </Card>
-            </Box>
-          );
+
+                    <Stack mt="6" spacing="3">
+                      <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
+                        {newsElement.heading}
+                      </Link>
+                      <Box fontSize="sm">{newsElement.shortDescription}</Box>
+                    </Stack>
+                  </CardBody>
+                </Card>
+              </Box>
+            );
+          }
+          // eslint-disable-next-line no-underscore-dangle
+          if (newsElement.__typename === 'BlogArticle') {
+            return (
+              <Box p={1} key={v4()}>
+                <Card color={COLOR_TEXT} boxShadow="none">
+                  <CardBody>
+                    <Link href={`/blog/${newsElement.slug}`}>
+                      <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
+                    </Link>
+
+                    <Stack mt="6" spacing="3">
+                      <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
+                        {newsElement.title}
+                      </Link>
+                      <Box fontSize="sm">{newsElement.shortDescription}</Box>
+                    </Stack>
+                  </CardBody>
+                </Card>
+              </Box>
+            );
+          }
+          return null;
         })}
       </Slider>
     </Box>

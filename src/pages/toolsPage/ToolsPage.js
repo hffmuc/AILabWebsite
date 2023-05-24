@@ -100,7 +100,7 @@ const ToolsPage = () => {
         <Grid templateColumns="repeat(6, 1fr)" gap={1} w="100%">
           <GridItem colSpan={1} alignSelf="center" />
           <GridItem colSpan={4}>
-            <Title name="AI Tools" />
+            <Title name="KI Tools" />
           </GridItem>
           <GridItem colSpan={1} textAlign="end">
             {process.env.REACT_APP_LOCAL === 'true' && (
@@ -119,7 +119,7 @@ const ToolsPage = () => {
         <Wrap pb={4} w="100%" spacing={4}>
           <WrapItem alignItems="center">
             <Wrap>
-              <Box marginRight={2}>Filter results:</Box>
+              <Box marginRight={2}>Ergebnisse filtern:</Box>
 
               {tags.map((tag) => (
                 <WrapItem alignItems="center" key={uuidv4()}>
@@ -136,7 +136,7 @@ const ToolsPage = () => {
           {/* <Spacer /> */}
 
           <WrapItem alignItems="center">
-            <Box marginRight={2}>Sort by:</Box>
+            <Box marginRight={2}>Sortieren nach:</Box>
             <Select
               bg={COLOR_BACKGROUND}
               color="white"

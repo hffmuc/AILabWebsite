@@ -8,7 +8,7 @@ const options = {
   },
   renderNode: {
     // eslint-disable-next-line react/no-unstable-nested-components
-    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+    [BLOCKS.PARAGRAPH]: (node, children) => <Text py={1}>{children}</Text>,
     // eslint-disable-next-line react/no-unstable-nested-components
     [BLOCKS.UL_LIST]: (node, children) => (
       <UnorderedList textAlign="start">{children}</UnorderedList>
