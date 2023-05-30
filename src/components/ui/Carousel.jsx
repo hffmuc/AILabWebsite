@@ -27,12 +27,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 import { isMobile } from 'react-device-detect';
-import {
-  ArrowForwardIcon,
-  ArrowBackIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon
-} from '@chakra-ui/icons';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { COLOR_BACKGROUND, COLOR_TEXT } from '../../constants/styles';
 
 const PrevArrow = (props) => {
