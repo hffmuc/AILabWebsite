@@ -12,8 +12,6 @@ import {
   List,
   Text
 } from '@chakra-ui/react';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import { getEventsInformation } from '../../lib/contentful/pages/events';

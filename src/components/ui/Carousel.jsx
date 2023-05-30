@@ -34,10 +34,11 @@ const PrevArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <Box
+      left={['-23px', '-27px', '-30px']}
+      top={['50%']}
+      zIndex="3"
       style={{
         position: 'absolute',
-        top: '50%',
-
         display: 'block',
 
         width: '25px',
@@ -48,7 +49,6 @@ const PrevArrow = (props) => {
         transform: 'translate(0, -50%)',
 
         cursor: 'pointer',
-        left: '-30px',
         border: 'none',
         outline: 'none',
         background: 'transparent'
@@ -63,9 +63,12 @@ const NextArrow = (props) => {
   const { className, style, onClick } = props;
   return (
     <Box
+      right={['-23px', '-27px', '-30px']}
+      top={['50%']}
+      zIndex="3"
       style={{
         position: 'absolute',
-        top: '50%',
+        // top: '50%',
 
         display: 'block',
 
@@ -77,7 +80,7 @@ const NextArrow = (props) => {
         transform: 'translate(0, -50%)',
 
         cursor: 'pointer',
-        right: '-30px',
+        // right: '-30px',
         border: 'none',
         outline: 'none',
         background: 'transparent'
@@ -133,26 +136,21 @@ const Carousel = ({ news }) => {
   };
 
   return (
-    <Box
-      className="content"
-      borderRadius="sm"
-      backgroundColor={COLOR_BACKGROUND}
-      ml={isMobile ? 6 : 0}
-      mr={isMobile ? 6 : 0}>
+    <Box className="content" borderRadius="sm" backgroundColor={COLOR_BACKGROUND} ml={0} mr={0}>
       {news && (
         <Slider {...sliderSettings}>
           {news?.map((newsElement) => {
             // eslint-disable-next-line no-underscore-dangle
             if (newsElement.__typename === 'News') {
               return (
-                <Box p={1} key={v4()}>
+                <Box p={[0, 4]} key={v4()}>
                   <Card color={COLOR_TEXT} boxShadow="none">
-                    <CardBody>
+                    <CardBody p={0}>
                       <Link href={newsElement.link}>
                         <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
                       </Link>
 
-                      <Stack mt="6" spacing="3">
+                      <Stack mt={[4, 6]} spacing="3" px={[4, 0]} pb={[4, 2]}>
                         <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
                           {newsElement.heading}
                         </Link>
@@ -166,14 +164,14 @@ const Carousel = ({ news }) => {
             // eslint-disable-next-line no-underscore-dangle
             if (newsElement.__typename === 'BlogArticle') {
               return (
-                <Box p={1} key={v4()}>
+                <Box p={[0, 4]} key={v4()}>
                   <Card color={COLOR_TEXT} boxShadow="none">
-                    <CardBody>
+                    <CardBody p={0}>
                       <Link href={`/blog/${newsElement.slug}`}>
                         <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
                       </Link>
 
-                      <Stack mt="6" spacing="3">
+                      <Stack mt={[4, 6]} spacing="3" px={[4, 0]} pb={[4, 2]}>
                         <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
                           {newsElement.title}
                         </Link>

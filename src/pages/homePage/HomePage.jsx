@@ -14,7 +14,7 @@ const HomePage = () => {
 
   return (
     <PageWrapper>
-      <Heading mb={6} fontSize={22} fontWeight="light">
+      <Heading mb={6} fontSize={20} fontWeight="light">
         Recent News from the AI Lab
       </Heading>
       <Carousel news={news} />

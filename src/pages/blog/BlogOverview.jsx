@@ -35,7 +35,7 @@ const BlogPreview = ({ title, date, authorsCollection, slug, image, shortDescrip
       overflow="hidden"
       boxShadow="none"
       backgroundColor={COLOR_BACKGROUND}
-      my={8}
+      mb={8}
       w="100%">
       <Image
         objectFit="cover"
@@ -47,18 +47,21 @@ const BlogPreview = ({ title, date, authorsCollection, slug, image, shortDescrip
 
       <Stack w="100%">
         <CardBody color={COLOR_TEXT} pl={[3, 10]} pr={[3, 10]} py="auto">
-          <Text pb={1}> {formatDate(date)}</Text>
+          <Text pb={1} fontSize={['sm', 'md']}>
+            {' '}
+            {formatDate(date)}
+          </Text>
           <Link href={`${PATH_BLOG}/${slug}`}>
-            <Heading size="md" pb={1}>
+            <Heading size={['sm', 'md']} pb={1}>
               {title}
             </Heading>
           </Link>
-          <Text color={COLOR_TEXT_SECONDARY} pb={1}>
+          <Text color={COLOR_TEXT_SECONDARY} pb={1} fontSize={['sm', 'md']}>
             {authorsCollection.items.map((name, index) => {
               return index >= 1 ? `, ${name.firstNameLastName} ` : `${name.firstNameLastName}`; // add comma after first author
             })}
           </Text>
-          <Text py="0" noOfLines={3}>
+          <Text py="0" noOfLines={3} fontSize={['sm', 'md']}>
             {shortDescription}
           </Text>
         </CardBody>

@@ -18,7 +18,7 @@ import {
   Icon
 } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
-import { BrowserView, MobileView } from 'react-device-detect';
+import { BrowserView, MobileView, TabletView } from 'react-device-detect';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import hffLogo from '../../images/Logo.png';
 import {
@@ -169,8 +169,8 @@ const PageWrapper = ({ children }) => {
         </MobileView>
       </Flex>
       <Box
-        paddingLeft={['18px', '30px', '50px', '70px', '100px']}
-        paddingRight={['18px', '30px', '50px', '70px', '100px']}
+        paddingLeft={['25px', '30px', '50px', '70px', '100px']}
+        paddingRight={['25px', '30px', '50px', '70px', '100px']}
         paddingTop="20px"
         paddingBottom="20px">
         {children}
