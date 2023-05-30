@@ -22,24 +22,98 @@ import {
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import './Carousel.css';
+// import './Carousel.css';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 import { isMobile } from 'react-device-detect';
+import {
+  ArrowForwardIcon,
+  ArrowBackIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon
+} from '@chakra-ui/icons';
 import { COLOR_BACKGROUND, COLOR_TEXT } from '../../constants/styles';
 
+const PrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <Box
+      style={{
+        position: 'absolute',
+        top: '50%',
+
+        display: 'block',
+
+        width: '25px',
+        height: '25px',
+        padding: 0,
+        webkitTransform: 'translate(0, -50%)',
+        msTransform: 'translate(0, -50%)',
+        transform: 'translate(0, -50%)',
+
+        cursor: 'pointer',
+        left: '-30px',
+        border: 'none',
+        outline: 'none',
+        background: 'transparent'
+      }}
+      onClick={onClick}>
+      <ChevronLeftIcon w="100%" h="100%" p="0" />
+    </Box>
+  );
+};
+
+const NextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <Box
+      style={{
+        position: 'absolute',
+        top: '50%',
+
+        display: 'block',
+
+        width: '25px',
+        height: '25px',
+        padding: 0,
+        webkitTransform: 'translate(0, -50%)',
+        msTransform: 'translate(0, -50%)',
+        transform: 'translate(0, -50%)',
+
+        cursor: 'pointer',
+        right: '-30px',
+        border: 'none',
+        outline: 'none',
+        background: 'transparent'
+      }}
+      onClick={onClick}>
+      <ChevronRightIcon w="100%" h="100%" p="0" />
+    </Box>
+  );
+};
+
 const Carousel = ({ news }) => {
-  const [sliderRef, setSliderRef] = useState(0);
+  // const [sliderRef, setSliderRef] = useState(0);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log(news);
-  }, [news]);
+  // useEffect(() => {
+  //   // console.log(news);
+  //   setSliderRef(0);
+  // }, [news]);
+
+  // useEffect(() => {
+  //   console.log(sliderRef);
+  // }, [sliderRef]);
   const sliderSettings = {
     slidesToShow: 4,
+    // arrows: false,
     slidesToScroll: 1,
+    swipeToSlide: true,
+    initialSlide: 0,
     dots: true,
+    prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
     // infinite: false,
     responsive: [
       {
@@ -50,6 +124,12 @@ const Carousel = ({ news }) => {
       },
       {
         breakpoint: 600,
+        settings: {
+          slidesToShow: 1
+        }
+      },
+      {
+        breakpoint: 480,
         settings: {
           slidesToShow: 1
         }
@@ -64,53 +144,55 @@ const Carousel = ({ news }) => {
       backgroundColor={COLOR_BACKGROUND}
       ml={isMobile ? 6 : 0}
       mr={isMobile ? 6 : 0}>
-      <Slider ref={setSliderRef} {...sliderSettings}>
-        {news?.map((newsElement) => {
-          // eslint-disable-next-line no-underscore-dangle
-          if (newsElement.__typename === 'News') {
-            return (
-              <Box p={1} key={v4()}>
-                <Card color={COLOR_TEXT} boxShadow="none">
-                  <CardBody>
-                    <Link href={newsElement.link}>
-                      <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
-                    </Link>
-
-                    <Stack mt="6" spacing="3">
-                      <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
-                        {newsElement.heading}
+      {news && (
+        <Slider {...sliderSettings}>
+          {news?.map((newsElement) => {
+            // eslint-disable-next-line no-underscore-dangle
+            if (newsElement.__typename === 'News') {
+              return (
+                <Box p={1} key={v4()}>
+                  <Card color={COLOR_TEXT} boxShadow="none">
+                    <CardBody>
+                      <Link href={newsElement.link}>
+                        <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
                       </Link>
-                      <Box fontSize="sm">{newsElement.shortDescription}</Box>
-                    </Stack>
-                  </CardBody>
-                </Card>
-              </Box>
-            );
-          }
-          // eslint-disable-next-line no-underscore-dangle
-          if (newsElement.__typename === 'BlogArticle') {
-            return (
-              <Box p={1} key={v4()}>
-                <Card color={COLOR_TEXT} boxShadow="none">
-                  <CardBody>
-                    <Link href={`/blog/${newsElement.slug}`}>
-                      <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
-                    </Link>
 
-                    <Stack mt="6" spacing="3">
-                      <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
-                        {newsElement.title}
+                      <Stack mt="6" spacing="3">
+                        <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
+                          {newsElement.heading}
+                        </Link>
+                        <Box fontSize="sm">{newsElement.shortDescription}</Box>
+                      </Stack>
+                    </CardBody>
+                  </Card>
+                </Box>
+              );
+            }
+            // eslint-disable-next-line no-underscore-dangle
+            if (newsElement.__typename === 'BlogArticle') {
+              return (
+                <Box p={1} key={v4()}>
+                  <Card color={COLOR_TEXT} boxShadow="none">
+                    <CardBody>
+                      <Link href={`/blog/${newsElement.slug}`}>
+                        <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
                       </Link>
-                      <Box fontSize="sm">{newsElement.shortDescription}</Box>
-                    </Stack>
-                  </CardBody>
-                </Card>
-              </Box>
-            );
-          }
-          return null;
-        })}
-      </Slider>
+
+                      <Stack mt="6" spacing="3">
+                        <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
+                          {newsElement.title}
+                        </Link>
+                        <Box fontSize="sm">{newsElement.shortDescription}</Box>
+                      </Stack>
+                    </CardBody>
+                  </Card>
+                </Box>
+              );
+            }
+            return null;
+          })}
+        </Slider>
+      )}
     </Box>
   );
 };

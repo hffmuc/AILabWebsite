@@ -1,16 +1,17 @@
 import { graphql } from '..';
 
+// // eslint-disable-next-line import/prefer-default-export
+// export const getCoverImage = async () => {
+//   const query = `
+//         {homePage (id: "geKbdPRMKpfIYqUFDEeDf") {coverImage {url}}}
+//     `;
+
+//   const res = await graphql(query);
+
+//   return res.data.homePage.coverImage.url;
+// };
+
 // eslint-disable-next-line import/prefer-default-export
-export const getCoverImage = async () => {
-  const query = `
-        {homePage (id: "geKbdPRMKpfIYqUFDEeDf") {coverImage {url}}}
-    `;
-
-  const res = await graphql(query);
-
-  return res.data.homePage.coverImage.url;
-};
-
 export const getNews = async () => {
   const query = `
         
