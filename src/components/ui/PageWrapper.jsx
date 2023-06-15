@@ -20,7 +20,7 @@ import {
 import { useLocation } from 'react-router-dom';
 import { BrowserView, MobileView, TabletView } from 'react-device-detect';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import hffLogo from '../../images/Logo.png';
+import hffLogo from '../../images/hff_ki_logo.png';
 import {
   COLOR_BACKGROUND,
   COLOR_BACKGROUND_SOLID,
@@ -58,8 +58,10 @@ const PageWrapper = ({ children }) => {
           <Link href={PATH_HOME}>
             <Image
               src={hffLogo}
-              maxHeight="25px"
-              minWidth="70px"
+              maxHeight="50px"
+              height="50px"
+              width="auto"
+              // minWidth="70px"
               alignSelf="center"
               paddingTop="2px"
               paddingBottom="2px"

@@ -10,7 +10,16 @@ import {
   AspectRatio,
   Heading,
   List,
-  Text
+  Text,
+  Table,
+  Thead,
+  Tbody,
+  TableContainer,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption
 } from '@chakra-ui/react';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
@@ -35,8 +44,44 @@ const EventsPage = () => {
       <Title name="Kommende Veranstaltungen" />
 
       <Wrap w="100%" spacing={0}>
-        <Box pb={4} w={['100%', '100%', '100%', '55%']}>
-          <AspectRatio w="100%" h="100%">
+        <TableContainer>
+          <Table variant="striped" colorScheme="teal">
+            <TableCaption>Imperial to metric conversion factors</TableCaption>
+            <Thead>
+              <Tr>
+                <Th>To convert</Th>
+                <Th>into</Th>
+                <Th isNumeric>multiply by</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              <Tr>
+                <Td>inches</Td>
+                <Td>millimetres (mm)</Td>
+                <Td isNumeric>25.4</Td>
+              </Tr>
+              <Tr>
+                <Td>feet</Td>
+                <Td>centimetres (cm)</Td>
+                <Td isNumeric>30.48</Td>
+              </Tr>
+              <Tr>
+                <Td>yards</Td>
+                <Td>metres (m)</Td>
+                <Td isNumeric>0.91444</Td>
+              </Tr>
+            </Tbody>
+            <Tfoot>
+              <Tr>
+                <Th>To convert</Th>
+                <Th>into</Th>
+                <Th isNumeric>multiply by</Th>
+              </Tr>
+            </Tfoot>
+          </Table>
+        </TableContainer>
+        {/* <Box pb={4} w={['100%', '100%', '100%', '55%']}> */}
+        {/* <AspectRatio w="100%" h="100%">
             <>
               {!frameLoaded ? (
                 <Center>
@@ -56,11 +101,11 @@ const EventsPage = () => {
                 onLoad={() => onFrameLoad()}
               />
             </>
-          </AspectRatio>
-        </Box>
-        <Spacer />
+          </AspectRatio> */}
+        {/* </Box> */}
+        {/* <Spacer /> */}
         {/* <Box h="100%" w="100%"> */}
-        <Box w={['100%', '100%', '100%', '42%']}>{renderRichText(eventsInformation)}</Box>
+        <Box>{renderRichText(eventsInformation)}</Box>
 
         {/* </Box> */}
       </Wrap>
