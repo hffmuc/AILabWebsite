@@ -16,10 +16,14 @@ import {
 } from '@chakra-ui/react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import ReactMarkdown from 'react-markdown';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
-import { getAboutContent, getAboutPhoto } from '../../lib/contentful/pages/about';
+// import { getAboutContent, getAboutPhoto } from '../../lib/contentful/pages/about';
 import renderRichText from '../../helpers/renderRichText';
+import renderMarkdown from '../../helpers/renderMarkdown';
+
+import { getAboutContent, getAboutPhoto } from '../../lib/strapi/pages/about';
 
 const AboutPage = () => {
   const [content, setContent] = useState();
@@ -40,7 +44,8 @@ const AboutPage = () => {
           </Flex>
         </GridItem>
         <GridItem colSpan={3}>
-          <Box textAlign="justify">{renderRichText(content)}</Box>
+          {/* <Box textAlign="justify">{renderRichText(content)}</Box> */}
+          <Box textAlign="justify">{renderMarkdown(content)}</Box>
         </GridItem>
       </SimpleGrid>
     </PageWrapper>

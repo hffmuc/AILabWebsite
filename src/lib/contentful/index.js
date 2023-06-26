@@ -1,8 +1,8 @@
-import { ENDPOINT } from '../../constants/apis';
+import { CONTENTFUL_ENDPOINT } from '../../constants/apis';
 
 // eslint-disable-next-line import/prefer-default-export
 export const graphql = async (query) => {
-  const r = await fetch(ENDPOINT, {
+  const r = await fetch(CONTENTFUL_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
