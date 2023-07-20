@@ -14,7 +14,8 @@ import {
   Link
 } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
-import { getBlogArticles } from '../../lib/contentful/pages/blog';
+// import { getBlogArticles } from '../../lib/contentful/pages/blog';
+import { getBlogArticles } from '../../lib/strapi/pages/blog';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import {
@@ -25,8 +26,9 @@ import {
 } from '../../constants/styles';
 import { PATH_BLOG, PATH_BLOG_ARTICLE } from '../../constants/pathNames';
 import formatDate from '../../helpers/formatDate';
+import { getStrapiImage } from '../../helpers/getStrapiImage';
 
-const BlogPreview = ({ title, date, authorsCollection, slug, image, shortDescription }) => {
+const BlogPreview = ({ title, slug, date, authors, image, shortDescription }) => {
   const location = useLocation();
 
   return (
@@ -41,7 +43,7 @@ const BlogPreview = ({ title, date, authorsCollection, slug, image, shortDescrip
         objectFit="cover"
         maxW={{ base: '100%', sm: '200px' }}
         maxH="100%"
-        src={image.url}
+        src={getStrapiImage(image.data.attributes.url)}
         alt="Caffe Latte"
       />
 
@@ -57,8 +59,8 @@ const BlogPreview = ({ title, date, authorsCollection, slug, image, shortDescrip
             </Heading>
           </Link>
           <Text color={COLOR_TEXT_SECONDARY} pb={1} fontSize={['sm', 'md']}>
-            {authorsCollection.items.map((name, index) => {
-              return index >= 1 ? `, ${name.firstNameLastName} ` : `${name.firstNameLastName}`; // add comma after first author
+            {authors.data.map((name, index) => {
+              return index >= 1 ? `, ${name.attributes.name} ` : `${name.attributes.name}`; // add comma after first author
             })}
           </Text>
           <Text py="0" noOfLines={3} fontSize={['sm', 'md']}>
@@ -80,9 +82,9 @@ const BlogOverviewPage = () => {
     <PageWrapper>
       <Title name="Blog" />
       <Center>
-        <Box w={['100%', '90%', '75%', '60%', '50%']}>
+        <Box w={['100%', '90%', '75%', '70%', '60%']}>
           {blogArticles.map((blogArticle) => (
-            <BlogPreview {...blogArticle} key={v4()} />
+            <BlogPreview {...blogArticle.attributes} key={v4()} />
           ))}
         </Box>
       </Center>

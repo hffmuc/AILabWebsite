@@ -29,56 +29,59 @@ import {
   COLOR_ALTERNATIVE_HOVER
 } from '../../constants/styles';
 import ToolTag from '../../components/ui/ToolTag';
+import { getStrapiImage } from '../../helpers/getStrapiImage';
+import renderMarkdown from '../../helpers/renderMarkdown';
 
 const ToolCard = ({
   toolImage,
   toolName,
   description,
-  linkWebTool,
-  windowsApplication,
-  macApplication,
-  readMoreLink,
+  webToolLink,
   developers,
-  linkGithub,
+  githubLink,
   internalInfo,
-  tagsCollection
+  toolTags
 }) => {
   const [localApplicationOS, setLocalApplicationOS] = useState(undefined); // application starts on mac or windows depending on backend response
 
   useEffect(() => {
     if (process.env.REACT_APP_LOCAL === 'true') {
-      fetch('/isMac', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-      })
-        .then((res) => {
-          return res.json();
-        })
-        .then((json) => {
-          if (json.isMac && macApplication) {
-            setLocalApplicationOS(macApplication);
-          } else if (!json.isMac && windowsApplication) {
-            setLocalApplicationOS(windowsApplication);
-          }
-        });
+      // fetch('/isMac', {
+      //   method: 'GET',
+      //   headers: { 'Content-Type': 'application/json' }
+      // })
+      //   .then((res) => {
+      //     return res.json();
+      //   })
+      //   .then((json) => {
+      //     if (json.isMac && macApplication) {
+      //       setLocalApplicationOS(macApplication);
+      //     } else if (!json.isMac && windowsApplication) {
+      //       setLocalApplicationOS(windowsApplication);
+      //     }
+      //   });
     }
   }, []);
 
   const initiateStartApplication = async () => {
-    fetch('/start-application', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        localApplication: { windows: windowsApplication, mac: macApplication } // TODO: nur windows oder mac mitschicken
-      })
-    });
+    // fetch('/start-application', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     localApplication: { windows: windowsApplication, mac: macApplication } // TODO: nur windows oder mac mitschicken
+    //   })
+    // });
   };
 
   return (
     <Card size={['md', 'sm']} textColor={COLOR_TEXT} background={COLOR_BACKGROUND}>
       <CardBody>
         <Image
-          src={`${toolImage.url}?w=300`}
+          src={`${getStrapiImage(
+            toolImage.data.attributes.formats.small
+              ? toolImage.data.attributes.formats.small.url
+              : toolImage.data.attributes.url
+          )}`}
           alt={toolName}
           borderRadius="md"
           w={['60%', '70%']}
@@ -90,15 +93,15 @@ const ToolCard = ({
           </Box>
           {developers ? (
             <Box fontSize="sm" color={COLOR_SECONDARY}>
-              by {developers}
+              {developers}
             </Box>
           ) : (
             []
           )}
-          {tagsCollection.items ? (
+          {toolTags.data ? (
             <HStack pt={1} pb={1}>
-              {tagsCollection.items.map((tag) => (
-                <ToolTag tag={tag} key={uuidv4()} />
+              {toolTags.data.map((tag) => (
+                <ToolTag tag={tag.attributes} key={uuidv4()} />
               ))}
             </HStack>
           ) : (
@@ -106,7 +109,7 @@ const ToolCard = ({
           )}
 
           <Box fontSize="sm" noOfLines={8}>
-            {documentToReactComponents(description.json)}
+            {renderMarkdown(description)}
           </Box>
         </Stack>
       </CardBody>
@@ -114,7 +117,7 @@ const ToolCard = ({
       <CardFooter>
         <VStack align="stretch">
           <HStack h="30px">
-            {localApplicationOS ? (
+            {/* {localApplicationOS ? (
               <Button
                 variant="solid"
                 backgroundColor={COLOR_ALTERNATIVE}
@@ -127,31 +130,23 @@ const ToolCard = ({
               </Button>
             ) : (
               []
-            )}
-            {linkWebTool ? (
+            )} */}
+            {webToolLink ? (
               <Button
                 variant="solid"
                 backgroundColor={COLOR_PRIMARY}
                 size="sm"
                 _hover={{ bg: COLOR_PRIMARY_HOVER }}>
-                <Link href={linkWebTool} target="_blank" rel="noreferrer">
+                <Link href={webToolLink} target="_blank" rel="noreferrer">
                   Web Tool
                 </Link>
               </Button>
             ) : (
               []
             )}
-            {linkGithub ? (
-              <Link href={linkGithub} h="100%" target="_blank" rel="noreferrer">
+            {githubLink ? (
+              <Link href={githubLink} h="100%" target="_blank" rel="noreferrer">
                 <Image src={githubIcon} h="100%" w="auto" p="3px" />
-              </Link>
-            ) : (
-              []
-            )}
-
-            {readMoreLink ? (
-              <Link href={readMoreLink} color={COLOR_SECONDARY}>
-                Read More
               </Link>
             ) : (
               []
@@ -173,13 +168,12 @@ ToolCard.propTypes = {
   }).isRequired,
   toolName: PropTypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  description: PropTypes.object.isRequired,
-  linkWebTool: PropTypes.string,
-  readMoreLink: PropTypes.string,
+  description: PropTypes.string.isRequired,
+  webToolLink: PropTypes.string,
   developers: PropTypes.string,
-  linkGithub: PropTypes.string,
+  githubLink: PropTypes.string,
   // eslint-disable-next-line react/forbid-prop-types
-  internalInfo: PropTypes.object,
+  internalInfo: PropTypes.string,
   tagsCollection: PropTypes.shape({
     items: PropTypes.arrayOf(
       PropTypes.shape({
@@ -191,10 +185,9 @@ ToolCard.propTypes = {
 };
 
 ToolCard.defaultProps = {
-  linkWebTool: '',
-  readMoreLink: '',
+  webToolLink: '',
   developers: '',
-  linkGithub: '',
+  githubLink: '',
   internalInfo: '',
   tagsCollection: undefined
 };

@@ -44,7 +44,7 @@ const PrevArrow = (props) => {
         width: '25px',
         height: '25px',
         padding: 0,
-        webkitTransform: 'translate(0, -50%)',
+        WebkitTransform: 'translate(0, -50%)',
         msTransform: 'translate(0, -50%)',
         transform: 'translate(0, -50%)',
 
@@ -75,7 +75,7 @@ const NextArrow = (props) => {
         width: '25px',
         height: '25px',
         padding: 0,
-        webkitTransform: 'translate(0, -50%)',
+        WebkitTransform: 'translate(0, -50%)',
         msTransform: 'translate(0, -50%)',
         transform: 'translate(0, -50%)',
 

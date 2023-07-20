@@ -23,20 +23,22 @@ import {
 } from '@chakra-ui/react';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
-import { getEventsInformation } from '../../lib/contentful/pages/events';
+// import { getEventsInformation } from '../../lib/contentful/pages/events';
 import renderRichText from '../../helpers/renderRichText';
+import renderMarkdown from '../../helpers/renderMarkdown';
+import { getEventsContent } from '../../lib/strapi/pages/events';
 
 /* eslint-disable jsx-a11y/iframe-has-title */
 const EventsPage = () => {
   const [frameLoaded, setFrameLoaded] = useState(false);
-  const [eventsInformation, setEventsInformation] = useState();
+  const [eventsContent, setEventsContent] = useState();
 
   const onFrameLoad = () => {
     setFrameLoaded(true);
   };
 
   useEffect(() => {
-    getEventsInformation().then((res) => setEventsInformation(res));
+    getEventsContent().then((res) => setEventsContent(res));
   }, []);
 
   return (
@@ -105,7 +107,7 @@ const EventsPage = () => {
         {/* </Box> */}
         {/* <Spacer /> */}
         {/* <Box h="100%" w="100%"> */}
-        <Box>{renderRichText(eventsInformation)}</Box>
+        <Box>{renderMarkdown(eventsContent)}</Box>
 
         {/* </Box> */}
       </Wrap>
