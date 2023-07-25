@@ -80,9 +80,9 @@ const BlogOverviewPage = () => {
 
   return (
     <PageWrapper>
-      <Title name="Blog" />
       <Center>
         <Box w={['100%', '90%', '75%', '70%', '60%']}>
+          <Title name="Blog" />
           {blogArticles.map((blogArticle) => (
             <BlogPreview {...blogArticle.attributes} key={v4()} />
           ))}

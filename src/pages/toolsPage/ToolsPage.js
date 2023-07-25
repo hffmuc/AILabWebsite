@@ -17,7 +17,8 @@ import {
   Center,
   Stack,
   Wrap,
-  WrapItem
+  WrapItem,
+  Heading
 } from '@chakra-ui/react';
 
 import { v4 as uuidv4 } from 'uuid';
@@ -30,10 +31,10 @@ import hffLogo from '../../images/Logo.png';
 import {
   COLOR_BACKGROUND,
   COLOR_BACKGROUND_HOVER,
-  COLOR_BACKGROUND_SOLID
+  COLOR_BACKGROUND_SOLID,
+  COLOR_TEXT_SECONDARY
 } from '../../constants/styles';
-// import { getTags, getToolCollection } from '../../lib/contentful/pages/tools';
-import { getTags, getTools } from '../../lib/strapi/pages/tools';
+import { getTags, getToolsWithTags } from '../../lib/strapi/pages/tools';
 import PageWrapper from '../../components/ui/PageWrapper';
 
 const ToolsPage = () => {
@@ -47,11 +48,17 @@ const ToolsPage = () => {
       setTags(res);
       // console.log(res);
     });
-    getTools().then((res) => {
+    getToolsWithTags().then((res) => {
       setTools(res);
       // console.log(res);
     });
   }, []);
+
+  useEffect(() => {
+    getToolsWithTags(activeTags).then((res) => {
+      setTools(res);
+    });
+  }, [activeTags]);
 
   // TODO: STRAPI
   // const IsToolActive = (tool) => {
@@ -100,12 +107,18 @@ const ToolsPage = () => {
     <PageWrapper>
       <VStack spacing={0}>
         <Grid templateColumns="repeat(6, 1fr)" gap={1} w="100%">
-          <GridItem colSpan={1} alignSelf="center" />
-          <GridItem colSpan={4}>
-            <Title name="KI Tools" />
+          {/* <GridItem colSpan={1} alignSelf="center" /> */}
+          <GridItem colSpan={6}>
+            {/* <Title name="KI Tools" /> */}
+            <Title name="KI Tools" textAlign="left" />
+            <Box mb={6} mt={3} color={COLOR_TEXT_SECONDARY}>
+              Hier findet ihr eine Sammlung an KI Tools für Bild, Video, Ton und Sound. Viele davon
+              sind Web-Tools und ihr könnt sie direkt über die verlinkte Webseite ausprobieren,
+              andere funktionieren nur lokal und können ggfs. im KI Lab ausprobiert werden.
+            </Box>
           </GridItem>
-          <GridItem colSpan={1} textAlign="end">
-            {/* {process.env.REACT_APP_LOCAL === 'true' && (
+          {/* <GridItem colSpan={1} textAlign="end">
+            {process.env.REACT_APP_LOCAL === 'true' && (
               <Tooltip
                 hasArrow
                 label='This is a collection of ready-to-use AI applications. Some of them are installed locally on this PC and you can start them by clicking on "Start", others are hosted online and are linked accordingly.
@@ -115,8 +128,8 @@ const ToolsPage = () => {
                 placement="auto-end">
                 <InfoOutlineIcon maxHeight="25px" h="90%" w="auto" />
               </Tooltip>
-            )} */}
-          </GridItem>
+            )}
+          </GridItem> */}
         </Grid>
         <Wrap pb={4} w="100%" spacing={4}>
           <WrapItem alignItems="center">

@@ -63,22 +63,12 @@ const ToolCard = ({
     }
   }, []);
 
-  const initiateStartApplication = async () => {
-    // fetch('/start-application', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     localApplication: { windows: windowsApplication, mac: macApplication } // TODO: nur windows oder mac mitschicken
-    //   })
-    // });
-  };
-
   return (
     <Card size={['md', 'sm']} textColor={COLOR_TEXT} background={COLOR_BACKGROUND}>
       <CardBody>
         <Image
           src={`${getStrapiImage(
-            toolImage.data.attributes.formats.small
+            toolImage.data.attributes.formats?.small
               ? toolImage.data.attributes.formats.small.url
               : toolImage.data.attributes.url
           )}`}

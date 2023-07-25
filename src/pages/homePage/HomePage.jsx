@@ -3,13 +3,14 @@ import { useEffect, useState } from 'react';
 import { Heading } from '@chakra-ui/react';
 import PageWrapper from '../../components/ui/PageWrapper';
 import { getNews } from '../../lib/contentful/pages/home';
+import { getNewsCarousel } from '../../lib/strapi/pages/home';
 import Carousel from '../../components/ui/Carousel';
 
 const HomePage = () => {
   const [news, setNews] = useState();
 
   useEffect(() => {
-    getNews().then((res) => setNews(res));
+    getNewsCarousel().then((res) => setNews(res));
   }, []);
 
   return (

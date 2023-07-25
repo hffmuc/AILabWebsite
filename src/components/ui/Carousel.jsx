@@ -29,6 +29,7 @@ import { v4 } from 'uuid';
 import { isMobile } from 'react-device-detect';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { COLOR_BACKGROUND, COLOR_TEXT } from '../../constants/styles';
+import { getStrapiImage } from '../../helpers/getStrapiImage';
 
 const PrevArrow = (props) => {
   const { className, style, onClick } = props;
@@ -95,14 +96,6 @@ const Carousel = ({ news }) => {
   // const [sliderRef, setSliderRef] = useState(0);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   // console.log(news);
-  //   setSliderRef(0);
-  // }, [news]);
-
-  // useEffect(() => {
-  //   console.log(sliderRef);
-  // }, [sliderRef]);
   const sliderSettings = {
     slidesToShow: 4,
     // arrows: false,
@@ -141,48 +134,32 @@ const Carousel = ({ news }) => {
         <Slider {...sliderSettings}>
           {news?.map((newsElement) => {
             // eslint-disable-next-line no-underscore-dangle
-            if (newsElement.__typename === 'News') {
-              return (
-                <Box p={[0, 4]} key={v4()}>
-                  <Card color={COLOR_TEXT} boxShadow="none">
-                    <CardBody p={0}>
-                      <Link href={newsElement.link}>
-                        <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
-                      </Link>
 
-                      <Stack mt={[4, 6]} spacing="3" px={[4, 0]} pb={[4, 2]}>
-                        <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
-                          {newsElement.heading}
-                        </Link>
-                        <Box fontSize="sm">{newsElement.shortDescription}</Box>
-                      </Stack>
-                    </CardBody>
-                  </Card>
-                </Box>
-              );
-            }
-            // eslint-disable-next-line no-underscore-dangle
-            if (newsElement.__typename === 'BlogArticle') {
-              return (
-                <Box p={[0, 4]} key={v4()}>
-                  <Card color={COLOR_TEXT} boxShadow="none">
-                    <CardBody p={0}>
-                      <Link href={`/blog/${newsElement.slug}`}>
-                        <Image src={`${newsElement.image.url}?w=500`} borderRadius="sm" />
-                      </Link>
+            return (
+              <Box p={[0, 4]} key={v4()}>
+                <Card color={COLOR_TEXT} boxShadow="none">
+                  <CardBody p={0}>
+                    <Link href={newsElement.attributes.link}>
+                      <Image
+                        src={getStrapiImage(
+                          newsElement.attributes.image.data.attributes.formats?.medium
+                            ? newsElement.attributes.image.data.attributes.formats.medium.url
+                            : newsElement.attributes.image.data.attributes.url
+                        )}
+                        borderRadius="sm"
+                      />
+                    </Link>
 
-                      <Stack mt={[4, 6]} spacing="3" px={[4, 0]} pb={[4, 2]}>
-                        <Link fontSize="md" fontWeight="bold" href={newsElement.link}>
-                          {newsElement.title}
-                        </Link>
-                        <Box fontSize="sm">{newsElement.shortDescription}</Box>
-                      </Stack>
-                    </CardBody>
-                  </Card>
-                </Box>
-              );
-            }
-            return null;
+                    <Stack mt={[4, 6]} spacing="3" px={[4, 0]} pb={[4, 2]}>
+                      <Link fontSize="md" fontWeight="bold" href={newsElement.attributes.link}>
+                        {newsElement.attributes.title}
+                      </Link>
+                      <Box fontSize="sm">{newsElement.attributes.shortDescription}</Box>
+                    </Stack>
+                  </CardBody>
+                </Card>
+              </Box>
+            );
           })}
         </Slider>
       )}
