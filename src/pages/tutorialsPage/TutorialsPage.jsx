@@ -31,7 +31,7 @@ const TutorialsPage = () => {
 
   return (
     <PageWrapper>
-      <Title name="Tutorials & Recordings" />
+      <Title name="Tutorials & Aufzeichnungen" />
       <Center>
         <Accordion allowMultiple w="100%" maxW="800px">
           {Object.values(tutorials).map((category) => {
@@ -41,9 +41,9 @@ const TutorialsPage = () => {
                 border="1px solid"
                 mt={4}
                 mb={4}
-                backgroundColor={COLOR_BACKGROUND_LIGHT}>
+                backgroundColor={COLOR_BACKGROUND}>
                 <Heading>
-                  <AccordionButton backgroundColor={COLOR_BACKGROUND_LIGHT}>
+                  <AccordionButton backgroundColor={COLOR_BACKGROUND}>
                     <Box
                       as="span"
                       flex="1"

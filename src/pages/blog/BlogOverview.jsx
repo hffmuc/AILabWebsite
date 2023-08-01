@@ -27,6 +27,7 @@ import {
 import { PATH_BLOG, PATH_BLOG_ARTICLE } from '../../constants/pathNames';
 import formatDate from '../../helpers/formatDate';
 import { getStrapiImage } from '../../helpers/getStrapiImage';
+import ContentWrapper from '../../components/ui/ContentWrapper';
 
 const BlogPreview = ({ title, slug, date, authors, image, shortDescription }) => {
   const location = useLocation();
@@ -35,14 +36,18 @@ const BlogPreview = ({ title, slug, date, authors, image, shortDescription }) =>
     <Card
       direction={{ base: 'column', sm: 'row' }}
       overflow="hidden"
+      borderRadius={1}
       boxShadow="none"
       backgroundColor={COLOR_BACKGROUND}
       mb={8}
+      maxH={{ base: 'auto', sm: '220px' }}
       w="100%">
       <Image
         objectFit="cover"
-        maxW={{ base: '100%', sm: '200px' }}
-        maxH="100%"
+        // maxW={{ base: '100%', sm: '300px' }}
+        // h="100%"
+        w={{ base: '100%', sm: '300px' }}
+        maxH={{ base: '200px', sm: '100%' }}
         src={getStrapiImage(image.data.attributes.url)}
         alt="Caffe Latte"
       />
@@ -80,14 +85,12 @@ const BlogOverviewPage = () => {
 
   return (
     <PageWrapper>
-      <Center>
-        <Box w={['100%', '90%', '75%', '70%', '60%']}>
-          <Title name="Blog" />
-          {blogArticles.map((blogArticle) => (
-            <BlogPreview {...blogArticle.attributes} key={v4()} />
-          ))}
-        </Box>
-      </Center>
+      {/* <ContentWrapper> */}
+      <Title name="KI-Lab Blog" textAlign="left" />
+      {blogArticles.map((blogArticle) => (
+        <BlogPreview {...blogArticle.attributes} key={v4()} />
+      ))}
+      {/* </ContentWrapper> */}
     </PageWrapper>
   );
 };

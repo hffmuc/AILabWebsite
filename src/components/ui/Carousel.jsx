@@ -129,14 +129,14 @@ const Carousel = ({ news }) => {
   };
 
   return (
-    <Box className="content" borderRadius="sm" backgroundColor={COLOR_BACKGROUND} ml={0} mr={0}>
+    <Box className="content" borderRadius="1" backgroundColor={COLOR_BACKGROUND} mx={0}>
       {news && (
         <Slider {...sliderSettings}>
           {news?.map((newsElement) => {
             // eslint-disable-next-line no-underscore-dangle
 
             return (
-              <Box p={[0, 4]} key={v4()}>
+              <Box px={[0, 4]} py={[0, 4, 6]} key={v4()}>
                 <Card color={COLOR_TEXT} boxShadow="none">
                   <CardBody p={0}>
                     <Link href={newsElement.attributes.link}>
@@ -146,7 +146,7 @@ const Carousel = ({ news }) => {
                             ? newsElement.attributes.image.data.attributes.formats.medium.url
                             : newsElement.attributes.image.data.attributes.url
                         )}
-                        borderRadius="sm"
+                        borderRadius="0"
                       />
                     </Link>
 

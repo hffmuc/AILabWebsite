@@ -5,6 +5,7 @@ import PageWrapper from '../../components/ui/PageWrapper';
 import { getNews } from '../../lib/contentful/pages/home';
 import { getNewsCarousel } from '../../lib/strapi/pages/home';
 import Carousel from '../../components/ui/Carousel';
+import Title from '../../components/ui/Title';
 
 const HomePage = () => {
   const [news, setNews] = useState();
@@ -15,9 +16,10 @@ const HomePage = () => {
 
   return (
     <PageWrapper>
-      <Heading mb={6} fontSize={20} fontWeight="light">
-        Recent News from the AI Lab
-      </Heading>
+      <Title name="Neuigkeiten aus dem KI-Lab der HFF" textAlign="left" />
+      {/* <Heading mb={6} fontSize={20} fontWeight="light">
+        Neuigkeiten aus dem KI-Lab der HFF
+      </Heading> */}
       <Carousel news={news} />
     </PageWrapper>
   );

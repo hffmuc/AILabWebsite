@@ -185,7 +185,7 @@ const ToolsPage = () => {
           </WrapItem>
         </Wrap>
 
-        <SimpleGrid marginTop="20px" spacing="20px" columns={[1, 2, 3, 4, 5, 6]}>
+        <SimpleGrid marginTop="20px" spacing="20px" columns={[1, 2, 3, 3, 4, 5]}>
           {tools.map((tool) => (
             <ToolCard {...tool.attributes} key={uuidv4()} />
           ))}

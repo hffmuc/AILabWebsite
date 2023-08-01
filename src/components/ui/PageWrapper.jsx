@@ -44,135 +44,156 @@ const PageWrapper = ({ children }) => {
 
   return (
     <>
-      <Flex
-        // position="sticky"
-        top="0"
-        zIndex={5}
-        // backgroundColor={COLOR_BACKGROUND_SOLID}
-        paddingLeft={['18px', '30px', '50px', '70px', '100px']}
-        paddingRight={['18px', '30px', '50px', '70px', '100px']}
-        paddingTop="10px"
-        paddingBottom="4px"
-        fontSize="xl">
-        <Center>
+      <Box>
+        <Flex
+          // position="sticky"
+          // top="0"
+          zIndex={5}
+          // backgroundColor={COLOR_BACKGROUND_SOLID}
+          m="auto"
+          w={['87%', '85%', '80%', '75%', '70%', '65%']}
+          h={['50px', '60px']}
+          pt="3px"
+          // paddingLeft={['18px', '30px', '50px', '70px', '150px', '300px']}
+          // paddingRight={['18px', '30px', '50px', '70px', '150px', '300px']}
+
+          // paddingBottom="4px"
+          fontSize="xl">
+          {/* <Center> */}
           <Link href={PATH_HOME}>
             <Image
               src={hffLogo}
-              maxHeight="50px"
-              height="50px"
+              // maxHeight="50px"
+              height={['100%']}
               width="auto"
+              py={['8px', '8px']}
               // minWidth="70px"
               alignSelf="center"
-              paddingTop="2px"
-              paddingBottom="2px"
+              // paddingTop="2px"
+              // paddingBottom="2px"
             />
           </Link>
-        </Center>
+          {/* </Center> */}
 
-        <Spacer />
-        <BrowserView>
-          <HStack justifyContent="end" spacing={8} fontFamily="Roboto Mono">
-            <Link
-              href={PATH_HOME}
-              fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
-              color={location.pathname === PATH_HOME ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-              Home
-            </Link>
-            <Link
-              href={PATH_ABOUT}
-              fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
-              color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-              Über uns
-            </Link>
-            <Link
-              href={PATH_BLOG}
-              fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
-              color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-              Blog
-            </Link>
-            <Link
-              href={PATH_EVENTS}
-              fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
-              color={location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-              Events
-            </Link>
-            <Link
-              href={PATH_TOOLS}
-              fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
-              color={location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-              KI Tools
-            </Link>
-            <Link
-              href={PATH_TUTORIALS}
-              fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
-              color={location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-              Tutorials
-            </Link>
-          </HStack>
-        </BrowserView>
-        <MobileView>
-          <Button colorScheme="outline" onClick={onOpen} p="0">
-            <HamburgerIcon h="80%" w="auto" />
-          </Button>
-          <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
-            <DrawerOverlay />
-            <DrawerContent backgroundColor={COLOR_BACKGROUND_SOLID}>
-              <DrawerHeader
-                borderBottomWidth="1px"
-                paddingTop={3}
-                paddingBottom={3}
-                fontFamily="Roboto Mono">
-                Navigation
-              </DrawerHeader>
-              <DrawerBody>
-                <VStack alignItems="start" spacing={3} fontSize="xl" mt={2}>
-                  <Link
-                    href={PATH_HOME}
-                    fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
-                    color={location.pathname === PATH_HOME ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                    Home
-                  </Link>
-                  <Link
-                    href={PATH_ABOUT}
-                    fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
-                    color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                    Über uns
-                  </Link>
-                  <Link
-                    href={PATH_BLOG}
-                    fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
-                    color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                    Blog
-                  </Link>
-                  <Link
-                    href={PATH_EVENTS}
-                    fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
-                    color={location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                    Events
-                  </Link>
-                  <Link
-                    href={PATH_TOOLS}
-                    fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
-                    color={location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                    KI Tools
-                  </Link>
-                  <Link
-                    href={PATH_TUTORIALS}
-                    fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
-                    color={
-                      location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
-                    }>
-                    Tutorials
-                  </Link>
-                </VStack>
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
-        </MobileView>
-      </Flex>
+          <Spacer />
+          <BrowserView>
+            <HStack justifyContent="end" spacing={8} fontFamily="Roboto Mono" h="100%">
+              <Link
+                href={PATH_HOME}
+                fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
+                color={location.pathname === PATH_HOME ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                Home
+              </Link>
+              <Link
+                href={PATH_ABOUT}
+                fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
+                color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                Über uns
+              </Link>
+              <Link
+                href={PATH_BLOG}
+                fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
+                color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                Blog
+              </Link>
+              <Link
+                href={PATH_EVENTS}
+                fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
+                color={location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                Events
+              </Link>
+              <Link
+                href={PATH_TOOLS}
+                fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
+                color={location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                KI Tools
+              </Link>
+              <Link
+                href={PATH_TUTORIALS}
+                fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
+                color={location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                Tutorials
+              </Link>
+            </HStack>
+          </BrowserView>
+          <MobileView>
+            <Box h="100%">
+              <Button colorScheme="outline" onClick={onOpen} p="0" h="100%">
+                <HamburgerIcon h="60%" w="auto" m="auto" />
+              </Button>
+              <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+                <DrawerOverlay />
+                <DrawerContent backgroundColor={COLOR_BACKGROUND_SOLID}>
+                  <DrawerHeader
+                    borderBottomWidth="1px"
+                    paddingTop={3}
+                    paddingBottom={3}
+                    fontWeight="light"
+                    fontFamily="Roboto">
+                    Navigation
+                  </DrawerHeader>
+                  <DrawerBody fontFamily="Roboto Mono">
+                    <VStack alignItems="start" spacing={3} fontSize="xl" mt={2}>
+                      <Link
+                        href={PATH_HOME}
+                        fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
+                        color={
+                          location.pathname === PATH_HOME ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                        }>
+                        Home
+                      </Link>
+                      <Link
+                        href={PATH_ABOUT}
+                        fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
+                        color={
+                          location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                        }>
+                        Über uns
+                      </Link>
+                      <Link
+                        href={PATH_BLOG}
+                        fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
+                        color={
+                          location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                        }>
+                        Blog
+                      </Link>
+                      <Link
+                        href={PATH_EVENTS}
+                        fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
+                        color={
+                          location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                        }>
+                        Events
+                      </Link>
+                      <Link
+                        href={PATH_TOOLS}
+                        fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
+                        color={
+                          location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                        }>
+                        KI Tools
+                      </Link>
+                      <Link
+                        href={PATH_TUTORIALS}
+                        fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
+                        color={
+                          location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                        }>
+                        Tutorials
+                      </Link>
+                    </VStack>
+                  </DrawerBody>
+                </DrawerContent>
+              </Drawer>
+            </Box>
+          </MobileView>
+        </Flex>
+      </Box>
       <Box
-        paddingLeft={['25px', '30px', '50px', '70px', '100px']}
-        paddingRight={['25px', '30px', '50px', '70px', '100px']}
+        // px={['25px', '30px', '50px', '70px', '150px', '300px']}
+        m="auto"
+        w={['87%', '85%', '80%', '75%', '70%', '65%']}
         paddingTop="20px"
         paddingBottom="20px">
         {children}

@@ -8,7 +8,7 @@ export const getAboutContent = async () => {
         ueberUns {
         data {
             attributes {
-            Content
+            content
             }
         }
         }
@@ -17,7 +17,25 @@ export const getAboutContent = async () => {
 
   const res = await graphql(query);
 
-  return res.data.ueberUns.data.attributes.Content;
+  return res.data.ueberUns.data.attributes.content;
+};
+
+export const getTeamContent = async () => {
+  const query = `
+  query {
+    ueberUns {
+    data {
+        attributes {
+        our_team
+        }
+    }
+    }
+}
+    `;
+
+  const res = await graphql(query);
+
+  return res.data.ueberUns.data.attributes.our_team;
 };
 
 export const getAboutPhoto = async () => {
@@ -26,7 +44,7 @@ export const getAboutPhoto = async () => {
     ueberUns {
     data {
         attributes {
-        Bild {
+        image {
             data {
             attributes {
                 url
@@ -41,5 +59,5 @@ export const getAboutPhoto = async () => {
 
   const res = await graphql(query);
 
-  return getStrapiImage(res.data.ueberUns.data.attributes.Bild.data.attributes.url);
+  return getStrapiImage(res.data.ueberUns.data.attributes.image.data.attributes.url);
 };
