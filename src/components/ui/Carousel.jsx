@@ -29,7 +29,7 @@ import { v4 } from 'uuid';
 import { isMobile } from 'react-device-detect';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { COLOR_BACKGROUND, COLOR_TEXT } from '../../constants/styles';
-import { getStrapiImage } from '../../helpers/getStrapiImage';
+// import { getStrapiImage } from '../../helpers/getStrapiImage';
 
 const PrevArrow = (props) => {
   const { className, style, onClick } = props;
@@ -141,20 +141,20 @@ const Carousel = ({ news }) => {
                   <CardBody p={0}>
                     <Link href={newsElement.attributes.link}>
                       <Image
-                        src={getStrapiImage(
+                        src={
                           newsElement.attributes.image.data.attributes.formats?.medium
                             ? newsElement.attributes.image.data.attributes.formats.medium.url
                             : newsElement.attributes.image.data.attributes.url
-                        )}
+                        }
                         borderRadius="0"
                       />
                     </Link>
 
                     <Stack mt={[4, 6]} spacing="3" px={[4, 0]} pb={[4, 2]}>
-                      <Link fontSize="md" fontWeight="bold" href={newsElement.attributes.link}>
+                      <Link fontWeight="bold" href={newsElement.attributes.link}>
                         {newsElement.attributes.title}
                       </Link>
-                      <Box fontSize="sm">{newsElement.attributes.shortDescription}</Box>
+                      <Box>{newsElement.attributes.shortDescription}</Box>
                     </Stack>
                   </CardBody>
                 </Card>

@@ -1,48 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { graphql } from '..';
 
-// export const getTools = async () => {
-//   const query = `
-//   query {
-//     aiTools {
-//       data {
-//         attributes {
-//           toolName
-//           createdAt
-//           toolImage {
-//             data {
-//               attributes {
-//                 formats
-//                 url
-//               }
-//             }
-//           }
-//           developers
-//           description
-//           toolTags {
-//             data {
-//               attributes {
-//                 name
-//                 color
-//               }
-//             }
-//           }
-//           webToolLink
-//           githubLink
-//           localAppLink
-//           internalInfo
-//         }
-//       }
-//     }
-//   }
-
-//     `;
-
-//   const res = await graphql(query);
-
-//   return res.data.aiTools.data;
-// };
-
 export const getTags = async () => {
   const query = `
   query {

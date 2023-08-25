@@ -32,6 +32,7 @@ import renderMarkdown from '../../helpers/renderMarkdown';
 import { getEventsContent, getEventList } from '../../lib/strapi/pages/events';
 import ContentWrapper from '../../components/ui/ContentWrapper';
 import formatDate from '../../helpers/formatDate';
+import { COLOR_TEXT_SECONDARY } from '../../constants/styles';
 
 /* eslint-disable jsx-a11y/iframe-has-title */
 const EventsPage = () => {
@@ -56,19 +57,11 @@ const EventsPage = () => {
       <Wrap w="100%" spacing={0}>
         <MobileView>
           <TableContainer w="100%" whiteSpace="normal" display="container" overflowX="auto">
-            <Table variant="striped" colorScheme="blackAlpha">
-              {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
-              {/* <Thead>
-                <Tr>
-                  <Th>Wann</Th>
-                  <Th>Event</Th>
-                </Tr>
-              </Thead> */}
+            <Table variant="striped" colorScheme="whiteAlpha">
               <Tbody>
                 {eventsList &&
                   eventsList.map((event) => (
                     <Tr key={v4()}>
-                      {/* <Td>{event.attributes.event_start}</Td> */}
                       <Td px={3} py={3}>
                         <VStack align="stretch">
                           <Box fontWeight="thin">
@@ -83,7 +76,7 @@ const EventsPage = () => {
                           {event.attributes.shortDescription && (
                             <Box>{event.attributes.shortDescription}</Box>
                           )}
-                          {event.attributes.location && <Box>{event.attributes.location}</Box>}
+                          {event.attributes.location && <Box>Ort: {event.attributes.location}</Box>}
                         </VStack>
                       </Td>
                     </Tr>
@@ -94,13 +87,19 @@ const EventsPage = () => {
         </MobileView>
         <BrowserView>
           <TableContainer w="100%" whiteSpace="normal">
-            <Table variant="striped" colorScheme="blackAlpha">
+            <Table variant="striped" colorScheme="whiteAlpha">
               {/* <TableCaption>Imperial to metric conversion factors</TableCaption> */}
               <Thead>
                 <Tr>
-                  <Th w="20%">Wann</Th>
-                  <Th w="60%">Event</Th>
-                  <Th w="20%">Wo</Th>
+                  <Th w="20%" color={COLOR_TEXT_SECONDARY}>
+                    Wann
+                  </Th>
+                  <Th w="60%" color={COLOR_TEXT_SECONDARY}>
+                    Event
+                  </Th>
+                  <Th w="20%" color={COLOR_TEXT_SECONDARY}>
+                    Wo
+                  </Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -129,32 +128,7 @@ const EventsPage = () => {
           </TableContainer>
         </BrowserView>
 
-        {/* <Box pb={4} w={['100%', '100%', '100%', '55%']}> */}
-        {/* <AspectRatio w="100%" h="100%">
-            <>
-              {!frameLoaded ? (
-                <Center>
-                  <Spinner />
-                </Center>
-              ) : (
-                []
-              )}
-              <iframe
-                src="https://cloud.hff-muc.de/nextcloud/index.php/apps/calendar/embed/aYz8ajE7dN3aJt2p?width=800&height=600"
-                // style="border-width:0"
-                width="800"
-                height="600"
-                hidden={!frameLoaded}
-                frameBorder="0"
-                scrolling="no"
-                onLoad={() => onFrameLoad()}
-              />
-            </>
-          </AspectRatio> */}
-        {/* </Box> */}
-        {/* <Spacer /> */}
-        {/* <Box h="100%" w="100%"> */}
-        <Box pt={6}>{renderMarkdown(eventsContent)}</Box>
+        <Box pt={8}>{renderMarkdown(eventsContent)}</Box>
 
         {/* </Box> */}
       </Wrap>

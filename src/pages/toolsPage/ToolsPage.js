@@ -8,26 +8,16 @@ import {
   SimpleGrid,
   Tooltip,
   Select,
-  HStack,
   VStack,
-  Flex,
-  Skeleton,
-  Spinner,
-  Spacer,
-  Center,
-  Stack,
   Wrap,
   WrapItem,
   Heading
 } from '@chakra-ui/react';
 
 import { v4 as uuidv4 } from 'uuid';
-import { InfoOutlineIcon } from '@chakra-ui/icons';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import Title from '../../components/ui/Title';
 import ToolCard from './ToolCard';
 import ToolTag from '../../components/ui/ToolTag';
-import hffLogo from '../../images/Logo.png';
 import {
   COLOR_BACKGROUND,
   COLOR_BACKGROUND_HOVER,
@@ -106,31 +96,15 @@ const ToolsPage = () => {
   return (
     <PageWrapper>
       <VStack spacing={0}>
-        <Grid templateColumns="repeat(6, 1fr)" gap={1} w="100%">
-          {/* <GridItem colSpan={1} alignSelf="center" /> */}
-          <GridItem colSpan={6}>
-            {/* <Title name="KI Tools" /> */}
-            <Title name="KI Tools" textAlign="left" />
-            <Box mb={6} mt={3} color={COLOR_TEXT_SECONDARY}>
-              Hier findet ihr eine Sammlung an KI Tools für Bild, Video, Ton und Sound. Viele davon
-              sind Web-Tools und ihr könnt sie direkt über die verlinkte Webseite ausprobieren,
-              andere funktionieren nur lokal und können ggfs. im KI Lab ausprobiert werden.
-            </Box>
-          </GridItem>
-          {/* <GridItem colSpan={1} textAlign="end">
-            {process.env.REACT_APP_LOCAL === 'true' && (
-              <Tooltip
-                hasArrow
-                label='This is a collection of ready-to-use AI applications. Some of them are installed locally on this PC and you can start them by clicking on "Start", others are hosted online and are linked accordingly.
-              Contact us if you have any questions.'
-                bg={COLOR_BACKGROUND_SOLID}
-                color="white"
-                placement="auto-end">
-                <InfoOutlineIcon maxHeight="25px" h="90%" w="auto" />
-              </Tooltip>
-            )}
-          </GridItem> */}
-        </Grid>
+        <Box w="100%">
+          <Title name="KI Tools" textAlign="left" />
+        </Box>
+        <Box pb={6} mt={3} color={COLOR_TEXT_SECONDARY}>
+          Hier findet ihr eine Sammlung an KI Tools für Bild, Video, Ton und Sound. Viele davon sind
+          Web-Tools und ihr könnt sie direkt über die verlinkte Webseite ausprobieren, andere
+          funktionieren nur lokal und können ggfs. im KI Lab ausprobiert werden.
+        </Box>
+
         <Wrap pb={4} w="100%" spacing={4}>
           <WrapItem alignItems="center">
             <Wrap>

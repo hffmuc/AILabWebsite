@@ -8,10 +8,10 @@ import Title from '../../components/ui/Title';
 // import { getBlogArticle } from '../../lib/contentful/pages/blog';
 import { getBlogArticle } from '../../lib/strapi/pages/blog';
 import formatDate from '../../helpers/formatDate';
-import renderRichText from '../../helpers/renderRichText';
 import { COLOR_TEXT, COLOR_TEXT_SECONDARY } from '../../constants/styles';
 import renderMarkdown from '../../helpers/renderMarkdown';
-import { getStrapiImage } from '../../helpers/getStrapiImage';
+import ContentWrapper from '../../components/ui/ContentWrapper';
+// import { getStrapiImage } from '../../helpers/getStrapiImage';
 
 const BlogArticlePage = () => {
   const { slug } = useParams();
@@ -29,8 +29,8 @@ const BlogArticlePage = () => {
 
   return (
     <PageWrapper>
-      <Center>
-        <VStack w={['100%', '100%', '80%', '65%', '50%']}>
+      <ContentWrapper>
+        <VStack>
           <Title name={blogArticle?.title} fontFamily="Roboto" />
           {!isMobile && (
             <HStack mt={0} color={COLOR_TEXT} fontWeight="light" pb={7}>
@@ -58,11 +58,11 @@ const BlogArticlePage = () => {
             {blogArticle?.shortDescription}
           </Text>
 
-          <Image src={getStrapiImage(blogArticle?.image?.data.attributes.url)} w="100%" h="auto" />
+          <Image src={blogArticle?.image?.data.attributes.url} w="100%" h="auto" />
 
           <Box w="100%">{renderMarkdown(blogArticle?.content)}</Box>
         </VStack>
-      </Center>
+      </ContentWrapper>
     </PageWrapper>
   );
 };

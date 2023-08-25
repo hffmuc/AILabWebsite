@@ -69,5 +69,5 @@
   "resolutions": {
     "styled-components": "^5"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:1337"
 }

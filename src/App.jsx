@@ -42,9 +42,13 @@ const App = () => {
         textAlign="center"
         w="100%"
         h="80px"
+        gap={4}
         justifyContent="center"
         alignItems="center">
         <Link href="https://www.hff-muc.de/de_DE/imprint">Impressum</Link>
+        <Link href="https://www.hff-muenchen.de/de_DE/datenschutzerklaerung">
+          Datenschutzerklärung
+        </Link>
       </Flex>
     </>
   );

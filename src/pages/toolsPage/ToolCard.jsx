@@ -29,7 +29,7 @@ import {
   COLOR_ALTERNATIVE_HOVER
 } from '../../constants/styles';
 import ToolTag from '../../components/ui/ToolTag';
-import { getStrapiImage } from '../../helpers/getStrapiImage';
+// import { getStrapiImage } from '../../helpers/getStrapiImage';
 import renderMarkdown from '../../helpers/renderMarkdown';
 
 const ToolCard = ({
@@ -67,11 +67,11 @@ const ToolCard = ({
     <Card size={['md', 'sm']} textColor={COLOR_TEXT} background={COLOR_BACKGROUND}>
       <CardBody>
         <Image
-          src={`${getStrapiImage(
+          src={
             toolImage.data.attributes.formats?.small
               ? toolImage.data.attributes.formats.small.url
               : toolImage.data.attributes.url
-          )}`}
+          }
           alt={toolName}
           borderRadius="md"
           w={['60%', '70%']}
@@ -98,7 +98,7 @@ const ToolCard = ({
             []
           )}
 
-          <Box fontSize="sm" noOfLines={8}>
+          <Box fontSize="sm" noOfLines={10}>
             {renderMarkdown(description)}
           </Box>
         </Stack>

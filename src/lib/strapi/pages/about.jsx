@@ -1,6 +1,6 @@
 import { graphql } from '..';
 import { STRAPI_ENDPOINT, STRAPI_ENDPOINT_GRAPHQL } from '../../../constants/apis';
-import { getStrapiImage } from '../../../helpers/getStrapiImage';
+// import { getStrapiImage } from '../../../helpers/getStrapiImage';
 
 export const getAboutContent = async () => {
   const query = `
@@ -59,5 +59,5 @@ export const getAboutPhoto = async () => {
 
   const res = await graphql(query);
 
-  return getStrapiImage(res.data.ueberUns.data.attributes.image.data.attributes.url);
+  return res.data.ueberUns.data.attributes.image.data.attributes.url;
 };

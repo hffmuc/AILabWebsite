@@ -18,9 +18,10 @@ import {
   Icon
 } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
-import { BrowserView, MobileView, TabletView } from 'react-device-detect';
+import { BrowserView, MobileView, TabletView, isMobile } from 'react-device-detect';
 import { HamburgerIcon } from '@chakra-ui/icons';
-import hffLogo from '../../images/hff_ki_logo.png';
+import KiLogo from '../../images/hff_ki_logo.png';
+import HffLogo from '../../images/hff_Logo_weiss.png';
 import {
   COLOR_BACKGROUND,
   COLOR_BACKGROUND_SOLID,
@@ -43,41 +44,54 @@ const PageWrapper = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <>
-      <Box>
+    <Box w={['87%', '85%', '80%', '75%', '70%', '65%']} m="auto">
+      <BrowserView>
         <Flex
           // position="sticky"
           // top="0"
           zIndex={5}
           // backgroundColor={COLOR_BACKGROUND_SOLID}
           m="auto"
-          w={['87%', '85%', '80%', '75%', '70%', '65%']}
-          h={['50px', '60px']}
-          pt="3px"
+          w="100%"
+          h="120px"
+          mt="12px"
           // paddingLeft={['18px', '30px', '50px', '70px', '150px', '300px']}
           // paddingRight={['18px', '30px', '50px', '70px', '150px', '300px']}
 
           // paddingBottom="4px"
           fontSize="xl">
-          {/* <Center> */}
           <Link href={PATH_HOME}>
             <Image
-              src={hffLogo}
+              src={KiLogo}
               // maxHeight="50px"
-              height={['100%']}
+              // height={['50%', '50%', '50%', '100%']}
               width="auto"
-              py={['8px', '8px']}
+              h="120px"
+              position="absolute"
+              pt={['8px', '8px']}
               // minWidth="70px"
               alignSelf="center"
               // paddingTop="2px"
               // paddingBottom="2px"
             />
           </Link>
-          {/* </Center> */}
-
           <Spacer />
-          <BrowserView>
-            <HStack justifyContent="end" spacing={8} fontFamily="Roboto Mono" h="100%">
+          <VStack justifyContent="end" justifyItems="end" h="100%">
+            <HStack w="100%">
+              <Spacer />
+              <Link href="https://www.hff-muenchen.de/" height="60px">
+                <Image src={HffLogo} height="100%" w="auto" alignSelf="end" pt={['8px', '8px']} />
+              </Link>
+            </HStack>
+            <Spacer />
+            <HStack
+              justifyContent="end"
+              spacing={[3, 4, 4, 5, 6, 8]}
+              fontFamily="Roboto Mono"
+              // fontSize={['sm', 'md', 'lg', 'xl']}
+              // h="50%"
+
+              whiteSpace="nowrap">
               <Link
                 href={PATH_HOME}
                 fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
@@ -115,90 +129,119 @@ const PageWrapper = ({ children }) => {
                 Tutorials
               </Link>
             </HStack>
-          </BrowserView>
-          <MobileView>
-            <Box h="100%">
-              <Button colorScheme="outline" onClick={onOpen} p="0" h="100%">
-                <HamburgerIcon h="60%" w="auto" m="auto" />
-              </Button>
-              <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
-                <DrawerOverlay />
-                <DrawerContent backgroundColor={COLOR_BACKGROUND_SOLID}>
-                  <DrawerHeader
-                    borderBottomWidth="1px"
-                    paddingTop={3}
-                    paddingBottom={3}
-                    fontWeight="light"
-                    fontFamily="Roboto">
-                    Navigation
-                  </DrawerHeader>
-                  <DrawerBody fontFamily="Roboto Mono">
-                    <VStack alignItems="start" spacing={3} fontSize="xl" mt={2}>
-                      <Link
-                        href={PATH_HOME}
-                        fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
-                        color={
-                          location.pathname === PATH_HOME ? COLOR_SECONDARY_HOVER : COLOR_TEXT
-                        }>
-                        Home
-                      </Link>
-                      <Link
-                        href={PATH_ABOUT}
-                        fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
-                        color={
-                          location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT
-                        }>
-                        Über uns
-                      </Link>
-                      <Link
-                        href={PATH_BLOG}
-                        fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
-                        color={
-                          location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT
-                        }>
-                        Blog
-                      </Link>
-                      <Link
-                        href={PATH_EVENTS}
-                        fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
-                        color={
-                          location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
-                        }>
-                        Events
-                      </Link>
-                      <Link
-                        href={PATH_TOOLS}
-                        fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
-                        color={
-                          location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
-                        }>
-                        KI Tools
-                      </Link>
-                      <Link
-                        href={PATH_TUTORIALS}
-                        fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
-                        color={
-                          location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
-                        }>
-                        Tutorials
-                      </Link>
-                    </VStack>
-                  </DrawerBody>
-                </DrawerContent>
-              </Drawer>
-            </Box>
-          </MobileView>
+          </VStack>
         </Flex>
-      </Box>
+      </BrowserView>
+      <MobileView>
+        <HStack
+          // position="sticky"
+          // top="0"
+          zIndex={5}
+          // backgroundColor={COLOR_BACKGROUND_SOLID}
+          m="auto"
+          w="100%"
+          h="40px"
+          gap={2}
+          mt="16px"
+          // paddingLeft={['18px', '30px', '50px', '70px', '150px', '300px']}
+          // paddingRight={['18px', '30px', '50px', '70px', '150px', '300px']}
+
+          // paddingBottom="4px"
+          fontSize="xl">
+          <Link href={PATH_HOME} width="auto" h="100%">
+            <Image
+              src={KiLogo}
+              // maxHeight="50px"
+              // height={['50%', '50%', '50%', '100%']}
+              width="auto"
+              h="100%"
+              // position="absolute"
+              // pt="3px"
+              // minWidth="70px"
+              alignSelf="center"
+              // paddingTop="2px"
+              // paddingBottom="2px"
+            />
+          </Link>
+
+          <Link href="https://www.hff-muenchen.de/" width="auto" h="100%">
+            <Image src={HffLogo} height="100%" w="auto" />
+          </Link>
+
+          <Spacer />
+          <Box h="100%">
+            <Button colorScheme="outline" onClick={onOpen} p="0" h="100%">
+              <HamburgerIcon h="70%" maxH="50px" w="auto" m="auto" />
+            </Button>
+            <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+              <DrawerOverlay />
+              <DrawerContent backgroundColor={COLOR_BACKGROUND_SOLID}>
+                <DrawerHeader
+                  borderBottomWidth="1px"
+                  paddingTop={3}
+                  paddingBottom={3}
+                  fontWeight="light"
+                  fontFamily="Roboto">
+                  Navigation
+                </DrawerHeader>
+                <DrawerBody fontFamily="Roboto Mono">
+                  <VStack alignItems="start" spacing={3} fontSize="xl" mt={2}>
+                    <Link
+                      href={PATH_HOME}
+                      fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
+                      color={location.pathname === PATH_HOME ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                      Home
+                    </Link>
+                    <Link
+                      href={PATH_ABOUT}
+                      fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
+                      color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                      Über uns
+                    </Link>
+                    <Link
+                      href={PATH_BLOG}
+                      fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
+                      color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                      Blog
+                    </Link>
+                    <Link
+                      href={PATH_EVENTS}
+                      fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
+                      color={
+                        location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                      }>
+                      Events
+                    </Link>
+                    <Link
+                      href={PATH_TOOLS}
+                      fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
+                      color={location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                      KI Tools
+                    </Link>
+                    <Link
+                      href={PATH_TUTORIALS}
+                      fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
+                      color={
+                        location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                      }>
+                      Tutorials
+                    </Link>
+                  </VStack>
+                </DrawerBody>
+              </DrawerContent>
+            </Drawer>
+          </Box>
+        </HStack>
+      </MobileView>
       <Box
         // px={['25px', '30px', '50px', '70px', '150px', '300px']}
         m="auto"
-        w={['87%', '85%', '80%', '75%', '70%', '65%']}
-        paddingTop="20px"
+        w="100%"
+        paddingTop="60px"
         paddingBottom="20px">
         {children}
       </Box>
-    </>
+    </Box>
   );
 };
 
