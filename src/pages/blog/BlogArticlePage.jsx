@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Text, Box, Image, Center, VStack, Spacer, HStack } from '@chakra-ui/react';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { Text, Box, Image, VStack, HStack } from '@chakra-ui/react';
 import { isMobile } from 'react-device-detect';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
-// import { getBlogArticle } from '../../lib/contentful/pages/blog';
 import { getBlogArticle } from '../../lib/strapi/pages/blog';
 import formatDate from '../../helpers/formatDate';
-import { COLOR_TEXT, COLOR_TEXT_SECONDARY } from '../../constants/styles';
+import { COLOR_TEXT } from '../../constants/styles';
 import renderMarkdown from '../../helpers/renderMarkdown';
 import ContentWrapper from '../../components/ui/ContentWrapper';
-// import { getStrapiImage } from '../../helpers/getStrapiImage';
 
 const BlogArticlePage = () => {
   const { slug } = useParams();
@@ -22,10 +19,6 @@ const BlogArticlePage = () => {
       setBlogArticle(res);
     });
   }, []);
-
-  useEffect(() => {
-    // console.log(blogArticle);
-  }, [blogArticle]);
 
   return (
     <PageWrapper>
