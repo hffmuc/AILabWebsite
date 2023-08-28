@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 import { Heading, Text, Stack, Image, Card, CardBody, Link } from '@chakra-ui/react';
-import { useLocation } from 'react-router-dom';
-// import { getBlogArticles } from '../../lib/contentful/pages/blog';
 import { getBlogArticles } from '../../lib/strapi/pages/blog';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import { COLOR_TEXT, COLOR_BACKGROUND, COLOR_TEXT_SECONDARY } from '../../constants/styles';
-import { PATH_BLOG, PATH_BLOG_ARTICLE } from '../../constants/pathNames';
+import { PATH_BLOG } from '../../constants/pathNames';
 import formatDate from '../../helpers/formatDate';
-// import { getStrapiImage } from '../../helpers/getStrapiImage';
 
 const BlogPreview = ({ title, slug, date, authors, image, shortDescription }) => {
-  const location = useLocation();
-
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
@@ -26,12 +21,10 @@ const BlogPreview = ({ title, slug, date, authors, image, shortDescription }) =>
       w="100%">
       <Image
         objectFit="cover"
-        // maxW={{ base: '100%', sm: '300px' }}
         h={['180px', 'inherit']}
         w={['100%', '150px', '200px', '300px']}
-        // maxh={['220px', 'inherit']}
         src={image.data.attributes.url}
-        alt="Caffe Latte"
+        alt="Cover Image Article"
       />
 
       <Stack w="100%">
@@ -62,12 +55,10 @@ const BlogOverviewPage = () => {
 
   return (
     <PageWrapper>
-      {/* <ContentWrapper> */}
       <Title name="KI-Lab Blog" textAlign="left" />
       {blogArticles.map((blogArticle) => (
         <BlogPreview {...blogArticle.attributes} key={v4()} />
       ))}
-      {/* </ContentWrapper> */}
     </PageWrapper>
   );
 };
