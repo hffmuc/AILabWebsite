@@ -2,7 +2,6 @@
 // import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Text, UnorderedList, Image, OrderedList, ListItem, List } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
-import { STRAPI_ENDPOINT } from '../constants/apis';
 
 // const options = {
 //   renderMark: {
@@ -24,7 +23,7 @@ const renderers = {
   ul: ({ ordered, ...props }) => <UnorderedList ordered={ordered ? 'true' : 'false'} {...props} />,
   ol: ({ node, ...props }) => <OrderedList {...props} />,
   li: ({ node, ...props }) => <ListItem>{props.children}</ListItem>,
-  img: ({ src, ...props }) => <Image src={STRAPI_ENDPOINT + src} {...props} />
+  img: ({ src, ...props }) => <Image src={src} {...props} />
 };
 
 const renderMarkdown = (markdown) => {

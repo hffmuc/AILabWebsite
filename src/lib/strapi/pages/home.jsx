@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 import { graphql } from '..';
-import { STRAPI_ENDPOINT, STRAPI_ENDPOINT_GRAPHQL } from '../../../constants/apis';
 
 export const getNewsCarousel = async () => {
   const query = `

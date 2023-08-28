@@ -1,5 +1,4 @@
 import { graphql } from '..';
-import { STRAPI_ENDPOINT, STRAPI_ENDPOINT_GRAPHQL } from '../../../constants/apis';
 // import { getStrapiImage } from '../../../helpers/getStrapiImage';
 
 export const getAboutContent = async () => {

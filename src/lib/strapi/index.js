@@ -1,8 +1,6 @@
-import { STRAPI_ENDPOINT_GRAPHQL } from '../../constants/apis';
-
 // eslint-disable-next-line import/prefer-default-export
 export const graphql = async (query) => {
-  const r = await fetch(STRAPI_ENDPOINT_GRAPHQL, {
+  const r = await fetch('/graphql', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
