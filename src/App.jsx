@@ -1,4 +1,4 @@
-import { Grid, GridItem, Box, Flex, Link, Spinner } from '@chakra-ui/react';
+import { Grid, GridItem, Box, Flex, Link } from '@chakra-ui/react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useEffect, useState, lazy, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
