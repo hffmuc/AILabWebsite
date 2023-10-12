@@ -3,8 +3,7 @@ export const graphql = async (query) => {
   const r = await fetch('/graphql', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.REACT_APP_STRAPI_API_TOKEN}`
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({ query })
   });
