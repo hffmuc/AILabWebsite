@@ -22,8 +22,12 @@ body::-webkit-scrollbar {
   display: none; /* for Chrome, Safari, and Opera */
 }
 
-p + p {
-  margin-top: 8px !important;
+* + p {
+  padding-top: 12px !important;
+}
+
+p + * {
+  padding-top: 12px !important;
 }
 
 code {
@@ -31,24 +35,9 @@ code {
 }
 
 .Background {
-  background: linear-gradient(-45deg, #5a0e2b, #15343f, #232323);
+  background: linear-gradient(20deg, #15343f,#2a0f2b, #232323);
   background-attachment: fixed;
-  background-size: 400% 400%;
+  background-size: 100% 100%;
   background-position: center;
-  animation: gradient 15s ease infinite;
   overflow-x: hidden;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
 }
