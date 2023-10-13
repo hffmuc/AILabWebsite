@@ -1,3 +1,10 @@
+# AI Lab Website
+
+This is the code of the React Frontend of the HFF AI Lab's website ([https://kilab.hff-muc.de/](https://kilab.hff-muc.de/)). It works together with a Strapi CMS that runs on the same network and is only accessible locally.
+The proxying of requests to the CMS (/uploads and /graphql) is handled with NGINX on the host computer.
+
+# Setup
+
 For automatic linting and codestyle application, add this to settings.json in VS Code and install ESLint and Prettier VSCode Extension:
 
     "editor.codeActionsOnSave": {
