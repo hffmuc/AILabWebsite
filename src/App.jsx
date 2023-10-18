@@ -9,12 +9,14 @@ import {
   PATH_ABOUT,
   PATH_BLOG,
   PATH_BLOG_ARTICLE,
+  PATH_CONTACT,
   PATH_EVENTS,
   PATH_HOME,
   PATH_TOOLS,
   PATH_TUTORIALS
 } from './constants/pathNames';
 import PageWrapper from './components/ui/PageWrapper';
+import ContactPage from './pages/contactPage/ContactPage';
 
 const HomePage = lazy(() => import('./pages/homePage/HomePage'));
 const ToolsPage = lazy(() => import('./pages/toolsPage/ToolsPage'));
@@ -42,6 +44,7 @@ const App = () => {
             <Route path={PATH_EVENTS} element={<EventsPage />} />
             <Route path={PATH_BLOG} element={<BlogOverviewPage />} />
             <Route path={PATH_BLOG_ARTICLE} element={<BlogArticlePage />} />
+            <Route path={PATH_CONTACT} element={<ContactPage />} />
           </Routes>
         </Suspense>
       </Router>

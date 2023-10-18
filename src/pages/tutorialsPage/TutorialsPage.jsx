@@ -49,7 +49,7 @@ const TutorialsPage = () => {
                       as="span"
                       flex="1"
                       textAlign="left"
-                      fontFamily="Roboto Mono"
+                      // fontFamily="Roboto Mono"
                       fontWeight="bold">
                       {category.attributes.name}
                     </Box>

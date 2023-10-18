@@ -33,6 +33,7 @@ import {
 import {
   PATH_ABOUT,
   PATH_BLOG,
+  PATH_CONTACT,
   PATH_EVENTS,
   PATH_HOME,
   PATH_TOOLS,
@@ -87,7 +88,7 @@ const PageWrapper = ({ children }) => {
             <HStack
               justifyContent="end"
               spacing={[3, 4, 4, 5, 6, 8]}
-              fontFamily="Roboto Mono"
+              // fontFamily="Roboto Mono"
               // fontSize={['sm', 'md', 'lg', 'xl']}
               // h="50%"
 
@@ -127,6 +128,12 @@ const PageWrapper = ({ children }) => {
                 fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
                 color={location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 Tutorials
+              </Link>
+              <Link
+                href={PATH_CONTACT}
+                fontWeight={location.pathname === PATH_CONTACT ? 'bold' : 'normal'}
+                color={location.pathname === PATH_CONTACT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                Kontakt
               </Link>
             </HStack>
           </VStack>
@@ -184,7 +191,7 @@ const PageWrapper = ({ children }) => {
                   fontFamily="Roboto">
                   Navigation
                 </DrawerHeader>
-                <DrawerBody fontFamily="Roboto Mono">
+                <DrawerBody>
                   <VStack alignItems="start" spacing={3} fontSize="xl" mt={2}>
                     <Link
                       href={PATH_HOME}
@@ -225,6 +232,14 @@ const PageWrapper = ({ children }) => {
                         location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
                       }>
                       Tutorials
+                    </Link>
+                    <Link
+                      href={PATH_CONTACT}
+                      fontWeight={location.pathname === PATH_CONTACT ? 'bold' : 'normal'}
+                      color={
+                        location.pathname === PATH_CONTACT ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                      }>
+                      Kontakt
                     </Link>
                   </VStack>
                 </DrawerBody>

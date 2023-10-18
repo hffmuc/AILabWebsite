@@ -18,14 +18,21 @@ const formatDate = (
     hour12: false
   };
 
-  let newDateString = new Date(startDate).toLocaleDateString('de-DE', dateOptions);
+  const startDateString = new Date(startDate).toLocaleDateString('de-DE', dateOptions);
+  let newDateString = startDateString;
 
   if (includeTime) {
     newDateString += ` ${new Date(startDate).toLocaleTimeString('de-DE', timeOptions)}`;
   }
 
   if (endDate) {
-    newDateString += ` - ${new Date(endDate).toLocaleDateString('de-DE', dateOptions)}`;
+    const endDateString = new Date(endDate).toLocaleDateString('de-DE', dateOptions);
+
+    if (endDateString !== startDateString) {
+      newDateString += ` - ${endDateString}`;
+    } else {
+      newDateString += ' - ';
+    }
   }
 
   if (includeTime && endDate) {
