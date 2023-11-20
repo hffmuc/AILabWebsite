@@ -40,7 +40,7 @@ export const getToolsWithTags = async (activeTags, sortBy) => {
     // No tags selected means all tools, therefore no filtering
     query = `
       query {
-        aiTools(sort: "${sortParameter}:asc") {
+        aiTools(sort: "${sortParameter}:asc", pagination: { limit: 100 }) {
           data {
             attributes {
               toolName
@@ -79,7 +79,7 @@ export const getToolsWithTags = async (activeTags, sortBy) => {
       query {
         aiTools(filters: { toolTags: { name: { in: ${JSON.stringify(
           tagsArray
-        )} } } }, sort: "${sortParameter}:asc") {
+        )} } } }, sort: "${sortParameter}:asc", pagination: { limit: 100 }) {
           data {
             attributes {
               toolName
