@@ -15,15 +15,16 @@ export const getTags = async () => {
 
 // activeTags is a Set of tag names (as strings)
 export const getToolsWithTags = async (activeTags, sortBy) => {
+  console.log(sortBy);
   let sortParameter = '';
   switch (sortBy) {
-    case 'name':
+    case 'Name':
       sortParameter = 'toolName';
       break;
-    case 'tags':
-      sortParameter = 'toolTags:name';
+    case 'Tag':
+      sortParameter = 'toolTags';
       break;
-    case 'default':
+    case 'Default':
       sortParameter = 'createdAt';
       break;
     case '':

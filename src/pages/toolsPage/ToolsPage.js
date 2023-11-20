@@ -45,10 +45,10 @@ const ToolsPage = () => {
   }, []);
 
   useEffect(() => {
-    getToolsWithTags(activeTags).then((res) => {
+    getToolsWithTags(activeTags, sortBy).then((res) => {
       setTools(res);
     });
-  }, [activeTags]);
+  }, [activeTags, sortBy]);
 
   // TODO: STRAPI
   // const IsToolActive = (tool) => {
