@@ -12,7 +12,9 @@ import {
   Button,
   Link,
   HStack,
-  VStack
+  VStack,
+  Wrap,
+  WrapItem
 } from '@chakra-ui/react';
 import { PropTypes } from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
@@ -39,6 +41,8 @@ const ToolCard = ({
   webToolLink,
   developers,
   githubLink,
+  softwareLink,
+  googleCollabLink,
   internalInfo,
   toolTags
 }) => {
@@ -106,46 +110,60 @@ const ToolCard = ({
       <Divider />
       <CardFooter>
         <VStack align="stretch">
-          <HStack h="30px">
-            {/* {localApplicationOS ? (
-              <Button
-                variant="solid"
-                backgroundColor={COLOR_ALTERNATIVE}
-                size="sm"
-                _hover={{ bg: COLOR_ALTERNATIVE_HOVER }}
-                onClick={() => {
-                  initiateStartApplication();
-                }}>
-                Start
-              </Button>
-            ) : (
-              []
-            )} */}
-            {webToolLink ? (
-              <Button
-                variant="solid"
-                backgroundColor={COLOR_PRIMARY}
-                size="sm"
-                _hover={{ bg: COLOR_PRIMARY_HOVER }}>
-                <Link href={webToolLink} target="_blank" rel="noreferrer">
-                  Web Tool
+          <Wrap w="100%">
+            {softwareLink && (
+              <WrapItem h="30px">
+                <Button
+                  variant="solid"
+                  backgroundColor="#9446fa"
+                  h="100%"
+                  p={2}
+                  fontSize="sm"
+                  _hover={{ bg: '#ae77f7' }}>
+                  <Link href={softwareLink} target="_blank" rel="noreferrer">
+                    Software
+                  </Link>
+                </Button>
+              </WrapItem>
+            )}
+            {webToolLink && (
+              <WrapItem h="30px">
+                <Button
+                  variant="solid"
+                  backgroundColor={COLOR_PRIMARY}
+                  h="100%"
+                  p={2}
+                  fontSize="sm"
+                  _hover={{ bg: COLOR_PRIMARY_HOVER }}>
+                  <Link href={webToolLink} target="_blank" rel="noreferrer">
+                    Web Tool
+                  </Link>
+                </Button>
+              </WrapItem>
+            )}
+            {googleCollabLink && (
+              <WrapItem h="30px">
+                <Button
+                  variant="solid"
+                  backgroundColor="#f58b00"
+                  h="100%"
+                  p={2}
+                  fontSize="sm"
+                  _hover={{ bg: '#e8982e' }}>
+                  <Link href={googleCollabLink} target="_blank" rel="noreferrer">
+                    Google Collab
+                  </Link>
+                </Button>
+              </WrapItem>
+            )}
+            {githubLink && (
+              <WrapItem h="30px">
+                <Link href={githubLink} h="100%" target="_blank" rel="noreferrer">
+                  <Image src={githubIcon} h="100%" w="auto" p="3px" />
                 </Link>
-              </Button>
-            ) : (
-              []
+              </WrapItem>
             )}
-            {githubLink ? (
-              <Link href={githubLink} h="100%" target="_blank" rel="noreferrer">
-                <Image src={githubIcon} h="100%" w="auto" p="3px" />
-              </Link>
-            ) : (
-              []
-            )}
-          </HStack>
-
-          {process.env.REACT_APP_LOCAL === 'true' && (
-            <Box fontSize="xs">{documentToReactComponents(internalInfo?.json)}</Box>
-          )}
+          </Wrap>
         </VStack>
       </CardFooter>
     </Card>

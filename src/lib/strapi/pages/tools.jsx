@@ -59,6 +59,8 @@ export const getToolsWithTags = async (activeTags, sortBy) => {
               webToolLink
               githubLink
               localAppLink
+              softwareLink
+              googleCollabLink
               internalInfo
               toolTags {
                 data {
@@ -98,6 +100,8 @@ export const getToolsWithTags = async (activeTags, sortBy) => {
               webToolLink
               githubLink
               localAppLink
+              softwareLink
+              googleCollabLink
               internalInfo
               toolTags {
                 data {
