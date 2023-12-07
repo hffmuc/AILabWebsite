@@ -142,8 +142,8 @@ const Carousel = ({ news }) => {
                     <Link href={newsElement.attributes.link}>
                       <Image
                         src={
-                          newsElement.attributes.image.data.attributes.formats?.medium
-                            ? newsElement.attributes.image.data.attributes.formats.medium.url
+                          newsElement.attributes.image.data.attributes.formats?.small
+                            ? newsElement.attributes.image.data.attributes.formats.small.url
                             : newsElement.attributes.image.data.attributes.url
                         }
                         borderRadius="0"
