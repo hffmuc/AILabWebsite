@@ -19,19 +19,19 @@ export const getToolsWithTags = async (activeTags, sortBy) => {
   let sortParameter = '';
   switch (sortBy) {
     case 'Name':
-      sortParameter = 'toolName';
+      sortParameter = 'toolName:asc';
       break;
     case 'Tag':
-      sortParameter = 'toolTags';
+      sortParameter = 'toolTags:asc';
       break;
     case 'Default':
-      sortParameter = 'createdAt';
+      sortParameter = 'createdAt:desc';
       break;
     case '':
-      sortParameter = 'createdAt';
+      sortParameter = 'createdAt:desc';
       break;
     default:
-      sortParameter = 'createdAt';
+      sortParameter = 'createdAt:desc';
       break;
   }
 
@@ -41,7 +41,7 @@ export const getToolsWithTags = async (activeTags, sortBy) => {
     // No tags selected means all tools, therefore no filtering
     query = `
       query {
-        aiTools(sort: "${sortParameter}:asc", pagination: { limit: 100 }) {
+        aiTools(sort: "${sortParameter}", pagination: { limit: 100 }) {
           data {
             attributes {
               toolName
@@ -82,7 +82,7 @@ export const getToolsWithTags = async (activeTags, sortBy) => {
       query {
         aiTools(filters: { toolTags: { name: { in: ${JSON.stringify(
           tagsArray
-        )} } } }, sort: "${sortParameter}:asc", pagination: { limit: 100 }) {
+        )} } } }, sort: "${sortParameter}", pagination: { limit: 100 }) {
           data {
             attributes {
               toolName
