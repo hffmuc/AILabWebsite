@@ -137,7 +137,7 @@ const Carousel = ({ news }) => {
 
             return (
               <Box px={[0, 4]} py={[0, 4, 6]} key={v4()}>
-                <Card color={COLOR_TEXT} boxShadow="none">
+                <Card color={COLOR_TEXT} boxShadow="none" bg="none">
                   <CardBody p={0}>
                     <Link href={newsElement.attributes.link}>
                       <Image

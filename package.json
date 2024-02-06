@@ -71,5 +71,5 @@
   "resolutions": {
     "styled-components": "^5"
   },
-  "proxy": "http://localhost:1337/"
+  "proxy": "http://localhost:1338/"
 }

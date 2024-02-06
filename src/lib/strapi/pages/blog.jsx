@@ -4,7 +4,7 @@ import { graphql } from '..';
 export const getBlogArticles = async () => {
   const query = `
   query {
-    blogArticles {
+    blogArticles(sort: "date:desc") {
       data {
         attributes {
           title
