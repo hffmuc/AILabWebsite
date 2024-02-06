@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Grid,
-  Text,
   Box,
-  GridItem,
-  Image,
   SimpleGrid,
-  Tooltip,
   Select,
   VStack,
   Wrap,
   WrapItem,
-  Heading
+  FormControl,
+  FormLabel,
+  Tooltip,
+  Switch
 } from '@chakra-ui/react';
 
 import { v4 as uuidv4 } from 'uuid';
+import { CheckCircleIcon } from '@chakra-ui/icons';
 import Title from '../../components/ui/Title';
 import ToolCard from './ToolCard';
 import ToolTag from '../../components/ui/ToolTag';
@@ -31,6 +30,7 @@ const ToolsPage = () => {
   const [tags, setTags] = useState([]);
   const [tools, setTools] = useState([]);
   const [activeTags, setActiveTags] = useState(new Set());
+  const [availableToolsChecked, setAvailableToolsChecked] = useState(false);
   const [sortBy, setSortBy] = useState('Default');
 
   useEffect(() => {
@@ -45,10 +45,10 @@ const ToolsPage = () => {
   }, []);
 
   useEffect(() => {
-    getToolsWithTags(activeTags, sortBy).then((res) => {
+    getToolsWithTags(activeTags, sortBy, availableToolsChecked).then((res) => {
       setTools(res);
     });
-  }, [activeTags, sortBy]);
+  }, [activeTags, sortBy, availableToolsChecked]);
 
   // TODO: STRAPI
   // const IsToolActive = (tool) => {
@@ -123,7 +123,6 @@ const ToolsPage = () => {
             </Wrap>
           </WrapItem>
           {/* <Spacer /> */}
-
           <WrapItem alignItems="center">
             <Box marginRight={2}>Sortieren nach:</Box>
             <Select
@@ -140,27 +139,34 @@ const ToolsPage = () => {
               <option
                 value="Default"
                 style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
-                Default
+                Zuletzt hinzugefügt
               </option>
               <option
                 value="Name"
                 style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
                 Name
               </option>
-              <option
-                value="Tag"
-                style={{
-                  backgroundColor: COLOR_BACKGROUND_SOLID,
-                  color: 'white'
-                }}>
-                Tag
-              </option>
             </Select>
+          </WrapItem>
+          <WrapItem alignItems="center">
+            <FormControl display="flex" alignItems="center">
+              <Switch
+                id="availableToolsSwitch"
+                mr={2}
+                onChange={(val) => setAvailableToolsChecked(val.target.checked)}
+                isChecked={availableToolsChecked}
+              />
+              <FormLabel mb="0" fontWeight="normal">
+                <Tooltip label="Diese Tools sind entweder lokal im KI-Lab installiert oder wir besitzen eine Lizenz dafür">
+                  nur im KI-Lab verfügbare Tools anzeigen
+                </Tooltip>
+              </FormLabel>
+            </FormControl>
           </WrapItem>
         </Wrap>
 
         <SimpleGrid marginTop="20px" spacing="20px" columns={[1, 2, 3, 3, 4, 5]}>
-          {tools.map((tool) => (
+          {tools?.map((tool) => (
             <ToolCard {...tool.attributes} key={uuidv4()} />
           ))}
         </SimpleGrid>

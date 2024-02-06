@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 import {
   Card,
@@ -6,6 +7,7 @@ import {
   Stack,
   Heading,
   Text,
+  Center,
   Divider,
   Box,
   CardFooter,
@@ -19,6 +21,7 @@ import {
 import { PropTypes } from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { CheckCircleIcon } from '@chakra-ui/icons';
 import githubIcon from '../../images/github-mark-white.svg';
 
 import {
@@ -38,6 +41,7 @@ const ToolCard = ({
   toolImage,
   toolName,
   description,
+  available_at_KI_Lab,
   webToolLink,
   developers,
   githubLink,
@@ -164,6 +168,12 @@ const ToolCard = ({
               </WrapItem>
             )}
           </Wrap>
+          {available_at_KI_Lab && (
+            <Box verticalAlign="center" fontWeight="500" fontSize="sm">
+              <CheckCircleIcon color="white" h="80%" pb="0.1rem" mr="1" />
+              verfügbar im KI Lab
+            </Box>
+          )}
         </VStack>
       </CardFooter>
     </Card>
