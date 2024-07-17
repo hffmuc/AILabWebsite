@@ -15,7 +15,8 @@ import {
   Drawer,
   DrawerOverlay,
   VStack,
-  Icon
+  Icon,
+  Wrap
 } from '@chakra-ui/react';
 import { useLocation } from 'react-router-dom';
 import { BrowserView, MobileView, TabletView, isMobile } from 'react-device-detect';
@@ -35,6 +36,8 @@ import {
   PATH_BLOG,
   PATH_CONTACT,
   PATH_EVENTS,
+  PATH_FESTIVALS,
+  PATH_FILMS,
   PATH_HOME,
   PATH_TOOLS,
   PATH_TUTORIALS
@@ -54,7 +57,7 @@ const PageWrapper = ({ children }) => {
           // backgroundColor={COLOR_BACKGROUND_SOLID}
           m="auto"
           w="100%"
-          h="120px"
+          // h="160px"
           mt="12px"
           // paddingLeft={['18px', '30px', '50px', '70px', '150px', '300px']}
           // paddingRight={['18px', '30px', '50px', '70px', '150px', '300px']}
@@ -66,10 +69,12 @@ const PageWrapper = ({ children }) => {
               src={KiLogo}
               // maxHeight="50px"
               // height={['50%', '50%', '50%', '100%']}
-              width="auto"
+              width="120px"
               h="120px"
-              position="absolute"
-              pt={['8px', '8px']}
+              minW="120px"
+              minH="120px"
+              // position="absolute"
+              mt={['8px', '8px']}
               // minWidth="70px"
               alignSelf="center"
               // paddingTop="2px"
@@ -77,7 +82,7 @@ const PageWrapper = ({ children }) => {
             />
           </Link>
           <Spacer />
-          <VStack justifyContent="end" justifyItems="end" h="100%">
+          <VStack justifyContent="end" justify="end" h="100%">
             <HStack w="100%">
               <Spacer />
               <Link href="https://www.hff-muenchen.de/" height="60px">
@@ -85,14 +90,16 @@ const PageWrapper = ({ children }) => {
               </Link>
             </HStack>
             <Spacer />
-            <HStack
-              justifyContent="end"
+            <Wrap
+              justify="end"
+              ml="20px"
+              fontSize={['md', 'md', 'md', 'md', 'md', 'lg']}
+              // justify="space-between"
               spacing={[3, 4, 4, 5, 6, 8]}
               // fontFamily="Roboto Mono"
               // fontSize={['sm', 'md', 'lg', 'xl']}
               // h="50%"
-
-              whiteSpace="nowrap">
+            >
               <Link
                 href={PATH_HOME}
                 fontWeight={location.pathname === PATH_HOME ? 'bold' : 'normal'}
@@ -123,6 +130,19 @@ const PageWrapper = ({ children }) => {
                 color={location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 KI Tools
               </Link>
+
+              <Link
+                href={PATH_FESTIVALS}
+                fontWeight={location.pathname === PATH_FESTIVALS ? 'bold' : 'normal'}
+                color={location.pathname === PATH_FESTIVALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                KI Festivals
+              </Link>
+              <Link
+                href={PATH_FILMS}
+                fontWeight={location.pathname === PATH_FILMS ? 'bold' : 'normal'}
+                color={location.pathname === PATH_FILMS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                KI Filme
+              </Link>
               <Link
                 href={PATH_TUTORIALS}
                 fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
@@ -135,7 +155,7 @@ const PageWrapper = ({ children }) => {
                 color={location.pathname === PATH_CONTACT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 Kontakt
               </Link>
-            </HStack>
+            </Wrap>
           </VStack>
         </Flex>
       </BrowserView>
@@ -224,6 +244,20 @@ const PageWrapper = ({ children }) => {
                       fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
                       color={location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                       KI Tools
+                    </Link>
+                    <Link
+                      href={PATH_FESTIVALS}
+                      fontWeight={location.pathname === PATH_FESTIVALS ? 'bold' : 'normal'}
+                      color={
+                        location.pathname === PATH_FESTIVALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                      }>
+                      KI Festivals
+                    </Link>
+                    <Link
+                      href={PATH_FILMS}
+                      fontWeight={location.pathname === PATH_FILMS ? 'bold' : 'normal'}
+                      color={location.pathname === PATH_FILMS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                      KI Filme
                     </Link>
                     <Link
                       href={PATH_TUTORIALS}

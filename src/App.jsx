@@ -11,12 +11,16 @@ import {
   PATH_BLOG_ARTICLE,
   PATH_CONTACT,
   PATH_EVENTS,
+  PATH_FESTIVALS,
+  PATH_FILMS,
   PATH_HOME,
   PATH_TOOLS,
   PATH_TUTORIALS
 } from './constants/pathNames';
 import PageWrapper from './components/ui/PageWrapper';
 import ContactPage from './pages/contactPage/ContactPage';
+import FestivalsPage from './pages/festivalsPage/FestivalsPage';
+import FilmPage from './pages/filmPage/FilmPage';
 
 const HomePage = lazy(() => import('./pages/homePage/HomePage'));
 const ToolsPage = lazy(() => import('./pages/toolsPage/ToolsPage'));
@@ -45,6 +49,8 @@ const App = () => {
             <Route path={PATH_BLOG} element={<BlogOverviewPage />} />
             <Route path={PATH_BLOG_ARTICLE} element={<BlogArticlePage />} />
             <Route path={PATH_CONTACT} element={<ContactPage />} />
+            <Route path={PATH_FESTIVALS} element={<FestivalsPage />} />
+            <Route path={PATH_FILMS} element={<FilmPage />} />
           </Routes>
         </Suspense>
       </Router>
@@ -56,6 +62,7 @@ const App = () => {
         textAlign="center"
         w="100%"
         h="80px"
+        fontSize="sm"
         gap={4}
         justifyContent="center"
         alignItems="center">

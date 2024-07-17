@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { graphql } from '..';
+import replaceYoutubeNoCookie from '../../../helpers/replaceYoutubeNoCookie';
 
 export const getTutorials = async () => {
   const query = `
@@ -34,10 +35,7 @@ export const getTutorials = async () => {
   res.data.tutorialPage.data.attributes.tutorial_groups.data.forEach((category) => {
     category.attributes.tutorials.data.forEach((tutorial) => {
       // eslint-disable-next-line no-param-reassign
-      tutorial.attributes.embedLink = tutorial.attributes.embedLink.replace(
-        'youtube.com',
-        'youtube-nocookie.com'
-      );
+      tutorial.attributes.embedLink = replaceYoutubeNoCookie(tutorial.attributes.embedLink);
     });
   });
 

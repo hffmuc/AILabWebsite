@@ -6,3 +6,5 @@ export const PATH_EVENTS = '/events';
 export const PATH_BLOG = '/blog';
 export const PATH_BLOG_ARTICLE = '/blog/:slug';
 export const PATH_CONTACT = '/kontakt';
+export const PATH_FESTIVALS = '/festivals';
+export const PATH_FILMS = '/filme';
