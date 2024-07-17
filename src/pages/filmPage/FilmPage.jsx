@@ -53,7 +53,7 @@ const Film = ({ film }) => {
         </VStack>
 
         {film.attributes.videoLink && (
-          <AspectRatio ratio={16 / 9} w="40%" maxW="800px">
+          <AspectRatio ratio={16 / 9} w={['100%', '100%', '100%', '50%', '40%']} maxW="800px">
             <iframe
               title={film.attributes.filmtitle}
               width="560px"
