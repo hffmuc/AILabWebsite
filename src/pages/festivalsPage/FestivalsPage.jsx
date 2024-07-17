@@ -33,7 +33,7 @@ const FestivalsPage = () => {
         {Object.keys(festivalsByMonth).map((month) => (
           <Box key={month}>
             <Title name={MONTH_NAMES[month]} />
-            <VStack spacing={3} align="start">
+            <VStack spacing={4} align="start">
               {festivalsByMonth[month].map((festival) => (
                 <Festival festival={festival} key={festival.attributes.name} />
               ))}
@@ -75,12 +75,14 @@ const Festival = ({ festival }) => {
           {festival.attributes.name}
         </Link>
       ) : (
-        <Text fontSize="lg" fontWeight="bold">
+        <Box fontSize="lg" fontWeight="bold">
           {festival.attributes.name}
-        </Text>
+        </Box>
       )}
-      <Text color={COLOR_SECONDARY}>{festival.attributes.location}</Text>
-      <Text>{renderMarkdown(festival.attributes.shortDescription)}</Text>
+      <Box color={COLOR_SECONDARY} mt={2}>
+        {festival.attributes.location}
+      </Box>
+      <Box mt={2}>{renderMarkdown(festival.attributes.shortDescription)}</Box>
     </Box>
   );
 };

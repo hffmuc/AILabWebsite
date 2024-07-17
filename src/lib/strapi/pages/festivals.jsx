@@ -9,7 +9,6 @@ export const getFestivalList = async () => {
       attributes {
         name
         month
-        yearly
         shortDescription
         location
         link
