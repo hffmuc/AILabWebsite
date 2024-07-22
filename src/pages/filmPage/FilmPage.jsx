@@ -46,9 +46,11 @@ const Film = ({ film }) => {
               {film.attributes.releaseYear && `(${film.attributes.releaseYear})`}
             </Box>
           )}
-          <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
-            von {film.attributes.filmmaker}
-          </Box>
+          {film.attributes.filmmaker && (
+            <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
+              von {film.attributes.filmmaker}
+            </Box>
+          )}
           <Box>{renderMarkdown(film.attributes.description)}</Box>
         </VStack>
 
