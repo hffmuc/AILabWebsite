@@ -29,7 +29,7 @@ const FilmPage = () => {
 
 const Film = ({ film }) => {
   return (
-    <VStack align="stretch" spacing={4}>
+    <VStack align="stretch" spacing={4} w="100%">
       {/* <Title name={film.attributes.filmtitle} textAlign="left" /> */}
       <Wrap spacing={8} w="100%">
         <VStack flex="1" align="stretch">
