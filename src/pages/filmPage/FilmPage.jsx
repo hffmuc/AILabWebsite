@@ -48,9 +48,11 @@ const Film = ({ film }) => {
           )}
           {film.attributes.filmmaker && (
             <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
-              von {film.attributes.filmmaker}
+              von {film.attributes.filmmaker}{' '}
+              {film.attributes.length && `| ${film.attributes.length} min`}
             </Box>
           )}
+
           <Box>{renderMarkdown(film.attributes.description)}</Box>
         </VStack>
 
