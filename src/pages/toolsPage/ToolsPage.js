@@ -99,7 +99,7 @@ const ToolsPage = () => {
         <Box w="100%">
           <Title name="KI Tools" textAlign="left" />
         </Box>
-        <Box pb={6} mt={3} color={COLOR_TEXT_SECONDARY}>
+        <Box pb={6} mt={3} color={COLOR_TEXT_SECONDARY} w="100%">
           Hier findet ihr eine Sammlung an KI Tools für Bild, Video, Ton und Sound. Viele davon sind
           Web-Tools und ihr könnt sie direkt über die verlinkte Webseite ausprobieren, andere
           funktionieren nur lokal und können ggfs. im KI Lab ausprobiert werden.

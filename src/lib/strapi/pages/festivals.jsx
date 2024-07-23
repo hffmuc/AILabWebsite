@@ -22,3 +22,21 @@ export const getFestivalList = async () => {
 
   return res.data.festivals.data;
 };
+
+export const getFestivalsContent = async () => {
+  const query = `
+    query {
+        festivalsPage {
+        data {
+            attributes {
+            introduction
+            }
+        }
+        }
+    }
+    `;
+
+  const res = await graphql(query);
+
+  return res.data.festivalsPage.data.attributes.introduction;
+};

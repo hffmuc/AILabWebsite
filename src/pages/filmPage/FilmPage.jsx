@@ -3,20 +3,25 @@ import { AspectRatio, Box, Container, Divider, Flex, Link, VStack, Wrap } from '
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import renderMarkdown from '../../helpers/renderMarkdown';
-import { getFilmList } from '../../lib/strapi/pages/films';
-import { COLOR_SECONDARY } from '../../constants/styles';
+import { getFilmList, getFilmsContent } from '../../lib/strapi/pages/films';
+import { COLOR_SECONDARY, COLOR_TEXT_SECONDARY } from '../../constants/styles';
 
 const FilmPage = () => {
   const [films, setFilms] = useState([]);
+  const [introduction, setIntroduction] = useState();
 
   useEffect(() => {
     getFilmList().then((res) => setFilms(res));
+    getFilmsContent().then((res) => setIntroduction(res));
   }, []);
 
   return (
     <PageWrapper>
       <Title name="KI Filme" textAlign="left" />
       {/* <Container maxW="container.md" p={4}> */}
+      <Box pb={12} mt={3} color={COLOR_TEXT_SECONDARY} w="100%">
+        {renderMarkdown(introduction)}
+      </Box>
       <VStack spacing={8} divider={<Divider />}>
         {films.map((film) => (
           <Film film={film} key={film.attributes.filmtitle} />

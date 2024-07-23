@@ -36,3 +36,21 @@ export const getFilmList = async () => {
 
   return res.data.kiFilmes.data;
 };
+
+export const getFilmsContent = async () => {
+  const query = `
+    query {
+        filmPage {
+        data {
+            attributes {
+            Introduction
+            }
+        }
+        }
+    }
+    `;
+
+  const res = await graphql(query);
+
+  return res.data.filmPage.data.attributes.Introduction;
+};

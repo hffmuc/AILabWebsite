@@ -4,15 +4,17 @@ import { Heading, Box, VStack, Text, Divider, Container, Link } from '@chakra-ui
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import { MONTH_NAMES, monthOrder } from '../../constants/monthNames';
-import { getFestivalList } from '../../lib/strapi/pages/festivals';
-import { COLOR_SECONDARY } from '../../constants/styles';
+import { getFestivalList, getFestivalsContent } from '../../lib/strapi/pages/festivals';
+import { COLOR_SECONDARY, COLOR_TEXT_SECONDARY } from '../../constants/styles';
 import renderMarkdown from '../../helpers/renderMarkdown';
 
 const FestivalsPage = () => {
   const [festivals, setFestivals] = useState([]);
+  const [introduction, setIntroduction] = useState();
 
   useEffect(() => {
     getFestivalList().then((res) => setFestivals(res));
+    getFestivalsContent().then((res) => setIntroduction(res));
   }, []);
 
   const festivalsByMonth = monthOrder.reduce((acc, month) => {
@@ -29,6 +31,9 @@ const FestivalsPage = () => {
     <PageWrapper>
       <Title name="KI Festivals" textAlign="left" />
       {/* <Container maxW="container.md" p={4}> */}
+      <Box pb={12} mt={3} color={COLOR_TEXT_SECONDARY} w="100%">
+        {renderMarkdown(introduction)}
+      </Box>
       <VStack spacing={8} align="stretch" divider={<Divider mt={8} />}>
         {Object.keys(festivalsByMonth).map((month) => (
           <Box key={month}>
