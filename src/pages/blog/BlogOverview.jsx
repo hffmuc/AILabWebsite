@@ -55,7 +55,7 @@ const BlogOverviewPage = () => {
 
   return (
     <PageWrapper>
-      <Title name="KI-Lab Blog" textAlign="left" />
+      <Title name="KI-Lab News" textAlign="left" />
       {blogArticles.map((blogArticle) => (
         <BlogPreview {...blogArticle.attributes} key={v4()} />
       ))}

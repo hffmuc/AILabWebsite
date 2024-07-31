@@ -106,24 +106,24 @@ const PageWrapper = ({ children }) => {
                 color={location.pathname === PATH_HOME ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 Home
               </Link>
-              <Link
+              {/* <Link
                 href={PATH_ABOUT}
                 fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
                 color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 Über uns
-              </Link>
+              </Link> */}
               <Link
                 href={PATH_BLOG}
                 fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
                 color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                Blog
+                News
               </Link>
-              <Link
+              {/* <Link
                 href={PATH_EVENTS}
                 fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
                 color={location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 Events
-              </Link>
+              </Link> */}
               <Link
                 href={PATH_TOOLS}
                 fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
@@ -219,26 +219,26 @@ const PageWrapper = ({ children }) => {
                       color={location.pathname === PATH_HOME ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                       Home
                     </Link>
-                    <Link
+                    {/* <Link
                       href={PATH_ABOUT}
                       fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
                       color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                       Über uns
-                    </Link>
+                    </Link> */}
                     <Link
                       href={PATH_BLOG}
                       fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
                       color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                      Blog
+                      News
                     </Link>
-                    <Link
+                    {/* <Link
                       href={PATH_EVENTS}
                       fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
                       color={
                         location.pathname === PATH_EVENTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
                       }>
                       Events
-                    </Link>
+                    </Link> */}
                     <Link
                       href={PATH_TOOLS}
                       fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}

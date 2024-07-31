@@ -28,6 +28,7 @@ import { useNavigate } from 'react-router-dom';
 import { v4 } from 'uuid';
 import { isMobile } from 'react-device-detect';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import Title from './Title';
 import { COLOR_BACKGROUND, COLOR_TEXT } from '../../constants/styles';
 // import { getStrapiImage } from '../../helpers/getStrapiImage';
 
@@ -129,14 +130,14 @@ const Carousel = ({ news }) => {
   };
 
   return (
-    <Box className="content" borderRadius="1" backgroundColor={COLOR_BACKGROUND} mx={0}>
+    <Box className="content">
       {news && (
         <Slider {...sliderSettings}>
           {news?.map((newsElement) => {
             // eslint-disable-next-line no-underscore-dangle
 
             return (
-              <Box px={[0, 4]} py={[0, 4, 6]} key={v4()}>
+              <Box px={[0, 4]} pb={[0, 4, 6]} key={v4()}>
                 <Card color={COLOR_TEXT} boxShadow="none" bg="none">
                   <CardBody p={0}>
                     <Link href={newsElement.attributes.link}>
