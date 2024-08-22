@@ -39,6 +39,7 @@ import {
   PATH_FESTIVALS,
   PATH_FILMS,
   PATH_HOME,
+  PATH_MEDIAPROJECTS,
   PATH_TOOLS,
   PATH_TUTORIALS
 } from '../../constants/pathNames';
@@ -116,7 +117,7 @@ const PageWrapper = ({ children }) => {
                 href={PATH_BLOG}
                 fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
                 color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                News
+                Blog
               </Link>
               {/* <Link
                 href={PATH_EVENTS}
@@ -128,20 +129,28 @@ const PageWrapper = ({ children }) => {
                 href={PATH_TOOLS}
                 fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
                 color={location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                KI Tools
+                Tools
               </Link>
 
               <Link
                 href={PATH_FESTIVALS}
                 fontWeight={location.pathname === PATH_FESTIVALS ? 'bold' : 'normal'}
                 color={location.pathname === PATH_FESTIVALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                KI Festivals
+                Festivals
               </Link>
               <Link
                 href={PATH_FILMS}
                 fontWeight={location.pathname === PATH_FILMS ? 'bold' : 'normal'}
                 color={location.pathname === PATH_FILMS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                KI Filme
+                Filme
+              </Link>
+              <Link
+                href={PATH_MEDIAPROJECTS}
+                fontWeight={location.pathname === PATH_MEDIAPROJECTS ? 'bold' : 'normal'}
+                color={
+                  location.pathname === PATH_MEDIAPROJECTS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
+                }>
+                Medienprojekte
               </Link>
               <Link
                 href={PATH_TUTORIALS}
@@ -229,7 +238,7 @@ const PageWrapper = ({ children }) => {
                       href={PATH_BLOG}
                       fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
                       color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                      News
+                      Blog
                     </Link>
                     {/* <Link
                       href={PATH_EVENTS}
@@ -243,7 +252,7 @@ const PageWrapper = ({ children }) => {
                       href={PATH_TOOLS}
                       fontWeight={location.pathname === PATH_TOOLS ? 'bold' : 'normal'}
                       color={location.pathname === PATH_TOOLS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                      KI Tools
+                      Tools
                     </Link>
                     <Link
                       href={PATH_FESTIVALS}
@@ -251,13 +260,23 @@ const PageWrapper = ({ children }) => {
                       color={
                         location.pathname === PATH_FESTIVALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
                       }>
-                      KI Festivals
+                      Festivals
                     </Link>
                     <Link
                       href={PATH_FILMS}
                       fontWeight={location.pathname === PATH_FILMS ? 'bold' : 'normal'}
                       color={location.pathname === PATH_FILMS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
-                      KI Filme
+                      Filme
+                    </Link>
+                    <Link
+                      href={PATH_MEDIAPROJECTS}
+                      fontWeight={location.pathname === PATH_MEDIAPROJECTS ? 'bold' : 'normal'}
+                      color={
+                        location.pathname === PATH_MEDIAPROJECTS
+                          ? COLOR_SECONDARY_HOVER
+                          : COLOR_TEXT
+                      }>
+                      Medienprojekte
                     </Link>
                     <Link
                       href={PATH_TUTORIALS}

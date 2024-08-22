@@ -14,6 +14,7 @@ import {
   PATH_FESTIVALS,
   PATH_FILMS,
   PATH_HOME,
+  PATH_MEDIAPROJECTS,
   PATH_TOOLS,
   PATH_TUTORIALS
 } from './constants/pathNames';
@@ -21,6 +22,7 @@ import PageWrapper from './components/ui/PageWrapper';
 import ContactPage from './pages/contactPage/ContactPage';
 import FestivalsPage from './pages/festivalsPage/FestivalsPage';
 import FilmPage from './pages/filmPage/FilmPage';
+import MediaProjectsPage from './pages/mediaprojectsPage/MediaProjectsPage';
 
 const HomePage = lazy(() => import('./pages/homePage/HomePage'));
 const ToolsPage = lazy(() => import('./pages/toolsPage/ToolsPage'));
@@ -51,6 +53,7 @@ const App = () => {
             <Route path={PATH_CONTACT} element={<ContactPage />} />
             <Route path={PATH_FESTIVALS} element={<FestivalsPage />} />
             <Route path={PATH_FILMS} element={<FilmPage />} />
+            <Route path={PATH_MEDIAPROJECTS} element={<MediaProjectsPage />} />
           </Routes>
         </Suspense>
       </Router>
