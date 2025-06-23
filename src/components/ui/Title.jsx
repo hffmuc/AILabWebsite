@@ -13,7 +13,13 @@ const Title = ({ name, fontFamily = 'Roboto', textAlign = 'center' }) => {
     //   mt={[0, 1, 2]}>
     //   {name}
     // </Heading>
-    <Heading mb={6} fontSize={20} fontWeight="light" fontFamily={fontFamily} textAlign={textAlign}>
+    <Heading
+      mt={6}
+      mb={4}
+      fontSize={20}
+      fontWeight="light"
+      fontFamily={fontFamily}
+      textAlign={textAlign}>
       {name}
     </Heading>
   );

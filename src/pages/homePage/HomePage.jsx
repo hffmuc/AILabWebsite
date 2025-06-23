@@ -8,6 +8,7 @@ import Title from '../../components/ui/Title';
 import { getAboutContent, getAboutPhoto, getTeamContent } from '../../lib/strapi/pages/about';
 import renderMarkdown from '../../helpers/renderMarkdown';
 import { COLOR_BACKGROUND } from '../../constants/styles';
+import Section from '../../components/ui/Section';
 
 const HomePage = () => {
   const [news, setNews] = useState();
@@ -30,15 +31,14 @@ const HomePage = () => {
       {/* <Heading mb={6} fontSize={20} fontWeight="light">
         Neuigkeiten aus dem KI-Lab der HFF
       </Heading> */}
-      <Box borderRadius="1" backgroundColor={COLOR_BACKGROUND} mt={8}>
-        <Box pt={4} pl={4}>
-          <Title name="Neues aus dem KI-Lab der HFF" textAlign="left" />
-        </Box>
+      <Title name="Neues aus dem KI-Lab der HFF" textAlign="left" />
+      <Box borderRadius="1" backgroundColor={COLOR_BACKGROUND} my={4}>
+        <Box pt={4} px={4} />
         <Carousel news={news} />
       </Box>
-      <Box borderRadius="1" backgroundColor={COLOR_BACKGROUND} p={4} mt={8}>
-        <Title name="Der Lehrstuhl KI an der HFF" textAlign="left" />
-        <SimpleGrid columns={[3, 3, 3, 3, 12, 12]} spacing={10}>
+      <Title name="Der Lehrstuhl KI an der HFF" textAlign="left" />
+      <Section>
+        <SimpleGrid columns={[3, 3, 3, 3, 12, 12]} spacing={8}>
           <GridItem colSpan={[3, 3, 3, 3, 6, 6]}>
             <Flex>
               <Image src={photo} borderRadius={0} />
@@ -49,7 +49,7 @@ const HomePage = () => {
             <Box textAlign="justify">{renderMarkdown(content)}</Box>
           </GridItem>
         </SimpleGrid>
-      </Box>
+      </Section>
     </PageWrapper>
   );
 };
