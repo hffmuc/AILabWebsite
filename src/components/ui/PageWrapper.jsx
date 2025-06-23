@@ -152,12 +152,12 @@ const PageWrapper = ({ children }) => {
                 }>
                 Medienprojekte
               </Link>
-              <Link
+              {/* <Link
                 href={PATH_TUTORIALS}
                 fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
                 color={location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 Tutorials
-              </Link>
+              </Link> */}
               <Link
                 href={PATH_CONTACT}
                 fontWeight={location.pathname === PATH_CONTACT ? 'bold' : 'normal'}
@@ -278,14 +278,14 @@ const PageWrapper = ({ children }) => {
                       }>
                       Medienprojekte
                     </Link>
-                    <Link
+                    {/* <Link
                       href={PATH_TUTORIALS}
                       fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
                       color={
                         location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
                       }>
                       Tutorials
-                    </Link>
+                    </Link> */}
                     <Link
                       href={PATH_CONTACT}
                       fontWeight={location.pathname === PATH_CONTACT ? 'bold' : 'normal'}
