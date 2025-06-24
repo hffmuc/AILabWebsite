@@ -11,6 +11,7 @@ import {
   PATH_BLOG_ARTICLE,
   PATH_CONTACT,
   PATH_EVENTS,
+  PATH_FAQ,
   PATH_FESTIVALS,
   PATH_FILMS,
   PATH_HOME,
@@ -23,6 +24,7 @@ import ContactPage from './pages/contactPage/ContactPage';
 import FestivalsPage from './pages/festivalsPage/FestivalsPage';
 import FilmPage from './pages/filmPage/FilmPage';
 import MediaProjectsPage from './pages/mediaprojectsPage/MediaProjectsPage';
+import FAQPage from './pages/faqPage/FAQPage';
 
 const HomePage = lazy(() => import('./pages/homePage/HomePage'));
 const ToolsPage = lazy(() => import('./pages/toolsPage/ToolsPage'));
@@ -47,7 +49,8 @@ const App = () => {
             <Route path={PATH_TOOLS} element={<ToolsPage />} />
             {/* <Route path={PATH_ABOUT} element={<AboutPage />} /> */}
             <Route path={PATH_TUTORIALS} element={<TutorialsPage />} />
-            <Route path={PATH_EVENTS} element={<EventsPage />} />
+            {/* <Route path={PATH_EVENTS} element={<EventsPage />} /> */}
+            <Route path={PATH_FAQ} element={<FAQPage />} />
             <Route path={PATH_BLOG} element={<BlogOverviewPage />} />
             <Route path={PATH_BLOG_ARTICLE} element={<BlogArticlePage />} />
             <Route path={PATH_CONTACT} element={<ContactPage />} />

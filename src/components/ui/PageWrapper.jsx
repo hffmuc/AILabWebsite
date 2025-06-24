@@ -36,6 +36,7 @@ import {
   PATH_BLOG,
   PATH_CONTACT,
   PATH_EVENTS,
+  PATH_FAQ,
   PATH_FESTIVALS,
   PATH_FILMS,
   PATH_HOME,
@@ -157,6 +158,12 @@ const PageWrapper = ({ children }) => {
                 fontWeight={location.pathname === PATH_TUTORIALS ? 'bold' : 'normal'}
                 color={location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 Tutorials
+              </Link> */}
+              {/* <Link
+                href={PATH_FAQ}
+                fontWeight={location.pathname === PATH_FAQ ? 'bold' : 'normal'}
+                color={location.pathname === PATH_FAQ ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                FAQ
               </Link> */}
               <Link
                 href={PATH_CONTACT}
@@ -285,6 +292,12 @@ const PageWrapper = ({ children }) => {
                         location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT
                       }>
                       Tutorials
+                    </Link> */}
+                    {/* <Link
+                      href={PATH_FAQ}
+                      fontWeight={location.pathname === PATH_FAQ ? 'bold' : 'normal'}
+                      color={location.pathname === PATH_FAQ ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
+                      FAQ
                     </Link> */}
                     <Link
                       href={PATH_CONTACT}

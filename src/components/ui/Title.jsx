@@ -1,7 +1,7 @@
 import { Heading } from '@chakra-ui/react';
 import React from 'react';
 
-const Title = ({ name, fontFamily = 'Roboto', textAlign = 'center' }) => {
+const Title = ({ name, fontFamily = 'Roboto', textAlign = 'left' }) => {
   return (
     // <Heading
     //   fontFamily={fontFamily}
