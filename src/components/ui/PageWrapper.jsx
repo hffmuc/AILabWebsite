@@ -114,12 +114,12 @@ const PageWrapper = ({ children }) => {
                 color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 Über uns
               </Link> */}
-              <Link
+              {/* <Link
                 href={PATH_BLOG}
                 fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
                 color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 Blog
-              </Link>
+              </Link> */}
               {/* <Link
                 href={PATH_EVENTS}
                 fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
@@ -159,12 +159,12 @@ const PageWrapper = ({ children }) => {
                 color={location.pathname === PATH_TUTORIALS ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 Tutorials
               </Link> */}
-              {/* <Link
+              <Link
                 href={PATH_FAQ}
                 fontWeight={location.pathname === PATH_FAQ ? 'bold' : 'normal'}
                 color={location.pathname === PATH_FAQ ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                 FAQ
-              </Link> */}
+              </Link>
               <Link
                 href={PATH_CONTACT}
                 fontWeight={location.pathname === PATH_CONTACT ? 'bold' : 'normal'}
@@ -241,12 +241,12 @@ const PageWrapper = ({ children }) => {
                       color={location.pathname === PATH_ABOUT ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                       Über uns
                     </Link> */}
-                    <Link
+                    {/* <Link
                       href={PATH_BLOG}
                       fontWeight={location.pathname === PATH_BLOG ? 'bold' : 'normal'}
                       color={location.pathname === PATH_BLOG ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                       Blog
-                    </Link>
+                    </Link> */}
                     {/* <Link
                       href={PATH_EVENTS}
                       fontWeight={location.pathname === PATH_EVENTS ? 'bold' : 'normal'}
@@ -293,12 +293,12 @@ const PageWrapper = ({ children }) => {
                       }>
                       Tutorials
                     </Link> */}
-                    {/* <Link
+                    <Link
                       href={PATH_FAQ}
                       fontWeight={location.pathname === PATH_FAQ ? 'bold' : 'normal'}
                       color={location.pathname === PATH_FAQ ? COLOR_SECONDARY_HOVER : COLOR_TEXT}>
                       FAQ
-                    </Link> */}
+                    </Link>
                     <Link
                       href={PATH_CONTACT}
                       fontWeight={location.pathname === PATH_CONTACT ? 'bold' : 'normal'}
