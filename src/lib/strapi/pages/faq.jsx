@@ -5,12 +5,8 @@ export const getFAQs = async () => {
   const query = `
 query {
   faqs(sort: "publishedAt:desc") {
-    data {
-      attributes {
         Question
         Answer
-      }
-    }
   }
 }
 
@@ -19,5 +15,5 @@ query {
 
   const res = await graphql(query);
 
-  return res.data.faqs.data;
+  return res.data.faqs;
 };

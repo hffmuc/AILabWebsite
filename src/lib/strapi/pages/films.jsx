@@ -7,8 +7,6 @@ export const getFilmList = async () => {
   const query = `
 {
   kiFilmes(sort: "releaseYear:desc") {
-    data {
-      attributes {
         filmtitle
         description
         videoLink
@@ -17,40 +15,34 @@ export const getFilmList = async () => {
         filmmaker
         additionalInformation
         releaseYear
-      }
-    }
   }
 }
       `;
 
   const res = await graphql(query);
 
-  res.data.kiFilmes.data.forEach((film) => {
-    if (film.attributes.videoLink) {
+  res.data.kiFilmes.forEach((film) => {
+    if (film.videoLink) {
       // eslint-disable-next-line no-param-reassign
-      film.attributes.videoLink = replaceYoutubeNoCookie(film.attributes.videoLink);
+      film.videoLink = replaceYoutubeNoCookie(film.videoLink);
       // eslint-disable-next-line no-param-reassign
-      film.attributes.videoLink = replaceVimeoLinkNoCookie(film.attributes.videoLink);
+      film.videoLink = replaceVimeoLinkNoCookie(film.videoLink);
     }
   });
 
-  return res.data.kiFilmes.data;
+  return res.data.kiFilmes;
 };
 
 export const getFilmsContent = async () => {
   const query = `
     query {
         filmPage {
-        data {
-            attributes {
             Introduction
-            }
-        }
         }
     }
     `;
 
   const res = await graphql(query);
 
-  return res.data.filmPage.data.attributes.Introduction;
+  return res.data.filmPage.Introduction;
 };

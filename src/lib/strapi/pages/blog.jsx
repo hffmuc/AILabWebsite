@@ -3,67 +3,46 @@ import { graphql } from '..';
 
 export const getBlogArticles = async () => {
   const query = `
-  query {
-    blogArticles(sort: "date:desc") {
-      data {
-        attributes {
-          title
-          slug
+  query{
+      blogArticles(sort: "date:desc") {
+      title
+      slug
           authors {
-            data {
-              attributes {
+            
                 name
-              }
-            }
+      
           }
           date
           content
           shortDescription
           image {
-            data {
-              attributes {
                 url
-              }
-            }
+ 
           }
-        }
-      }
     }
-  }
+}
   
     `;
 
   const res = await graphql(query);
 
-  return res.data.blogArticles.data;
+  return res.data.blogArticles;
 };
 
 export const getBlogArticle = async (slug) => {
   const query = `
   query GetBlogArticle {
     blogArticles(filters: { slug: { eq: "${slug}" } }) {
-      data {
-        attributes {
-          title
-          slug
-          authors {
-            data {
-              attributes {
-                name
-              }
-            }
-          }
-          date
-          content
-          shortDescription
-          image {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-        }
+      title
+      slug
+      authors {
+      name
+      }
+      date
+      content
+      shortDescription
+      image {
+      url
       }
     }
   }    
@@ -71,5 +50,5 @@ export const getBlogArticle = async (slug) => {
 
   const res = await graphql(query);
 
-  return res.data.blogArticles.data[0].attributes;
+  return res.data.blogArticles[0];
 };

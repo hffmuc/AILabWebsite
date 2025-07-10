@@ -113,10 +113,10 @@ const ToolsPage = () => {
               {tags.map((tag) => (
                 <WrapItem alignItems="center" key={uuidv4()}>
                   <ToolTag
-                    tag={tag.attributes}
+                    tag={tag}
                     key={uuidv4()}
-                    isActivated={activeTags.has(tag.attributes.name)}
-                    onClick={() => toggleTag(tag.attributes.name)}
+                    isActivated={activeTags.has(tag.name)}
+                    onClick={() => toggleTag(tag.name)}
                   />
                 </WrapItem>
               ))}
@@ -167,7 +167,7 @@ const ToolsPage = () => {
 
         <SimpleGrid marginTop="20px" spacing="20px" columns={[1, 2, 3, 3, 4, 5]}>
           {tools?.map((tool) => (
-            <ToolCard {...tool.attributes} key={uuidv4()} />
+            <ToolCard {...tool} key={uuidv4()} />
           ))}
         </SimpleGrid>
       </VStack>

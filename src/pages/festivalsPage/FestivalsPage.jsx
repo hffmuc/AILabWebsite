@@ -18,14 +18,14 @@ const FestivalsPage = () => {
   }, []);
 
   const festivalsByMonth = monthOrder.reduce((acc, month) => {
-    const filteredFestivals = festivals.filter((festival) => festival.attributes.month === month);
+    const filteredFestivals = festivals.filter((festival) => festival.month === month);
     if (filteredFestivals.length > 0) {
       acc[month] = filteredFestivals;
     }
     return acc;
   }, {});
 
-  const festivalsWithoutMonth = festivals.filter((festival) => !festival.attributes.month);
+  const festivalsWithoutMonth = festivals.filter((festival) => !festival.month);
 
   return (
     <PageWrapper>
@@ -40,7 +40,7 @@ const FestivalsPage = () => {
             <Title name={MONTH_NAMES[month]} />
             <VStack spacing={4} align="start">
               {festivalsByMonth[month].map((festival) => (
-                <Festival festival={festival} key={festival.attributes.name} />
+                <Festival festival={festival} key={festival.name} />
               ))}
             </VStack>
           </Box>
@@ -50,7 +50,7 @@ const FestivalsPage = () => {
             <Title name="Other Festivals" />
             <VStack spacing={3} align="start">
               {festivalsWithoutMonth.map((festival) => (
-                <Festival festival={festival} key={festival.attributes.name} />
+                <Festival festival={festival} key={festival.name} />
               ))}
             </VStack>
           </Box>
@@ -63,31 +63,20 @@ const FestivalsPage = () => {
 
 const Festival = ({ festival }) => {
   return (
-    <Box
-      key={festival.attributes.name}
-      p={4}
-      w="100%"
-      borderWidth="1px"
-      borderRadius="lg"
-      boxShadow="md">
-      {festival.attributes.link ? (
-        <Link
-          fontSize="lg"
-          fontWeight="bold"
-          href={festival.attributes.link}
-          target="_blank"
-          rel="noreferrer">
-          {festival.attributes.name}
+    <Box key={festival.name} p={4} w="100%" borderWidth="1px" borderRadius="lg" boxShadow="md">
+      {festival.link ? (
+        <Link fontSize="lg" fontWeight="bold" href={festival.link} target="_blank" rel="noreferrer">
+          {festival.name}
         </Link>
       ) : (
         <Box fontSize="lg" fontWeight="bold">
-          {festival.attributes.name}
+          {festival.name}
         </Box>
       )}
       <Box color={COLOR_SECONDARY} mt={2}>
-        {festival.attributes.location}
+        {festival.location}
       </Box>
-      <Box mt={2}>{renderMarkdown(festival.attributes.shortDescription)}</Box>
+      <Box mt={2}>{renderMarkdown(festival.shortDescription)}</Box>
     </Box>
   );
 };

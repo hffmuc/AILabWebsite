@@ -24,7 +24,7 @@ const FilmPage = () => {
       </Box>
       <VStack spacing={8} divider={<Divider />}>
         {films.map((film) => (
-          <Film film={film} key={film.attributes.filmtitle} />
+          <Film film={film} key={film.filmtitle} />
         ))}
       </VStack>
       {/* </Container> */}
@@ -36,37 +36,33 @@ const Film = ({ film }) => {
   return (
     <Wrap spacing={8} w="100%">
       <VStack flex="1" align="stretch">
-        {film.attributes.link ? (
-          <Link href={film.attributes.link} target="_blank" rel="noreferrer">
+        {film.link ? (
+          <Link href={film.link} target="_blank" rel="noreferrer">
             <Box textAlign="left" fontSize="lg" fontWeight="bold">
-              {film.attributes.filmtitle}{' '}
-              {film.attributes.releaseYear && `(${film.attributes.releaseYear})`}
+              {film.filmtitle} {film.releaseYear && `(${film.releaseYear})`}
             </Box>
           </Link>
         ) : (
           <Box textAlign="left" fontSize="lg" fontWeight="bold">
-            {film.attributes.filmtitle}{' '}
-            {film.attributes.releaseYear && `(${film.attributes.releaseYear})`}
+            {film.filmtitle} {film.releaseYear && `(${film.releaseYear})`}
           </Box>
         )}
-        {film.attributes.filmmaker && (
+        {film.filmmaker && (
           <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
-            von {film.attributes.filmmaker}{' '}
-            {film.attributes.length && `| ${film.attributes.length} min`}
+            von {film.filmmaker} {film.length && `| ${film.length} min`}
           </Box>
         )}
 
-        <Box>{renderMarkdown(film.attributes.description)}</Box>
+        <Box>{renderMarkdown(film.description)}</Box>
       </VStack>
 
-      {film.attributes.videoLink && (
+      {film.videoLink && (
         <AspectRatio ratio={16 / 9} w={['100%', '100%', '100%', '50%', '40%']} maxW="800px">
           <iframe
-            title={film.attributes.filmtitle}
+            title={film.filmtitle}
             width="560px"
             height="315px"
-            src={film.attributes.videoLink}
-            frameBorder="0"
+            src={film.videoLink}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />

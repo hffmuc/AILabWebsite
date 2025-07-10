@@ -5,13 +5,13 @@ import { graphql } from '..';
 export const getTags = async () => {
   const query = `
   query {
-    toolTags{data{attributes{name color}}}
+    toolTags{name color}
   }    
       `;
 
   const res = await graphql(query);
 
-  return res.data.toolTags.data;
+  return res.data.toolTags;
 };
 
 // activeTags is a Set of tag names (as strings)
@@ -47,17 +47,12 @@ export const getToolsWithTags = async (activeTags, sortBy, availableToolsChecked
     
   }
   , pagination: { limit: 100 }) {
-          data {
-            attributes {
+              
               toolName
               createdAt
               toolImage {
-                data {
-                  attributes {
                     formats
                     url
-                  }
-                }
               }
               developers
               description
@@ -69,16 +64,11 @@ export const getToolsWithTags = async (activeTags, sortBy, availableToolsChecked
               googleCollabLink
               internalInfo
               toolTags {
-                data {
-                  attributes {
                     name
                     color
                   }
-                }
-              }
             }
-          }
-        }
+      
       }
     `;
 
@@ -125,5 +115,5 @@ export const getToolsWithTags = async (activeTags, sortBy, availableToolsChecked
 
   const res = await graphql(query);
 
-  return res.data.aiTools.data;
+  return res.data.aiTools;
 };

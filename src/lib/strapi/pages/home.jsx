@@ -5,26 +5,15 @@ export const getNewsCarousel = async () => {
   const query = `
   query {
     newsCarousel {
-      data {
-        attributes {
           news {
-            data {
-              attributes {
                 title
                 shortDescription
                 image {
-                  data {
-                    attributes {
                       formats
                       url
-                    }
-                  }
                 }
                 link
-              }
-            }
-          }
-        }
+       
       }
     }
   }
@@ -33,5 +22,5 @@ export const getNewsCarousel = async () => {
 
   const res = await graphql(query);
 
-  return res.data.newsCarousel.data.attributes.news.data;
+  return res.data.newsCarousel.news;
 };

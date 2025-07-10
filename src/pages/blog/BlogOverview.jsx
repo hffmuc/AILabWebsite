@@ -23,7 +23,7 @@ const BlogPreview = ({ title, slug, date, authors, image, shortDescription }) =>
         objectFit="cover"
         h={['180px', 'inherit']}
         w={['100%', '150px', '200px', '300px']}
-        src={image.data.attributes.url}
+        src={image.url}
         alt="Cover Image Article"
       />
 
@@ -34,8 +34,8 @@ const BlogPreview = ({ title, slug, date, authors, image, shortDescription }) =>
             <Heading size={['sm', 'md']}>{title}</Heading>
           </Link>
           <Text color={COLOR_TEXT_SECONDARY} fontSize={['sm', 'md']}>
-            {authors.data.map((name, index) => {
-              return index >= 1 ? `, ${name.attributes.name} ` : `${name.attributes.name}`; // add comma after first author
+            {authors.map((name, index) => {
+              return index >= 1 ? `, ${name.name} ` : `${name.name}`; // add comma after first author
             })}
           </Text>
           <Text py="0" noOfLines={[3, 1, 2, 2, 3]} fontSize={['sm', 'md']}>
@@ -57,7 +57,7 @@ const BlogOverviewPage = () => {
     <PageWrapper>
       <Title name="KI-Lab News" textAlign="left" />
       {blogArticles.map((blogArticle) => (
-        <BlogPreview {...blogArticle.attributes} key={v4()} />
+        <BlogPreview {...blogArticle} key={v4()} />
       ))}
     </PageWrapper>
   );

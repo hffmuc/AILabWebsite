@@ -140,22 +140,22 @@ const Carousel = ({ news }) => {
               <Box px={[0, 4]} pb={[0, 4, 6]} key={v4()}>
                 <Card color={COLOR_TEXT} boxShadow="none" bg="none">
                   <CardBody p={0}>
-                    <Link href={newsElement.attributes.link}>
+                    <Link href={newsElement.link}>
                       <Image
                         src={
-                          newsElement.attributes.image.data.attributes.formats?.small
-                            ? newsElement.attributes.image.data.attributes.formats.small.url
-                            : newsElement.attributes.image.data.attributes.url
+                          newsElement.image.formats?.small
+                            ? newsElement.image.formats.small.url
+                            : newsElement.image.url
                         }
                         borderRadius="0"
                       />
                     </Link>
 
                     <Stack mt={[4, 6]} spacing="3" px={[4, 0]} pb={[4, 2]}>
-                      <Link fontWeight="bold" href={newsElement.attributes.link}>
-                        {newsElement.attributes.title}
+                      <Link fontWeight="bold" href={newsElement.link}>
+                        {newsElement.title}
                       </Link>
-                      <Box>{newsElement.attributes.shortDescription}</Box>
+                      <Box>{newsElement.shortDescription}</Box>
                     </Stack>
                   </CardBody>
                 </Card>

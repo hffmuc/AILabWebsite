@@ -22,18 +22,4 @@ const ToolTag = ({ tag, isActivated, onClick }) => {
   );
 };
 
-ToolTag.propTypes = {
-  tag: PropTypes.shape({
-    name: PropTypes.string,
-    color: PropTypes.string
-  }).isRequired,
-  isActivated: PropTypes.bool,
-  onClick: PropTypes.func
-};
-
-ToolTag.defaultProps = {
-  isActivated: undefined,
-  onClick: undefined
-};
-
 export default ToolTag;

@@ -7,17 +7,11 @@ export const getMediaprojectsList = async () => {
   const query = `
   {
   kiMedienprojekts(sort: "releaseYear:desc") {
-    data {
-      attributes {
         name
         description
         releaseYear
         image {
-          data {
-            attributes {
               url
-            }
-          }
         }
         videoLink
         videoLink2
@@ -25,55 +19,41 @@ export const getMediaprojectsList = async () => {
         link
         HFFproject
       }
-    }
-  }
 }
       `;
 
   const res = await graphql(query);
 
-  res.data.kiMedienprojekts.data.forEach((medienprojekt) => {
-    if (medienprojekt.attributes.videoLink) {
+  res.data.kiMedienprojekts.forEach((medienprojekt) => {
+    if (medienprojekt.videoLink) {
       // eslint-disable-next-line no-param-reassign
-      medienprojekt.attributes.videoLink = replaceYoutubeNoCookie(
-        medienprojekt.attributes.videoLink
-      );
+      medienprojekt.videoLink = replaceYoutubeNoCookie(medienprojekt.videoLink);
       // eslint-disable-next-line no-param-reassign
-      medienprojekt.attributes.videoLink = replaceVimeoLinkNoCookie(
-        medienprojekt.attributes.videoLink
-      );
+      medienprojekt.videoLink = replaceVimeoLinkNoCookie(medienprojekt.videoLink);
     }
 
-    if (medienprojekt.attributes.videoLink2) {
+    if (medienprojekt.videoLink2) {
       // eslint-disable-next-line no-param-reassign
-      medienprojekt.attributes.videoLink2 = replaceYoutubeNoCookie(
-        medienprojekt.attributes.videoLink2
-      );
+      medienprojekt.videoLink2 = replaceYoutubeNoCookie(medienprojekt.videoLink2);
       // eslint-disable-next-line no-param-reassign
-      medienprojekt.attributes.videoLink2 = replaceVimeoLinkNoCookie(
-        medienprojekt.attributes.videoLink2
-      );
+      medienprojekt.videoLink2 = replaceVimeoLinkNoCookie(medienprojekt.videoLink2);
     }
   });
 
-  return res.data.kiMedienprojekts.data;
+  return res.data.kiMedienprojekts;
 };
 
 export const getMediaProjectsContent = async () => {
   const query = `
     {
   medienprojektePage {
-    data {
-      attributes {
         Introduction
       }
-    }
-  }
 }
 
     `;
 
   const res = await graphql(query);
 
-  return res.data.medienprojektePage.data.attributes.Introduction;
+  return res.data.medienprojektePage?.Introduction;
 };

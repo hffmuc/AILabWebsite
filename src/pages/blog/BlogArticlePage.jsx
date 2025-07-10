@@ -28,8 +28,8 @@ const BlogArticlePage = () => {
           {!isMobile && (
             <HStack mt={0} color={COLOR_TEXT} fontWeight="light" pb={7}>
               <Box>
-                {blogArticle?.authors?.data.map((author, index) => {
-                  return index >= 1 ? `, ${author.attributes.name} ` : `${author.attributes.name}`; // add comma after first author
+                {blogArticle?.authors?.map((author, index) => {
+                  return index >= 1 ? `, ${author.name} ` : `${author.name}`; // add comma after first author
                 })}
               </Box>
               <Box px={2}>|</Box>
@@ -40,8 +40,8 @@ const BlogArticlePage = () => {
           {isMobile && (
             <VStack mt={0} color={COLOR_TEXT} fontWeight="light" pb={7}>
               <Box>
-                {blogArticle?.authors?.data.map((author, index) => {
-                  return index >= 1 ? `, ${author.attributes.name} ` : `${author.attributes.name}`; // add comma after first author
+                {blogArticle?.authors?.map((author, index) => {
+                  return index >= 1 ? `, ${author.name} ` : `${author.name}`; // add comma after first author
                 })}
               </Box>
               <Box>{formatDate(blogArticle?.date)}</Box>
@@ -51,7 +51,7 @@ const BlogArticlePage = () => {
             {blogArticle?.shortDescription}
           </Text>
 
-          <Image src={blogArticle?.image?.data.attributes.url} w="100%" h="auto" />
+          <Image src={blogArticle?.image?.url} w="100%" h="auto" />
 
           <Box w="100%">{renderMarkdown(blogArticle?.content)}</Box>
         </VStack>

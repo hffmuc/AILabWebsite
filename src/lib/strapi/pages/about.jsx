@@ -5,58 +5,42 @@ export const getAboutContent = async () => {
   const query = `
     query {
         ueberUns {
-        data {
-            attributes {
             content
-            }
-        }
         }
     }
     `;
 
   const res = await graphql(query);
 
-  return res.data.ueberUns.data.attributes.content;
+  return res.data.ueberUns.content;
 };
 
 export const getTeamContent = async () => {
   const query = `
   query {
     ueberUns {
-    data {
-        attributes {
         our_team
-        }
-    }
     }
 }
     `;
 
   const res = await graphql(query);
 
-  return res.data.ueberUns.data.attributes.our_team;
+  return res.data.ueberUns.our_team;
 };
 
 export const getAboutPhoto = async () => {
   const query = `
   query {
     ueberUns {
-    data {
-        attributes {
-        image {
-            data {
-            attributes {
-                url
-            }
-            }
-        }
-        }
-    }
+      image {
+            url
+      }
     }
 }
       `;
 
   const res = await graphql(query);
 
-  return res.data.ueberUns.data.attributes.image.data.attributes.url;
+  return res.data.ueberUns.image.url;
 };

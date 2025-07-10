@@ -28,9 +28,6 @@ import FAQPage from './pages/faqPage/FAQPage';
 
 const HomePage = lazy(() => import('./pages/homePage/HomePage'));
 const ToolsPage = lazy(() => import('./pages/toolsPage/ToolsPage'));
-const AboutPage = lazy(() => import('./pages/aboutPage/AboutPage'));
-const TutorialsPage = lazy(() => import('./pages/tutorialsPage/TutorialsPage'));
-const EventsPage = lazy(() => import('./pages/eventsPage/EventsPage'));
 const BlogOverviewPage = lazy(() => import('./pages/blog/BlogOverview'));
 const BlogArticlePage = lazy(() => import('./pages/blog/BlogArticlePage'));
 
@@ -47,9 +44,6 @@ const App = () => {
           <Routes>
             <Route path={PATH_HOME} element={<HomePage />} />
             <Route path={PATH_TOOLS} element={<ToolsPage />} />
-            {/* <Route path={PATH_ABOUT} element={<AboutPage />} /> */}
-            <Route path={PATH_TUTORIALS} element={<TutorialsPage />} />
-            {/* <Route path={PATH_EVENTS} element={<EventsPage />} /> */}
             <Route path={PATH_FAQ} element={<FAQPage />} />
             <Route path={PATH_BLOG} element={<BlogOverviewPage />} />
             <Route path={PATH_BLOG_ARTICLE} element={<BlogArticlePage />} />

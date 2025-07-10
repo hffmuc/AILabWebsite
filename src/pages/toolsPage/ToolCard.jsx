@@ -42,44 +42,18 @@ const ToolCard = ({
   toolName,
   description,
   available_at_KI_Lab,
-  webToolLink,
-  developers,
-  githubLink,
+  webToolLink = '',
+  developers = '',
+  githubLink = '',
   softwareLink,
   googleCollabLink,
-  internalInfo,
   toolTags
 }) => {
-  const [localApplicationOS, setLocalApplicationOS] = useState(undefined); // application starts on mac or windows depending on backend response
-
-  useEffect(() => {
-    if (process.env.REACT_APP_LOCAL === 'true') {
-      // fetch('/isMac', {
-      //   method: 'GET',
-      //   headers: { 'Content-Type': 'application/json' }
-      // })
-      //   .then((res) => {
-      //     return res.json();
-      //   })
-      //   .then((json) => {
-      //     if (json.isMac && macApplication) {
-      //       setLocalApplicationOS(macApplication);
-      //     } else if (!json.isMac && windowsApplication) {
-      //       setLocalApplicationOS(windowsApplication);
-      //     }
-      //   });
-    }
-  }, []);
-
   return (
     <Card size={['md', 'sm']} textColor={COLOR_TEXT} background={COLOR_BACKGROUND}>
       <CardBody>
         <Image
-          src={
-            toolImage.data.attributes.formats?.small
-              ? toolImage.data.attributes.formats.small.url
-              : toolImage.data.attributes.url
-          }
+          src={toolImage.formats?.small ? toolImage.formats.small.url : toolImage.url}
           alt={toolName}
           borderRadius="md"
           w={['60%', '70%']}
@@ -98,8 +72,8 @@ const ToolCard = ({
           )}
           {toolTags.data ? (
             <HStack pt={1} pb={1}>
-              {toolTags.data.map((tag) => (
-                <ToolTag tag={tag.attributes} key={uuidv4()} />
+              {toolTags.map((tag) => (
+                <ToolTag tag={tag} key={uuidv4()} />
               ))}
             </HStack>
           ) : (
@@ -135,6 +109,7 @@ const ToolCard = ({
                 <Button
                   variant="solid"
                   backgroundColor={COLOR_PRIMARY}
+                  color={COLOR_TEXT}
                   h="100%"
                   p={2}
                   fontSize="sm"
@@ -178,36 +153,6 @@ const ToolCard = ({
       </CardFooter>
     </Card>
   );
-};
-
-ToolCard.propTypes = {
-  toolImage: PropTypes.shape({
-    url: PropTypes.string
-  }).isRequired,
-  toolName: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
-  description: PropTypes.string.isRequired,
-  webToolLink: PropTypes.string,
-  developers: PropTypes.string,
-  githubLink: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
-  internalInfo: PropTypes.string,
-  tagsCollection: PropTypes.shape({
-    items: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string,
-        color: PropTypes.string
-      })
-    )
-  })
-};
-
-ToolCard.defaultProps = {
-  webToolLink: '',
-  developers: '',
-  githubLink: '',
-  internalInfo: '',
-  tagsCollection: undefined
 };
 
 export default ToolCard;

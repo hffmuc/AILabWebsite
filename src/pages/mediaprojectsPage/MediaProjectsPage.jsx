@@ -28,7 +28,7 @@ const MediaProjectsPage = () => {
       </Box>
       <VStack spacing={8} divider={<Divider />}>
         {mediaprojects.map((mediaproject) => (
-          <MediaProject mediaproject={mediaproject} key={mediaproject.attributes.name} />
+          <MediaProject mediaproject={mediaproject} key={mediaproject.name} />
         ))}
       </VStack>
     </PageWrapper>
@@ -39,69 +39,66 @@ const MediaProject = ({ mediaproject }) => {
   return (
     <Flex gap={8} w="100%" wrap="wrap">
       <VStack w="100%" align="start">
-        {mediaproject.attributes.link ? (
-          <Link href={mediaproject.attributes.link} target="_blank" rel="noreferrer">
+        {mediaproject.link ? (
+          <Link href={mediaproject.link} target="_blank" rel="noreferrer">
             <Box textAlign="left" fontSize="lg" fontWeight="bold">
-              {mediaproject.attributes.name}{' '}
-              {mediaproject.attributes.releaseYear && `(${mediaproject.attributes.releaseYear})`}
+              {mediaproject.name} {mediaproject.releaseYear && `(${mediaproject.releaseYear})`}
             </Box>
           </Link>
         ) : (
           <Box textAlign="left" fontSize="lg" fontWeight="bold">
-            {mediaproject.attributes.name}{' '}
-            {mediaproject.attributes.releaseYear && `(${mediaproject.attributes.releaseYear})`}
+            {mediaproject.name} {mediaproject.releaseYear && `(${mediaproject.releaseYear})`}
           </Box>
         )}
-        {mediaproject.attributes.artists && (
+        {mediaproject.artists && (
           <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
-            von {mediaproject.attributes.artists}
+            von {mediaproject.artists}
           </Box>
         )}
 
-        <Box>{renderMarkdown(mediaproject.attributes.description)}</Box>
+        <Box>{renderMarkdown(mediaproject.description)}</Box>
       </VStack>
 
-      {mediaproject.attributes.image?.data?.attributes?.url && (
+      {mediaproject.image?.url && (
         <Box flex="1" display="flex">
           <Image
             maxW="800px"
             minW={['100%', '100%', '100%', 'initial']}
             w="100%"
             h="auto"
-            src={mediaproject.attributes.image.data.attributes.url}
+            src={mediaproject.image.url}
           />
         </Box>
       )}
 
-      {mediaproject.attributes.videoLink && (
+      {mediaproject.videoLink && (
         <AspectRatio
           ratio={16 / 9}
           minW={['100%', '100%', '100%', 'initial']}
           maxW="800px"
           flex="1">
           <iframe
-            title={mediaproject.attributes.videoLink}
+            title={mediaproject.videoLink}
             width="560px"
             height="315px"
-            src={mediaproject.attributes.videoLink}
+            src={mediaproject.videoLink}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
         </AspectRatio>
       )}
-      {mediaproject.attributes.videoLink2 && (
+      {mediaproject.videoLink2 && (
         <AspectRatio
           ratio={16 / 9}
           flex="1"
           maxW="800px"
           minW={['100%', '100%', '100%', 'initial']}>
           <iframe
-            title={mediaproject.attributes.videoLink2}
+            title={mediaproject.videoLink2}
             width="560px"
             height="315px"
-            src={mediaproject.attributes.videoLink2}
-            frameBorder="0"
+            src={mediaproject.videoLink2}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />

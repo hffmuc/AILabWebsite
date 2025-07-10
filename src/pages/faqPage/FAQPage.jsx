@@ -32,11 +32,11 @@ const FAQPage = () => {
             <AccordionItem key={v4()}>
               <AccordionButton>
                 <Box flex="1" textAlign="left">
-                  {faq.attributes.Question}
+                  {faq.Question}
                 </Box>
                 <AccordionIcon />
               </AccordionButton>
-              <AccordionPanel pb={4}>{renderMarkdown(faq.attributes.Answer)}</AccordionPanel>
+              <AccordionPanel pb={4}>{renderMarkdown(faq.Answer)}</AccordionPanel>
             </AccordionItem>
           ))}
       </Accordion>
