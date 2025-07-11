@@ -1,5 +1,4 @@
 /* eslint-disable no-shadow */
-/* eslint-disable react/no-array-index-key */
 
 import Slider from 'react-slick';
 import {

@@ -1,11 +1,10 @@
-// eslint-disable-next-line import/prefer-default-export
 export const graphql = async (query) => {
   const r = await fetch('/graphql', {
     method: 'POST',
-    headers: process.env.REACT_APP_STRAPI_API_TOKEN
+    headers: import.meta.env.VITE_STRAPI_API_TOKEN
       ? {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${process.env.REACT_APP_STRAPI_API_TOKEN}`
+          Authorization: `Bearer ${import.meta.env.VITE_STRAPI_API_TOKEN}`
         }
       : {
           'Content-Type': 'application/json'

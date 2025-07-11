@@ -2,24 +2,19 @@ import { Grid, GridItem, Box, Flex, Link } from '@chakra-ui/react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { useEffect, useState, lazy, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import Title from './components/ui/Title';
-import ToolCard from './pages/toolsPage/ToolCard';
+import React from 'react';
 
 import {
-  PATH_ABOUT,
   PATH_BLOG,
   PATH_BLOG_ARTICLE,
   PATH_CONTACT,
-  PATH_EVENTS,
   PATH_FAQ,
   PATH_FESTIVALS,
   PATH_FILMS,
   PATH_HOME,
   PATH_MEDIAPROJECTS,
   PATH_TOOLS,
-  PATH_TUTORIALS
 } from './constants/pathNames';
-import PageWrapper from './components/ui/PageWrapper';
 import ContactPage from './pages/contactPage/ContactPage';
 import FestivalsPage from './pages/festivalsPage/FestivalsPage';
 import FilmPage from './pages/filmPage/FilmPage';
