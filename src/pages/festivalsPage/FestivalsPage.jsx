@@ -45,13 +45,13 @@ const FestivalsPage = () => {
     <PageWrapper>
       <Title name={t('festivals.title')} textAlign="left" />
       {/* <Container maxW="container.md" p={4}> */}
-      <Box pb={12} mt={3} color={COLOR_TEXT_SECONDARY} w="100%">
+      <Box pb={6} mt={3} color={COLOR_TEXT_SECONDARY} w="100%">
         {renderMarkdown(introduction)}
       </Box>
-      <VStack spacing={8} align="stretch" divider={<Divider mt={8} />}>
+      <VStack spacing={6} align="stretch" divider={<Divider />}>
         {Object.keys(festivalsByMonth).map((month) => (
           <Box key={month}>
-            <Title name={MONTH_NAMES[month]} />
+            <Box fontSize="xl" mb={4}>{MONTH_NAMES[month]}</Box>
             <VStack spacing={4} align="start">
               {festivalsByMonth[month].map((festival) => (
                 <Festival festival={festival} key={festival.name} />
