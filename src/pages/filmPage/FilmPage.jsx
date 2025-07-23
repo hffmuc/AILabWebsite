@@ -1,23 +1,34 @@
 import { useState, useEffect } from 'react';
-import { AspectRatio, Box, Container, Divider, Flex, Link, VStack, Wrap } from '@chakra-ui/react';
+import {
+  AspectRatio,
+  Box,
+  Container,
+  Divider,
+  Flex,
+  Link,
+  VStack,
+  Wrap,
+} from '@chakra-ui/react';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import renderMarkdown from '../../helpers/renderMarkdown';
 import { getFilmList, getFilmsContent } from '../../lib/strapi/pages/films';
 import { COLOR_SECONDARY, COLOR_TEXT_SECONDARY } from '../../constants/styles';
+import { useTranslation } from 'react-i18next';
 
 const FilmPage = () => {
   const [films, setFilms] = useState([]);
   const [introduction, setIntroduction] = useState();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     getFilmList().then((res) => setFilms(res));
     getFilmsContent().then((res) => setIntroduction(res));
-  }, []);
+  }, [i18n.language]);
 
   return (
     <PageWrapper>
-      <Title name="KI Filme" textAlign="left" />
+      <Title name={t('films.title')} textAlign="left" />
       {/* <Container maxW="container.md" p={4}> */}
       <Box pb={12} mt={3} color={COLOR_TEXT_SECONDARY} w="100%">
         {renderMarkdown(introduction)}
@@ -33,6 +44,7 @@ const FilmPage = () => {
 };
 
 const Film = ({ film }) => {
+  const { t, i18n } = useTranslation();
   return (
     <Wrap spacing={8} w="100%">
       <VStack flex="1" align="stretch">
@@ -49,7 +61,7 @@ const Film = ({ film }) => {
         )}
         {film.filmmaker && (
           <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
-            von {film.filmmaker} {film.length && `| ${film.length} min`}
+            {t('by')} {film.filmmaker} {film.length && `| ${film.length} min`}
           </Box>
         )}
 
@@ -57,7 +69,11 @@ const Film = ({ film }) => {
       </VStack>
 
       {film.videoLink && (
-        <AspectRatio ratio={16 / 9} w={['100%', '100%', '100%', '50%', '40%']} maxW="800px">
+        <AspectRatio
+          ratio={16 / 9}
+          w={['100%', '100%', '100%', '50%', '40%']}
+          maxW="800px"
+        >
           <iframe
             title={film.filmtitle}
             width="560px"

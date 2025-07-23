@@ -1,5 +1,3 @@
-/* eslint-disable no-shadow */
-
 import Slider from 'react-slick';
 import {
   Link,
@@ -16,7 +14,7 @@ import {
   Text,
   Image,
   Divider,
-  ButtonGroup
+  ButtonGroup,
 } from '@chakra-ui/react';
 
 import 'slick-carousel/slick/slick.css';
@@ -52,9 +50,10 @@ const PrevArrow = (props) => {
         cursor: 'pointer',
         border: 'none',
         outline: 'none',
-        background: 'transparent'
+        background: 'transparent',
       }}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <ChevronLeftIcon w="100%" h="100%" p="0" />
     </Box>
   );
@@ -84,9 +83,10 @@ const NextArrow = (props) => {
         // right: '-30px',
         border: 'none',
         outline: 'none',
-        background: 'transparent'
+        background: 'transparent',
       }}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       <ChevronRightIcon w="100%" h="100%" p="0" />
     </Box>
   );
@@ -110,22 +110,22 @@ const Carousel = ({ news }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3
-        }
+          slidesToShow: 3,
+        },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 1
-        }
+          slidesToShow: 1,
+        },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1
-        }
-      }
-    ]
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -133,28 +133,26 @@ const Carousel = ({ news }) => {
       {news && (
         <Slider {...sliderSettings}>
           {news?.map((newsElement) => {
-            // eslint-disable-next-line no-underscore-dangle
-
             return (
               <Box px={[0, 4]} pb={[0, 4, 6]} key={v4()}>
                 <Card color={COLOR_TEXT} boxShadow="none" bg="none">
                   <CardBody p={0}>
-                    <Link href={newsElement.link}>
+                    <Link href={newsElement?.link}>
                       <Image
                         src={
-                          newsElement.image.formats?.small
-                            ? newsElement.image.formats.small.url
-                            : newsElement.image.url
+                          newsElement?.image.formats?.small
+                            ? newsElement?.image.formats.small.url
+                            : newsElement?.image.url
                         }
                         borderRadius="0"
                       />
                     </Link>
 
                     <Stack mt={[4, 6]} spacing="3" px={[4, 0]} pb={[4, 2]}>
-                      <Link fontWeight="bold" href={newsElement.link}>
-                        {newsElement.title}
+                      <Link fontWeight="bold" href={newsElement?.link}>
+                        {newsElement?.title}
                       </Link>
-                      <Box>{newsElement.shortDescription}</Box>
+                      <Box>{newsElement?.shortDescription}</Box>
                     </Stack>
                   </CardBody>
                 </Card>

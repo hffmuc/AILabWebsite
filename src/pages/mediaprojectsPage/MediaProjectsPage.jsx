@@ -1,27 +1,37 @@
 import { useState, useEffect } from 'react';
-import { AspectRatio, Box, Divider, Flex, Link, VStack, Image } from '@chakra-ui/react';
+import {
+  AspectRatio,
+  Box,
+  Divider,
+  Flex,
+  Link,
+  VStack,
+  Image,
+} from '@chakra-ui/react';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import renderMarkdown from '../../helpers/renderMarkdown';
 import {
   getMediaProjectsContent,
-  getMediaprojectsList
+  getMediaprojectsList,
 } from '../../lib/strapi/pages/mediaprojects';
+import { useTranslation } from 'react-i18next';
 import { COLOR_SECONDARY, COLOR_TEXT_SECONDARY } from '../../constants/styles';
 
 const MediaProjectsPage = () => {
   const [introduction, setIntroduction] = useState();
 
   const [mediaprojects, setMediaprojects] = useState([]);
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     getMediaprojectsList().then((res) => setMediaprojects(res));
     getMediaProjectsContent().then((res) => setIntroduction(res));
-  }, []);
+  }, [i18n.language]);
 
   return (
     <PageWrapper>
-      <Title name="KI Medienprojekte" textAlign="left" />
+      <Title name={t('mediaprojects.title')} textAlign="left" />
       {/* <Container maxW="container.md" p={4}> */}
       <Box pb={12} mt={3} color={COLOR_TEXT_SECONDARY} w="100%">
         {renderMarkdown(introduction)}
@@ -42,12 +52,14 @@ const MediaProject = ({ mediaproject }) => {
         {mediaproject.link ? (
           <Link href={mediaproject.link} target="_blank" rel="noreferrer">
             <Box textAlign="left" fontSize="lg" fontWeight="bold">
-              {mediaproject.name} {mediaproject.releaseYear && `(${mediaproject.releaseYear})`}
+              {mediaproject.name}{' '}
+              {mediaproject.releaseYear && `(${mediaproject.releaseYear})`}
             </Box>
           </Link>
         ) : (
           <Box textAlign="left" fontSize="lg" fontWeight="bold">
-            {mediaproject.name} {mediaproject.releaseYear && `(${mediaproject.releaseYear})`}
+            {mediaproject.name}{' '}
+            {mediaproject.releaseYear && `(${mediaproject.releaseYear})`}
           </Box>
         )}
         {mediaproject.artists && (
@@ -76,7 +88,8 @@ const MediaProject = ({ mediaproject }) => {
           ratio={16 / 9}
           minW={['100%', '100%', '100%', 'initial']}
           maxW="800px"
-          flex="1">
+          flex="1"
+        >
           <iframe
             title={mediaproject.videoLink}
             width="560px"
@@ -93,7 +106,8 @@ const MediaProject = ({ mediaproject }) => {
           ratio={16 / 9}
           flex="1"
           maxW="800px"
-          minW={['100%', '100%', '100%', 'initial']}>
+          minW={['100%', '100%', '100%', 'initial']}
+        >
           <iframe
             title={mediaproject.videoLink2}
             width="560px"

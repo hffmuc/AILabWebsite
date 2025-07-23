@@ -4,30 +4,31 @@ import './index.css';
 import './font-style.css';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import App from './App';
+import './lib/i18n/i18n.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const theme = extendTheme({
   fonts: {
-    body: 'Roboto'
+    body: 'Roboto',
   },
   components: {
     Heading: {
       heading: {
         sizes: {
           xl: {
-            fontFamily: 'Roboto Mono'
+            fontFamily: 'Roboto Mono',
           },
           lg: {
-            fontFamily: 'Roboto Mono'
-          }
-        }
-      }
-    }
+            fontFamily: 'Roboto Mono',
+          },
+        },
+      },
+    },
   },
   colors: {
-    text: '#FFFFFF'
-  }
+    text: '#FFFFFF',
+  },
 });
 
 root.render(

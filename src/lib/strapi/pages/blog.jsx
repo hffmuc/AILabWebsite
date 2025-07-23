@@ -1,10 +1,9 @@
-/* eslint-disable import/prefer-default-export */
 import { graphql } from '..';
 
 export const getBlogArticles = async () => {
   const query = `
-  query{
-      blogArticles(sort: "date:desc") {
+  query ($locale: I18NLocaleCode){
+      blogArticles(sort: "date:desc", locale: $locale) {
       title
       slug
           authors {
@@ -31,8 +30,8 @@ export const getBlogArticles = async () => {
 
 export const getBlogArticle = async (slug) => {
   const query = `
-  query GetBlogArticle {
-    blogArticles(filters: { slug: { eq: "${slug}" } }) {
+  query GetBlogArticle ($locale: I18NLocaleCode) {
+    blogArticles(filters: { slug: { eq: "${slug}" } }, locale: $locale) {
       title
       slug
       authors {

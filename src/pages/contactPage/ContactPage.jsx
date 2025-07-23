@@ -2,18 +2,25 @@ import React from 'react';
 import { Text, Box } from '@chakra-ui/react';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
+import { useState, useEffect } from 'react';
+import { getContactContent } from '../../lib/strapi/pages/contact';
+import renderMarkdown from '../../helpers/renderMarkdown';
+import { useTranslation } from 'react-i18next';
 
 const ContactPage = () => {
+  const [content, setContent] = useState('');
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    getContactContent().then((res) => {
+      setContent(res);
+    });
+  }, [i18n.language]);
+
   return (
     <PageWrapper>
-      <Title name="Kontakt" textAlign="left" />
-      <Text>Für Fragen, Anregungen oder Projektideen schreibt uns gerne eine E-Mail. </Text>
-      <Box>
-        <Box fontWeight="bold">Teamassistenz Iris Miller</Box> +49 89 68957 2100
-        <Box>
-          <a href="mailto:i.miller@hff-muc.de">i.miller@hff-muc.de</a>
-        </Box>
-      </Box>
+      <Title name={t('contact.title')} textAlign="left" />
+      {renderMarkdown(content)}
     </PageWrapper>
   );
 };

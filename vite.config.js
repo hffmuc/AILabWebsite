@@ -7,11 +7,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/graphql': {
-        target: 'http://localhost:1339/',
+        target: 'http://localhost:1338/',
         changeOrigin: true
       },
       '/uploads': {
-        target: 'http://localhost:1339/',
+        target: 'http://localhost:1338/',
         changeOrigin: true
       }
     }

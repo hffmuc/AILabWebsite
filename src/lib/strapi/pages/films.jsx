@@ -1,12 +1,11 @@
-/* eslint-disable import/prefer-default-export */
 import { graphql } from '..';
 import replaceVimeoLinkNoCookie from '../../../helpers/replaceVimeoLink';
 import replaceYoutubeNoCookie from '../../../helpers/replaceYoutubeNoCookie';
 
 export const getFilmList = async () => {
   const query = `
-{
-  kiFilmes(sort: "releaseYear:desc") {
+query($locale: I18NLocaleCode){
+  kiFilmes(sort: "releaseYear:desc", locale: $locale) {
         filmtitle
         description
         videoLink
@@ -23,9 +22,8 @@ export const getFilmList = async () => {
 
   res.data.kiFilmes.forEach((film) => {
     if (film.videoLink) {
-      // eslint-disable-next-line no-param-reassign
       film.videoLink = replaceYoutubeNoCookie(film.videoLink);
-      // eslint-disable-next-line no-param-reassign
+
       film.videoLink = replaceVimeoLinkNoCookie(film.videoLink);
     }
   });
@@ -35,8 +33,8 @@ export const getFilmList = async () => {
 
 export const getFilmsContent = async () => {
   const query = `
-    query {
-        filmPage {
+    query ($locale: I18NLocaleCode) {
+        filmPage (locale: $locale) {
             Introduction
         }
     }

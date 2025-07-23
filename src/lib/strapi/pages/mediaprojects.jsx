@@ -1,12 +1,11 @@
-/* eslint-disable import/prefer-default-export */
 import { graphql } from '..';
 import replaceVimeoLinkNoCookie from '../../../helpers/replaceVimeoLink';
 import replaceYoutubeNoCookie from '../../../helpers/replaceYoutubeNoCookie';
 
 export const getMediaprojectsList = async () => {
   const query = `
-  {
-  kiMedienprojekts(sort: "releaseYear:desc") {
+  query ($locale: I18NLocaleCode){
+  kiMedienprojekts(sort: "releaseYear:desc", locale: $locale) {
         name
         description
         releaseYear
@@ -26,17 +25,21 @@ export const getMediaprojectsList = async () => {
 
   res.data.kiMedienprojekts.forEach((medienprojekt) => {
     if (medienprojekt.videoLink) {
-      // eslint-disable-next-line no-param-reassign
       medienprojekt.videoLink = replaceYoutubeNoCookie(medienprojekt.videoLink);
-      // eslint-disable-next-line no-param-reassign
-      medienprojekt.videoLink = replaceVimeoLinkNoCookie(medienprojekt.videoLink);
+
+      medienprojekt.videoLink = replaceVimeoLinkNoCookie(
+        medienprojekt.videoLink
+      );
     }
 
     if (medienprojekt.videoLink2) {
-      // eslint-disable-next-line no-param-reassign
-      medienprojekt.videoLink2 = replaceYoutubeNoCookie(medienprojekt.videoLink2);
-      // eslint-disable-next-line no-param-reassign
-      medienprojekt.videoLink2 = replaceVimeoLinkNoCookie(medienprojekt.videoLink2);
+      medienprojekt.videoLink2 = replaceYoutubeNoCookie(
+        medienprojekt.videoLink2
+      );
+
+      medienprojekt.videoLink2 = replaceVimeoLinkNoCookie(
+        medienprojekt.videoLink2
+      );
     }
   });
 
@@ -45,8 +48,8 @@ export const getMediaprojectsList = async () => {
 
 export const getMediaProjectsContent = async () => {
   const query = `
-    {
-  medienprojektePage {
+    query ($locale: I18NLocaleCode) {
+  medienprojektePage (locale: $locale) {
         Introduction
       }
 }

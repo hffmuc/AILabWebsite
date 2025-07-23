@@ -9,11 +9,10 @@ import {
   FormControl,
   FormLabel,
   Tooltip,
-  Switch
+  Switch,
 } from '@chakra-ui/react';
 
 import { v4 as uuidv4 } from 'uuid';
-import { CheckCircleIcon } from '@chakra-ui/icons';
 import Title from '../../components/ui/Title';
 import ToolCard from './ToolCard';
 import ToolTag from '../../components/ui/ToolTag';
@@ -21,10 +20,16 @@ import {
   COLOR_BACKGROUND,
   COLOR_BACKGROUND_HOVER,
   COLOR_BACKGROUND_SOLID,
-  COLOR_TEXT_SECONDARY
+  COLOR_TEXT_SECONDARY,
 } from '../../constants/styles';
-import { getTags, getToolsWithTags } from '../../lib/strapi/pages/tools';
+import {
+  getTags,
+  getToolsIntroduction,
+  getToolsWithTags,
+} from '../../lib/strapi/pages/tools';
 import PageWrapper from '../../components/ui/PageWrapper';
+import renderMarkdown from '../../helpers/renderMarkdown';
+import { useTranslation } from 'react-i18next';
 
 const ToolsPage = () => {
   const [tags, setTags] = useState([]);
@@ -32,6 +37,8 @@ const ToolsPage = () => {
   const [activeTags, setActiveTags] = useState(new Set());
   const [availableToolsChecked, setAvailableToolsChecked] = useState(false);
   const [sortBy, setSortBy] = useState('Default');
+  const [introduction, setIntroduction] = useState('');
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     getTags().then((res) => {
@@ -42,25 +49,17 @@ const ToolsPage = () => {
       setTools(res);
       // console.log(res);
     });
-  }, []);
+    getToolsIntroduction().then((res) => {
+      setIntroduction(res);
+      // console.log(res);
+    });
+  }, [i18n.language]);
 
   useEffect(() => {
     getToolsWithTags(activeTags, sortBy, availableToolsChecked).then((res) => {
       setTools(res);
     });
-  }, [activeTags, sortBy, availableToolsChecked]);
-
-  // TODO: STRAPI
-  // const IsToolActive = (tool) => {
-  //   if (activeTags.size === 0) {
-  //     return true;
-  //   }
-  //   const correspondingTags = tool.tagsCollection.items.filter((el) => activeTags.has(el.name)); // TODO : anpassen an contentful
-  //   if (correspondingTags.length > 0) {
-  //     return true;
-  //   }
-  //   return false;
-  // };
+  }, [activeTags, sortBy, availableToolsChecked, i18n.language]);
 
   const toggleTag = (tagName) => {
     const newActiveTags = new Set(activeTags);
@@ -97,18 +96,16 @@ const ToolsPage = () => {
     <PageWrapper>
       <VStack spacing={0}>
         <Box w="100%">
-          <Title name="KI Tools" textAlign="left" />
+          <Title name={t('tools.title')} textAlign="left" />
         </Box>
         <Box pb={6} mt={3} color={COLOR_TEXT_SECONDARY} w="100%">
-          Hier findet ihr eine Sammlung an KI Tools für Bild, Video, Ton und Sound. Viele davon sind
-          Web-Tools und ihr könnt sie direkt über die verlinkte Webseite ausprobieren, andere
-          funktionieren nur lokal und können ggfs. im KI Lab ausprobiert werden.
+          {renderMarkdown(introduction)}
         </Box>
 
         <Wrap pb={4} w="100%" spacing={4}>
           <WrapItem alignItems="center">
             <Wrap>
-              <Box marginRight={2}>Ergebnisse filtern:</Box>
+              <Box marginRight={2}>{t('tools.filterResults')}</Box>
 
               {tags.map((tag) => (
                 <WrapItem alignItems="center" key={uuidv4()}>
@@ -124,7 +121,7 @@ const ToolsPage = () => {
           </WrapItem>
           {/* <Spacer /> */}
           <WrapItem alignItems="center">
-            <Box marginRight={2}>Sortieren nach:</Box>
+            <Box marginRight={2}>{t('tools.sortBy')}</Box>
             <Select
               bg={COLOR_BACKGROUND}
               color="white"
@@ -135,16 +132,25 @@ const ToolsPage = () => {
                 setSortBy(event.target.value);
               }}
               cursor="pointer"
-              _hover={{ bg: COLOR_BACKGROUND_HOVER }}>
+              _hover={{ bg: COLOR_BACKGROUND_HOVER }}
+            >
               <option
                 value="Default"
-                style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
-                Zuletzt hinzugefügt
+                style={{
+                  backgroundColor: COLOR_BACKGROUND_SOLID,
+                  color: 'white',
+                }}
+              >
+                {t('tools.sortOptions.date')}
               </option>
               <option
                 value="Name"
-                style={{ backgroundColor: COLOR_BACKGROUND_SOLID, color: 'white' }}>
-                Name
+                style={{
+                  backgroundColor: COLOR_BACKGROUND_SOLID,
+                  color: 'white',
+                }}
+              >
+                {t('tools.sortOptions.name')}
               </option>
             </Select>
           </WrapItem>
@@ -157,15 +163,19 @@ const ToolsPage = () => {
                 isChecked={availableToolsChecked}
               />
               <FormLabel mb="0" fontWeight="normal">
-                <Tooltip label="Diese Tools sind entweder lokal im KI-Lab installiert oder wir besitzen eine Lizenz dafür">
-                  nur im KI-Lab verfügbare Tools anzeigen
+                <Tooltip label={t('tools.availableToolsTooltip')}>
+                  {t('tools.showAvailableTools')}
                 </Tooltip>
               </FormLabel>
             </FormControl>
           </WrapItem>
         </Wrap>
 
-        <SimpleGrid marginTop="20px" spacing="20px" columns={[1, 2, 3, 3, 4, 5]}>
+        <SimpleGrid
+          marginTop="20px"
+          spacing="20px"
+          columns={[1, 2, 3, 3, 4, 5]}
+        >
           {tools?.map((tool) => (
             <ToolCard {...tool} key={uuidv4()} />
           ))}

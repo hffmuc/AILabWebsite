@@ -1,24 +1,38 @@
-/* eslint-disable no-nested-ternary */
 import { useEffect, useState } from 'react';
-import { Heading, Box, VStack, Text, Divider, Container, Link } from '@chakra-ui/react';
+import {
+  Heading,
+  Box,
+  VStack,
+  Text,
+  Divider,
+  Container,
+  Link,
+} from '@chakra-ui/react';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
 import { MONTH_NAMES, monthOrder } from '../../constants/monthNames';
-import { getFestivalList, getFestivalsContent } from '../../lib/strapi/pages/festivals';
+import {
+  getFestivalList,
+  getFestivalsContent,
+} from '../../lib/strapi/pages/festivals';
 import { COLOR_SECONDARY, COLOR_TEXT_SECONDARY } from '../../constants/styles';
 import renderMarkdown from '../../helpers/renderMarkdown';
+import { useTranslation } from 'react-i18next';
 
 const FestivalsPage = () => {
   const [festivals, setFestivals] = useState([]);
   const [introduction, setIntroduction] = useState();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     getFestivalList().then((res) => setFestivals(res));
     getFestivalsContent().then((res) => setIntroduction(res));
-  }, []);
+  }, [i18n.language]);
 
   const festivalsByMonth = monthOrder.reduce((acc, month) => {
-    const filteredFestivals = festivals.filter((festival) => festival.month === month);
+    const filteredFestivals = festivals.filter(
+      (festival) => festival.month === month
+    );
     if (filteredFestivals.length > 0) {
       acc[month] = filteredFestivals;
     }
@@ -29,7 +43,7 @@ const FestivalsPage = () => {
 
   return (
     <PageWrapper>
-      <Title name="KI Festivals" textAlign="left" />
+      <Title name={t('festivals.title')} textAlign="left" />
       {/* <Container maxW="container.md" p={4}> */}
       <Box pb={12} mt={3} color={COLOR_TEXT_SECONDARY} w="100%">
         {renderMarkdown(introduction)}
@@ -47,7 +61,7 @@ const FestivalsPage = () => {
         ))}
         {festivalsWithoutMonth.length > 0 && (
           <Box>
-            <Title name="Other Festivals" />
+            <Title name={t('festivals.otherFestivals')} />
             <VStack spacing={3} align="start">
               {festivalsWithoutMonth.map((festival) => (
                 <Festival festival={festival} key={festival.name} />
@@ -63,9 +77,22 @@ const FestivalsPage = () => {
 
 const Festival = ({ festival }) => {
   return (
-    <Box key={festival.name} p={4} w="100%" borderWidth="1px" borderRadius="lg" boxShadow="md">
+    <Box
+      key={festival.name}
+      p={4}
+      w="100%"
+      borderWidth="1px"
+      borderRadius="lg"
+      boxShadow="md"
+    >
       {festival.link ? (
-        <Link fontSize="lg" fontWeight="bold" href={festival.link} target="_blank" rel="noreferrer">
+        <Link
+          fontSize="lg"
+          fontWeight="bold"
+          href={festival.link}
+          target="_blank"
+          rel="noreferrer"
+        >
           {festival.name}
         </Link>
       ) : (

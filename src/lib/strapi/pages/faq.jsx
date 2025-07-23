@@ -1,10 +1,9 @@
-/* eslint-disable import/prefer-default-export */
 import { graphql } from '..';
 
 export const getFAQs = async () => {
   const query = `
-query {
-  faqs(sort: "publishedAt:desc") {
+query ($locale: I18NLocaleCode) {
+  faqs(sort: "publishedAt:desc", locale: $locale) {
         Question
         Answer
   }

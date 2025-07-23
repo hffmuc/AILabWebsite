@@ -19,7 +19,8 @@ const Title = ({ name, fontFamily = 'Roboto', textAlign = 'left' }) => {
       fontSize={20}
       fontWeight="light"
       fontFamily={fontFamily}
-      textAlign={textAlign}>
+      textAlign={textAlign}
+    >
       {name}
     </Heading>
   );

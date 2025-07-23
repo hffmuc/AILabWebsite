@@ -9,16 +9,19 @@ const formatDate = (
     weekday: includeDay ? 'long' : undefined,
     year: 'numeric',
     month: 'long',
-    day: includeDay ? 'numeric' : undefined
+    day: includeDay ? 'numeric' : undefined,
   };
 
   const timeOptions = {
     hour: includeTime ? 'numeric' : undefined,
     minute: includeTime ? 'numeric' : undefined,
-    hour12: false
+    hour12: false,
   };
 
-  const startDateString = new Date(startDate).toLocaleDateString('de-DE', dateOptions);
+  const startDateString = new Date(startDate).toLocaleDateString(
+    'de-DE',
+    dateOptions
+  );
   let newDateString = startDateString;
 
   if (includeTime) {
@@ -26,7 +29,10 @@ const formatDate = (
   }
 
   if (endDate) {
-    const endDateString = new Date(endDate).toLocaleDateString('de-DE', dateOptions);
+    const endDateString = new Date(endDate).toLocaleDateString(
+      'de-DE',
+      dateOptions
+    );
 
     if (endDateString !== startDateString) {
       newDateString += ` - ${endDateString}`;

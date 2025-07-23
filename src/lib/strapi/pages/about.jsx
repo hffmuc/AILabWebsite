@@ -1,10 +1,9 @@
 import { graphql } from '..';
-// import { getStrapiImage } from '../../../helpers/getStrapiImage';
 
 export const getAboutContent = async () => {
   const query = `
-    query {
-        ueberUns {
+    query ($locale: I18NLocaleCode){
+        ueberUns (locale: $locale) {
             content
         }
     }
@@ -17,8 +16,8 @@ export const getAboutContent = async () => {
 
 export const getTeamContent = async () => {
   const query = `
-  query {
-    ueberUns {
+  query ($locale: I18NLocaleCode) {
+    ueberUns (locale: $locale) {
         our_team
     }
 }
@@ -31,8 +30,8 @@ export const getTeamContent = async () => {
 
 export const getAboutPhoto = async () => {
   const query = `
-  query {
-    ueberUns {
+  query ($locale: I18NLocaleCode) {
+    ueberUns (locale: $locale) {
       image {
             url
       }

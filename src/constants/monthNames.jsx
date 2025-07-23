@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const MONTH_NAMES = {
   january: 'Januar',
   february: 'Februar',
@@ -11,7 +10,7 @@ export const MONTH_NAMES = {
   september: 'September',
   october: 'Oktober',
   november: 'November',
-  december: 'Dezember'
+  december: 'Dezember',
 };
 
 export const monthOrder = [
@@ -26,5 +25,5 @@ export const monthOrder = [
   'september',
   'october',
   'november',
-  'december'
+  'december',
 ];

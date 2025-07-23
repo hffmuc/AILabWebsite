@@ -1,15 +1,14 @@
-/* eslint-disable import/prefer-default-export */
 import { graphql } from '..';
 
 export const getFestivalList = async () => {
   const query = `
-{
-  festivals {
-        name
-        month
-        shortDescription
-        location
-        link
+query ($locale: I18NLocaleCode) {
+  festivals(locale: $locale) {
+      name
+      month
+      shortDescription
+      location
+      link
   }
 } 
       `;
@@ -21,8 +20,8 @@ export const getFestivalList = async () => {
 
 export const getFestivalsContent = async () => {
   const query = `
-    query {
-        festivalsPage {
+    query ($locale: I18NLocaleCode) {
+        festivalsPage(locale: $locale) {
             introduction
         }
     }

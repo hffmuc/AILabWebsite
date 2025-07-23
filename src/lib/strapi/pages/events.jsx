@@ -1,10 +1,9 @@
-/* eslint-disable import/prefer-default-export */
 import { graphql } from '..';
 
 export const getEventsContent = async () => {
   const query = `
-    query {
-        eventsPage {
+    query ($locale: I18NLocaleCode) {
+        eventsPage (locale: $locale) {
         data {
             attributes {
             content
@@ -21,8 +20,8 @@ export const getEventsContent = async () => {
 
 export const getEventList = async () => {
   const query = `
-  query {
-    events(sort: "event_start:asc") {
+  query ($locale: I18NLocaleCode) {
+    events(sort: "event_start:asc", locale: $locale) {
       data {
         attributes {
           title

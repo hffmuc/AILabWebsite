@@ -25,15 +25,19 @@ const HomePage = lazy(() => import('./pages/homePage/HomePage'));
 const ToolsPage = lazy(() => import('./pages/toolsPage/ToolsPage'));
 const BlogOverviewPage = lazy(() => import('./pages/blog/BlogOverview'));
 const BlogArticlePage = lazy(() => import('./pages/blog/BlogArticlePage'));
+import { useTranslation } from 'react-i18next';
 
 const App = () => {
+  const { t } = useTranslation();
+
   return (
     <ErrorBoundary
       fallback={
         <div>
           Something went wrong. Go back to <a href={PATH_HOME}>home</a>.
         </div>
-      }>
+      }
+    >
       <Router>
         <Suspense>
           <Routes>
@@ -60,10 +64,13 @@ const App = () => {
         fontSize="sm"
         gap={4}
         justifyContent="center"
-        alignItems="center">
-        <Link href="https://www.hff-muc.de/de_DE/imprint">Impressum</Link>
+        alignItems="center"
+      >
+        <Link href="https://www.hff-muc.de/de_DE/imprint">
+          {t('footer.imprint')}
+        </Link>
         <Link href="https://www.hff-muenchen.de/de_DE/datenschutzerklaerung">
-          Datenschutzerklärung
+          {t('footer.privacyPolicy')}
         </Link>
       </Flex>
     </ErrorBoundary>

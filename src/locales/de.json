@@ -1,0 +1,51 @@
+{
+  "navigation": {
+    "home": "Home",
+    "mediaprojects": "Medienprojekte",
+    "films": "Filme",
+    "festivals": "Festivals",
+    "tools": "Tools",
+    "faq": "FAQ",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "title": "Neues aus dem KI-Lab der HFF",
+    "about": "Der Lehrstuhl KI an der HFF"
+  },
+  "mediaprojects": {
+    "title": "KI Medienprojekte"
+  },
+  "films": {
+    "title": "KI Filme",
+    "by": "von"
+  },
+  "festivals": {
+    "title": "KI Festivals",
+    "otherFestivals": "Sonstige Festivals"
+  },
+  "tools": {
+    "title": "KI Tools",
+    "filterResults": "Ergebnisse filtern:",
+    "sortBy": "Sortieren nach:",
+    "sortOptions": {
+      "name": "Name",
+      "date": "Zuletzt hinzugefügt"
+    },
+    "available": "Verfügbar im KI Lab",
+    "showAvailableTools": "nur im KI-Lab verfügbare Tools anzeigen",
+    "availableToolsTooltip": "Diese Tools sind entweder lokal im KI-Lab installiert oder wir besitzen eine Lizenz dafür"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen"
+  },
+  "contact": {
+    "title": "Kontakt"
+  },
+  "footer": {
+    "imprint": "Impressum",
+    "privacyPolicy": "Datenschutzrichtlinie"
+  },
+  "blog": {
+    "title": "KI-Lab Blog"
+  }
+}

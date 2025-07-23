@@ -1,14 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
-import { Heading, Text, Stack, Image, Card, CardBody, Link } from '@chakra-ui/react';
+import {
+  Heading,
+  Text,
+  Stack,
+  Image,
+  Card,
+  CardBody,
+  Link,
+} from '@chakra-ui/react';
 import { getBlogArticles } from '../../lib/strapi/pages/blog';
 import PageWrapper from '../../components/ui/PageWrapper';
 import Title from '../../components/ui/Title';
-import { COLOR_TEXT, COLOR_BACKGROUND, COLOR_TEXT_SECONDARY } from '../../constants/styles';
+import {
+  COLOR_TEXT,
+  COLOR_BACKGROUND,
+  COLOR_TEXT_SECONDARY,
+} from '../../constants/styles';
 import { PATH_BLOG } from '../../constants/pathNames';
 import formatDate from '../../helpers/formatDate';
+import { useTranslation } from 'react-i18next';
 
-const BlogPreview = ({ title, slug, date, authors, image, shortDescription }) => {
+const BlogPreview = ({
+  title,
+  slug,
+  date,
+  authors,
+  image,
+  shortDescription,
+}) => {
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
@@ -18,7 +38,8 @@ const BlogPreview = ({ title, slug, date, authors, image, shortDescription }) =>
       backgroundColor={COLOR_BACKGROUND}
       mb={8}
       maxH={['100%', '240px']}
-      w="100%">
+      w="100%"
+    >
       <Image
         objectFit="cover"
         h={['180px', 'inherit']}
@@ -49,13 +70,15 @@ const BlogPreview = ({ title, slug, date, authors, image, shortDescription }) =>
 
 const BlogOverviewPage = () => {
   const [blogArticles, setBlogArticles] = useState([]);
+  const { t, i18n } = useTranslation();
+
   useEffect(() => {
     getBlogArticles().then((res) => setBlogArticles(res));
-  }, []);
+  }, [i18n.language]);
 
   return (
     <PageWrapper>
-      <Title name="KI-Lab News" textAlign="left" />
+      <Title name={t('blog.title')} textAlign="left" />
       {blogArticles.map((blogArticle) => (
         <BlogPreview {...blogArticle} key={v4()} />
       ))}

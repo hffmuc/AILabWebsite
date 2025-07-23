@@ -1,0 +1,51 @@
+{
+  "navigation": {
+    "home": "Home",
+    "mediaprojects": "Media Projects",
+    "films": "Films",
+    "festivals": "Festivals",
+    "tools": "Tools",
+    "faq": "FAQ",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "News from the AI Lab",
+    "about": "The AI Lab at HFF Munich"
+  },
+  "mediaprojects": {
+    "title": "AI Media Projects"
+  },
+  "films": {
+    "title": "AI Films",
+    "by": "by"
+  },
+  "festivals": {
+    "title": "AI Festivals",
+    "otherFestivals": "Other Festivals"
+  },
+  "tools": {
+    "title": "AI Tools",
+    "filterResults": "Filter results:",
+    "sortBy": "Sort by:",
+    "sortOptions": {
+      "name": "Name",
+      "date": "Date Added"
+    },
+    "available": "Available in the AI Lab",
+    "showAvailableTools": "Only show tools available in the AI Lab",
+    "availableToolsTooltip": "These tools are either installed locally in the AI Lab or we have a subscription for them"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions"
+  },
+  "contact": {
+    "title": "Contact"
+  },
+  "footer": {
+    "imprint": "Imprint",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "blog": {
+    "title": "AI Lab Blog"
+  }
+}

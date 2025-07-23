@@ -9,16 +9,18 @@ import formatDate from '../../helpers/formatDate';
 import { COLOR_TEXT } from '../../constants/styles';
 import renderMarkdown from '../../helpers/renderMarkdown';
 import ContentWrapper from '../../components/ui/ContentWrapper';
+import { useTranslation } from 'react-i18next';
 
 const BlogArticlePage = () => {
   const { slug } = useParams();
+  const { i18n } = useTranslation();
   const [blogArticle, setBlogArticle] = useState();
 
   useEffect(() => {
     getBlogArticle(slug).then((res) => {
       setBlogArticle(res);
     });
-  }, []);
+  }, [i18n.language, slug]);
 
   return (
     <PageWrapper>

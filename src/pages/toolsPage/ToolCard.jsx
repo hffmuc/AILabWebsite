@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import React, { useEffect, useState } from 'react';
 import {
   Card,
@@ -16,7 +15,7 @@ import {
   HStack,
   VStack,
   Wrap,
-  WrapItem
+  WrapItem,
 } from '@chakra-ui/react';
 import { PropTypes } from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
@@ -31,11 +30,12 @@ import {
   COLOR_PRIMARY_HOVER,
   COLOR_ALTERNATIVE,
   COLOR_SECONDARY,
-  COLOR_ALTERNATIVE_HOVER
+  COLOR_ALTERNATIVE_HOVER,
 } from '../../constants/styles';
 import ToolTag from '../../components/ui/ToolTag';
 // import { getStrapiImage } from '../../helpers/getStrapiImage';
 import renderMarkdown from '../../helpers/renderMarkdown';
+import { useTranslation } from 'react-i18next';
 
 const ToolCard = ({
   toolImage,
@@ -47,13 +47,22 @@ const ToolCard = ({
   githubLink = '',
   softwareLink,
   googleCollabLink,
-  toolTags
+  toolTags,
 }) => {
+  const { t, i18n } = useTranslation();
   return (
-    <Card size={['md', 'sm']} textColor={COLOR_TEXT} background={COLOR_BACKGROUND}>
+    <Card
+      size={['md', 'sm']}
+      textColor={COLOR_TEXT}
+      background={COLOR_BACKGROUND}
+    >
       <CardBody>
         <Image
-          src={toolImage.formats?.small ? toolImage.formats.small.url : toolImage.url}
+          src={
+            toolImage.formats?.small
+              ? toolImage.formats.small.url
+              : toolImage.url
+          }
           alt={toolName}
           borderRadius="md"
           w={['60%', '70%']}
@@ -97,7 +106,8 @@ const ToolCard = ({
                   h="100%"
                   p={2}
                   fontSize="sm"
-                  _hover={{ bg: '#ae77f7' }}>
+                  _hover={{ bg: '#ae77f7' }}
+                >
                   <Link href={softwareLink} target="_blank" rel="noreferrer">
                     Software
                   </Link>
@@ -113,7 +123,8 @@ const ToolCard = ({
                   h="100%"
                   p={2}
                   fontSize="sm"
-                  _hover={{ bg: COLOR_PRIMARY_HOVER }}>
+                  _hover={{ bg: COLOR_PRIMARY_HOVER }}
+                >
                   <Link href={webToolLink} target="_blank" rel="noreferrer">
                     Web Tool
                   </Link>
@@ -128,8 +139,13 @@ const ToolCard = ({
                   h="100%"
                   p={2}
                   fontSize="sm"
-                  _hover={{ bg: '#e8982e' }}>
-                  <Link href={googleCollabLink} target="_blank" rel="noreferrer">
+                  _hover={{ bg: '#e8982e' }}
+                >
+                  <Link
+                    href={googleCollabLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Google Collab
                   </Link>
                 </Button>
@@ -137,7 +153,12 @@ const ToolCard = ({
             )}
             {githubLink && (
               <WrapItem h="30px">
-                <Link href={githubLink} h="100%" target="_blank" rel="noreferrer">
+                <Link
+                  href={githubLink}
+                  h="100%"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Image src={githubIcon} h="100%" w="auto" p="3px" />
                 </Link>
               </WrapItem>
@@ -146,7 +167,7 @@ const ToolCard = ({
           {available_at_KI_Lab && (
             <Box verticalAlign="center" fontWeight="500" fontSize="sm">
               <CheckCircleIcon color="white" h="80%" pb="0.1rem" mr="1" />
-              verfügbar im KI Lab
+              {t('tools.available')}
             </Box>
           )}
         </VStack>

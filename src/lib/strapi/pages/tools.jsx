@@ -1,11 +1,25 @@
-/* eslint-disable import/prefer-default-export */
-
 import { graphql } from '..';
+
+export const getToolsIntroduction = async () => {
+  const query = `
+    query($locale: I18NLocaleCode) {
+      toolsPage (locale: $locale) {
+        introduction
+        localizations {
+          locale
+          introduction
+        }
+      }
+    }
+`;
+  const res = await graphql(query);
+  return res.data.toolsPage.introduction;
+};
 
 export const getTags = async () => {
   const query = `
   query {
-    toolTags{name color}
+    toolTags(sort: "name:ASC"){name color}
   }    
       `;
 
@@ -15,8 +29,12 @@ export const getTags = async () => {
 };
 
 // activeTags is a Set of tag names (as strings)
-export const getToolsWithTags = async (activeTags, sortBy, availableToolsChecked) => {
-  console.log(sortBy);
+export const getToolsWithTags = async (
+  activeTags,
+  sortBy,
+  availableToolsChecked
+) => {
+  // console.log(sortBy);
   let sortParameter = '';
   switch (sortBy) {
     case 'Name':
@@ -36,8 +54,8 @@ export const getToolsWithTags = async (activeTags, sortBy, availableToolsChecked
   let query = '';
 
   query = `
-      query {
-        aiTools(sort: "${sortParameter}", filters: { 
+      query($locale: I18NLocaleCode) {
+        aiTools(locale: $locale, sort: "${sortParameter}", filters: { 
           ${availableToolsChecked ? `available_at_KI_Lab: { eq: true } ` : ''}, 
           ${
             activeTags?.size === 0 || activeTags === undefined // No tags selected means all tools, therefore no filtering
@@ -71,47 +89,6 @@ export const getToolsWithTags = async (activeTags, sortBy, availableToolsChecked
       
       }
     `;
-
-  // const tagsArray = Array.from(activeTags);
-  // query = `
-  //   query {
-  //     aiTools(filters: { toolTags: { name: { in: ${JSON.stringify(
-  //       tagsArray
-  //     )} } } }, sort: "${sortParameter}", pagination: { limit: 100 }) {
-  //       data {
-  //         attributes {
-  //           toolName
-  //           createdAt
-  //           toolImage {
-  //             data {
-  //               attributes {
-  //                 formats
-  //                 url
-  //               }
-  //             }
-  //           }
-  //           developers
-  //           description
-  //           webToolLink
-  //           githubLink
-  //           localAppLink
-  //           available_at_KI_Lab
-  //           softwareLink
-  //           googleCollabLink
-  //           internalInfo
-  //           toolTags {
-  //             data {
-  //               attributes {
-  //                 name
-  //                 color
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `;
 
   const res = await graphql(query);
 
