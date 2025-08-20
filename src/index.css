@@ -46,9 +46,10 @@ code {
 }
 
 .Background {
-  background: linear-gradient(20deg, #15343f, #2a0f2b, #232323);
+  /* background: linear-gradient(20deg, #15343f, #2a0f2b, #232323);
   background-attachment: fixed;
   background-size: 100% 100%;
   background-position: center;
-  overflow-x: hidden;
+  overflow-x: hidden; */
+  background: rgba(15, 11, 58, 0.9);
 }

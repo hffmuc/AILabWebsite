@@ -18,6 +18,7 @@ import {
 import { COLOR_SECONDARY, COLOR_TEXT_SECONDARY } from '../../constants/styles';
 import renderMarkdown from '../../helpers/renderMarkdown';
 import { useTranslation } from 'react-i18next';
+import Section from '../../components/ui/Section';
 
 const FestivalsPage = () => {
   const [festivals, setFestivals] = useState([]);
@@ -48,11 +49,13 @@ const FestivalsPage = () => {
       <Box pb={6} mt={3} color={COLOR_TEXT_SECONDARY} w="100%">
         {renderMarkdown(introduction)}
       </Box>
-      <VStack spacing={6} align="stretch" divider={<Divider />}>
+      <VStack spacing={6} align="stretch">
         {Object.keys(festivalsByMonth).map((month) => (
           <Box key={month}>
-            <Box fontSize="xl" mb={4}>{MONTH_NAMES[month]}</Box>
-            <VStack spacing={4} align="start">
+            <Box fontSize="xl" mb={2}>
+              {MONTH_NAMES[month]}
+            </Box>
+            <VStack spacing={3} align="start">
               {festivalsByMonth[month].map((festival) => (
                 <Festival festival={festival} key={festival.name} />
               ))}
@@ -77,14 +80,15 @@ const FestivalsPage = () => {
 
 const Festival = ({ festival }) => {
   return (
-    <Box
-      key={festival.name}
-      p={4}
-      w="100%"
-      borderWidth="1px"
-      borderRadius="lg"
-      boxShadow="md"
-    >
+    // <Box
+    //   key={festival.name}
+    //   p={4}
+    //   w="100%"
+    //   borderWidth="1px"
+    //   borderRadius="lg"
+    //   boxShadow="md"
+    // >
+    <Section>
       {festival.link ? (
         <Link
           fontSize="lg"
@@ -104,7 +108,8 @@ const Festival = ({ festival }) => {
         {festival.location}
       </Box>
       <Box mt={2}>{renderMarkdown(festival.shortDescription)}</Box>
-    </Box>
+    </Section>
+    // </Box>
   );
 };
 export default FestivalsPage;

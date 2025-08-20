@@ -10,3 +10,4 @@ export const PATH_FESTIVALS = '/festivals';
 export const PATH_FILMS = '/filme';
 export const PATH_MEDIAPROJECTS = '/medienprojekte';
 export const PATH_FAQ = '/faq';
+export const PATH_FORSCHUNG = '/forschung';

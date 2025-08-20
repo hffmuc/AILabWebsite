@@ -11,6 +11,7 @@ import {
   PATH_FAQ,
   PATH_FESTIVALS,
   PATH_FILMS,
+  PATH_FORSCHUNG,
   PATH_HOME,
   PATH_MEDIAPROJECTS,
   PATH_TOOLS,
@@ -26,6 +27,7 @@ const ToolsPage = lazy(() => import('./pages/toolsPage/ToolsPage'));
 const BlogOverviewPage = lazy(() => import('./pages/blog/BlogOverview'));
 const BlogArticlePage = lazy(() => import('./pages/blog/BlogArticlePage'));
 import { useTranslation } from 'react-i18next';
+import ForschungPage from './pages/forschungPage/ForschungPage';
 
 const App = () => {
   const { t } = useTranslation();
@@ -50,6 +52,7 @@ const App = () => {
             <Route path={PATH_FESTIVALS} element={<FestivalsPage />} />
             <Route path={PATH_FILMS} element={<FilmPage />} />
             <Route path={PATH_MEDIAPROJECTS} element={<MediaProjectsPage />} />
+            <Route path={PATH_FORSCHUNG} element={<ForschungPage />} />
           </Routes>
         </Suspense>
       </Router>

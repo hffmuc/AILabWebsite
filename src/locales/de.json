@@ -6,11 +6,15 @@
     "festivals": "Festivals",
     "tools": "Tools",
     "faq": "FAQ",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "forschung": "Forschung"
   },
   "home": {
     "title": "Neues aus dem KI-Lab der HFF",
     "about": "Der Lehrstuhl KI an der HFF"
+  },
+  "forschung": {
+    "title": "Forschungsprojekte"
   },
   "mediaprojects": {
     "title": "KI Medienprojekte"

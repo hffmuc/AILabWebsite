@@ -6,11 +6,15 @@
     "festivals": "Festivals",
     "tools": "Tools",
     "faq": "FAQ",
-    "contact": "Contact"
+    "contact": "Contact",
+    "forschung": "Research"
   },
   "home": {
     "title": "News from the AI Lab",
     "about": "The AI Lab at HFF Munich"
+  },
+  "forschung": {
+    "title": "Research Projects"
   },
   "mediaprojects": {
     "title": "AI Media Projects"

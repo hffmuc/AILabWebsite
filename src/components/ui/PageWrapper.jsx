@@ -47,6 +47,7 @@ import {
   PATH_FAQ,
   PATH_FESTIVALS,
   PATH_FILMS,
+  PATH_FORSCHUNG,
   PATH_HOME,
   PATH_MEDIAPROJECTS,
   PATH_TOOLS,
@@ -139,6 +140,19 @@ const PageWrapper = ({ children }) => {
                   }
                 >
                   {t('navigation.home')}
+                </Link>
+                <Link
+                  href={PATH_FORSCHUNG}
+                  fontWeight={
+                    location.pathname === PATH_FORSCHUNG ? 'bold' : 'normal'
+                  }
+                  color={
+                    location.pathname === PATH_FORSCHUNG
+                      ? COLOR_SECONDARY_HOVER
+                      : COLOR_TEXT
+                  }
+                >
+                  {t('navigation.forschung')}
                 </Link>
                 {/* <Link
                 href={PATH_ABOUT}
