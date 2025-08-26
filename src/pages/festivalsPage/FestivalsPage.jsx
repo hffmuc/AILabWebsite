@@ -53,7 +53,7 @@ const FestivalsPage = () => {
         {Object.keys(festivalsByMonth).map((month) => (
           <Box key={month}>
             <Box fontSize="xl" mb={2}>
-              {MONTH_NAMES[month]}
+              {t('festivals.months.' + month)}
             </Box>
             <VStack spacing={3} align="start">
               {festivalsByMonth[month].map((festival) => (

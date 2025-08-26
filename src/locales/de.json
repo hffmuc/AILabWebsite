@@ -25,7 +25,21 @@
   },
   "festivals": {
     "title": "KI Festivals",
-    "otherFestivals": "Sonstige Festivals"
+    "otherFestivals": "Sonstige Festivals",
+    "months": {
+      "january": "Januar",
+      "february": "Februar",
+      "march": "März",
+      "april": "April",
+      "may": "Mai",
+      "june": "Juni",
+      "july": "Juli",
+      "august": "August",
+      "september": "September",
+      "october": "Oktober",
+      "november": "November",
+      "december": "Dezember"
+    }
   },
   "tools": {
     "title": "KI Tools",
