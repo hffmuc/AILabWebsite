@@ -17,7 +17,8 @@
     "title": "Forschungsprojekte"
   },
   "mediaprojects": {
-    "title": "KI Medienprojekte"
+    "title": "KI Medienprojekte",
+    "by": "von"
   },
   "films": {
     "title": "KI Filme",

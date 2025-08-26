@@ -18,6 +18,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { COLOR_SECONDARY, COLOR_TEXT_SECONDARY } from '../../constants/styles';
 import Section from '../../components/ui/Section';
+import { t } from 'i18next';
 
 const MediaProjectsPage = () => {
   const [introduction, setIntroduction] = useState();
@@ -65,7 +66,7 @@ const MediaProject = ({ mediaproject }) => {
           )}
           {mediaproject.artists && (
             <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
-              von {mediaproject.artists}
+              {t('mediaprojects.by')} {mediaproject.artists}
             </Box>
           )}
 

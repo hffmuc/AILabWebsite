@@ -17,7 +17,8 @@
     "title": "Research Projects"
   },
   "mediaprojects": {
-    "title": "AI Media Projects"
+    "title": "AI Media Projects",
+    "by": "by"
   },
   "films": {
     "title": "AI Films",
