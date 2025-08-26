@@ -5,6 +5,7 @@ import {
   OrderedList,
   ListItem,
   List,
+  Link,
 } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
 
@@ -16,6 +17,9 @@ const renderers = {
   ol: ({ node, ...props }) => <OrderedList {...props} />,
   li: ({ node, ...props }) => <ListItem>{props.children}</ListItem>,
   img: ({ src, ...props }) => <Image src={src} {...props} />,
+  a: ({ href, ...props }) => (
+    <Link href={href} {...props} textDecoration="underline" />
+  ),
 };
 
 const renderMarkdown = (markdown) => {
