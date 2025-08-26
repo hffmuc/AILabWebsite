@@ -44,16 +44,21 @@ const ResearchProject = ({ project }) => {
   const { t, i18n } = useTranslation();
   return (
     <Section>
+      <VStack w="100%" align="start" mb={4}>
+        <Box textAlign="left" fontSize="lg" fontWeight="bold">
+          {project.name} {project.year && `(${project.year})`}
+        </Box>
+        <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
+          {project.authors}
+        </Box>
+        <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
+          {project.conference}
+        </Box>
+      </VStack>
+
       <Wrap spacing={8} w="100%">
         <VStack flex="1" align="stretch">
-          <Box textAlign="left" fontSize="lg" fontWeight="bold">
-            {project.name} {project.year && `(${project.year})`}
-          </Box>
-          <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
-            {t('by')} {project.authors} published at {project.conference}
-          </Box>
-
-          <Box>{renderMarkdown(project.description)}</Box>
+          <Box textAlign="justify">{renderMarkdown(project.description)}</Box>
           <Spacer />
           <Box>
             {project.paper && (
@@ -68,11 +73,9 @@ const ResearchProject = ({ project }) => {
             )}
           </Box>
         </VStack>
-        <Image
-          src={project.image?.url}
-          borderRadius={0}
-          maxW={['100%', '100%', '100%', '40%', '30%']}
-        />
+        <Box w={['100%', '100%', '100%', '40%', '30%']}>
+          <Image src={project.image?.url} borderRadius={0} />
+        </Box>
       </Wrap>
     </Section>
   );
