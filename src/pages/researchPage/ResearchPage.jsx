@@ -51,9 +51,11 @@ const ResearchProject = ({ project }) => {
         <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
           {project.authors}
         </Box>
-        <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
-          {project.conference}
-        </Box>
+        {project.conference && (
+          <Box textAlign="left" fontSize="md" color={COLOR_SECONDARY}>
+            {project.conference}
+          </Box>
+        )}
       </VStack>
 
       <Wrap spacing={8} w="100%">
@@ -73,9 +75,11 @@ const ResearchProject = ({ project }) => {
             )}
           </Box>
         </VStack>
-        <Box w={['100%', '100%', '100%', '40%', '30%']}>
-          <Image src={project.image?.url} borderRadius={0} />
-        </Box>
+        {project.image?.url && (
+          <Box w={['100%', '100%', '100%', '40%', '30%']}>
+            <Image src={project.image?.url} borderRadius={0} />
+          </Box>
+        )}
       </Wrap>
     </Section>
   );
