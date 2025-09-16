@@ -141,7 +141,7 @@ const PageWrapper = ({ children }) => {
                 >
                   {t('navigation.home')}
                 </Link>
-                {/* <Link
+                <Link
                   href={PATH_FORSCHUNG}
                   fontWeight={
                     location.pathname === PATH_FORSCHUNG ? 'bold' : 'normal'
@@ -153,7 +153,7 @@ const PageWrapper = ({ children }) => {
                   }
                 >
                   {t('navigation.forschung')}
-                </Link> */}
+                </Link>
                 {/* <Link
                 href={PATH_ABOUT}
                 fontWeight={location.pathname === PATH_ABOUT ? 'bold' : 'normal'}
@@ -311,7 +311,7 @@ const PageWrapper = ({ children }) => {
                       >
                         {t('navigation.home')}
                       </Link>
-                      {/* <Link
+                      <Link
                         href={PATH_FORSCHUNG}
                         fontWeight={
                           location.pathname === PATH_FORSCHUNG
@@ -325,7 +325,7 @@ const PageWrapper = ({ children }) => {
                         }
                       >
                         {t('navigation.forschung')}
-                      </Link> */}
+                      </Link>
 
                       {/* <Link
                       href={PATH_ABOUT}
