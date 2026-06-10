@@ -16,6 +16,7 @@ import {
   VStack,
   Wrap,
   WrapItem,
+  Badge,
 } from '@chakra-ui/react';
 import { PropTypes } from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
@@ -48,6 +49,11 @@ const ToolCard = ({
   softwareLink,
   googleCollabLink,
   toolTags,
+  provider = '',
+  providerCountry = '',
+  licenseType = '',
+  runsLocally = false,
+  licensedTrainingData = false,
 }) => {
   const { t, i18n } = useTranslation();
   return (
@@ -78,6 +84,29 @@ const ToolCard = ({
             </Box>
           ) : (
             []
+          )}
+          {(provider || providerCountry) && (
+            <Box fontSize="sm" color={COLOR_SECONDARY}>
+              {provider}
+              {providerCountry ? ` (${providerCountry})` : ''}
+            </Box>
+          )}
+          {licenseType && (
+            <Box pt={1}>
+              <Badge
+                colorScheme={
+                  licenseType === 'open_source'
+                    ? 'green'
+                    : licenseType === 'mixed'
+                    ? 'yellow'
+                    : 'red'
+                }
+                variant="subtle"
+                fontSize="xs"
+              >
+                {t(`tools.licenseType.${licenseType}`)}
+              </Badge>
+            </Box>
           )}
           {toolTags.data ? (
             <HStack pt={1} pb={1}>
@@ -168,6 +197,18 @@ const ToolCard = ({
             <Box verticalAlign="center" fontWeight="500" fontSize="sm">
               <CheckCircleIcon color="white" h="80%" pb="0.1rem" mr="1" />
               {t('tools.available')}
+            </Box>
+          )}
+          {runsLocally && (
+            <Box verticalAlign="center" fontWeight="500" fontSize="sm">
+              <CheckCircleIcon color="white" h="80%" pb="0.1rem" mr="1" />
+              {t('tools.runsLocally')}
+            </Box>
+          )}
+          {licensedTrainingData && (
+            <Box verticalAlign="center" fontWeight="500" fontSize="sm">
+              <CheckCircleIcon color="white" h="80%" pb="0.1rem" mr="1" />
+              {t('tools.licensedTrainingData')}
             </Box>
           )}
         </VStack>

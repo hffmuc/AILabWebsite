@@ -53,7 +53,14 @@
     },
     "available": "Available in the AI Lab",
     "showAvailableTools": "Only show tools available in the AI Lab",
-    "availableToolsTooltip": "These tools are either installed locally in the AI Lab or we have a subscription for them"
+    "availableToolsTooltip": "These tools are either installed locally in the AI Lab or we have a subscription for them",
+    "runsLocally": "Runs locally",
+    "licensedTrainingData": "Licensed Training Data",
+    "licenseType": {
+      "open_source": "Open Source",
+      "closed": "Closed Source",
+      "mixed": "Partially Open Source"
+    }
   },
   "faq": {
     "title": "Frequently Asked Questions"

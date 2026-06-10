@@ -53,7 +53,14 @@
     },
     "available": "Verfügbar im KI Lab",
     "showAvailableTools": "nur im KI-Lab verfügbare Tools anzeigen",
-    "availableToolsTooltip": "Diese Tools sind entweder lokal im KI-Lab installiert oder wir besitzen eine Lizenz dafür"
+    "availableToolsTooltip": "Diese Tools sind entweder lokal im KI-Lab installiert oder wir besitzen eine Lizenz dafür",
+    "runsLocally": "Läuft lokal",
+    "licensedTrainingData": "Lizenzierte Trainingsdaten",
+    "licenseType": {
+      "open_source": "Open Source",
+      "closed": "Closed Source",
+      "mixed": "Teilweise Open Source"
+    }
   },
   "faq": {
     "title": "Häufig gestellte Fragen"
