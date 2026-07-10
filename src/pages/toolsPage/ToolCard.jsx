@@ -49,7 +49,6 @@ const ToolCard = ({
   softwareLink,
   googleCollabLink,
   toolTags,
-  provider = '',
   providerCountry = '',
   licenseType = '',
   runsLocally = false,
@@ -78,18 +77,15 @@ const ToolCard = ({
           <Box fontWeight="bold" fontSize="md">
             {toolName}
           </Box>
-          {developers ? (
+          {developers || providerCountry ? (
             <Box fontSize="sm" color={COLOR_SECONDARY}>
               {developers}
+              {developers && providerCountry
+                ? ` (${providerCountry})`
+                : providerCountry}
             </Box>
           ) : (
             []
-          )}
-          {(provider || providerCountry) && (
-            <Box fontSize="sm" color={COLOR_SECONDARY}>
-              {provider}
-              {providerCountry ? ` (${providerCountry})` : ''}
-            </Box>
           )}
           {licenseType && (
             <Box pt={1}>

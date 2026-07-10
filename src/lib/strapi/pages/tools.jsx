@@ -81,7 +81,6 @@ export const getToolsWithTags = async (
               softwareLink
               googleCollabLink
               internalInfo
-              provider
               providerCountry
               licenseType
               runsLocally
